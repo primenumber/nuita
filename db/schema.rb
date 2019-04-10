@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_025504) do
+ActiveRecord::Schema.define(version: 2019_04_10_050452) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,11 +32,11 @@ ActiveRecord::Schema.define(version: 2019_04_10_025504) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "provider"
-    t.string "uid"
-    t.string "username"
+    t.string "handle_name", limit: 30
+    t.string "screen_name", limit: 20
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["screen_name"], name: "index_users_on_screen_name", unique: true
   end
 
 end
