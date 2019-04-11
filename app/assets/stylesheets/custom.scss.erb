@@ -1,0 +1,71 @@
+@import 'bootstrap';
+@import 'bootstrap-sprockets';
+@import 'font-awesome';
+@import url('https://fonts.googleapis.com/css?family=Questrial');
+
+.navbar-inverse { background-color: #5FC10C}
+.navbar-inverse .navbar-nav>.active>a:hover,.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus { background-color: #6AD70E}
+.navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus { background-color: #6AD70E}
+.dropdown-menu { background-color: #55AD0A}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { background-color: #6FC724}
+.navbar-inverse { background-image: none; }
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { background-image: none; }
+.navbar-inverse {
+  box-shadow: 0px 0.2px 2px gray;
+}
+.navbar-inverse .navbar-brand { color: #FFFFFF}
+.navbar-inverse .navbar-brand:hover { color: #FFFFFF}
+.navbar-inverse .navbar-nav>li>a { color: #F8F6F5}
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus { color: #FFFFFF}
+.navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus { color: #FFFFFF}
+.navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus { color: #FFFFFF}
+.dropdown-menu>li>a { color: #F8F6F5}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { color: #FFFFFF}
+.navbar-inverse .navbar-nav>.dropdown>a .caret { border-top-color: #F8F6F5}
+.navbar-inverse .navbar-nav>.dropdown>a:hover .caret { border-top-color: #FFFFFF}
+.navbar-inverse .navbar-nav>.dropdown>a .caret { border-bottom-color: #F8F6F5}
+.navbar-inverse .navbar-nav>.dropdown>a:hover .caret { border-bottom-color: #FFFFFF}
+
+.navbar{
+  margin: 0px;
+}
+
+.navbar-brand{
+  font-family: "Questrial", sans-serif;
+  font-size: 3rem;
+}
+
+.notice{
+  margin: 0px;
+  padding: 0px;
+}
+
+.alert{
+  margin: 0px;
+  padding: 0px;
+}
+
+.jumbotron.jumbotron-fluid.jumbotron-image{
+  background-image: url(<%= asset_path("landing_background") %>);
+  background-size: cover;
+  background-color: rgba(0,0,40,0.4)
+}
+
+.full-height{
+  height: 600px;
+}
+
+.landing{
+  margin: 120px 5px 5px 25px;
+  h1{
+    margin-bottom: 100px;
+  }
+  .lead{
+    font-size: normal;
+  }
+  color: #fff;
+}
+
+.container-landing{
+  background-color: rgba(255,255,255,0.9)
+}

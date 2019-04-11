@@ -1,10 +1,18 @@
-header
-  nav
-    ul
-      - if user_signed_in?
-        li = link_to current_user.handle_name, "#"
-        li = link_to 'プロフィール変更', edit_user_registration_path
-        li = link_to 'ログアウト', destroy_user_session_path, method: :delete
-      - else
-        li = link_to '新規登録', new_user_registration_path
-        li = link_to 'ログイン', new_user_session_path
+header.navbar.navbar-inverse.navbar-fixed-top.bs-docs-nav role="banner"
+  .container
+    .navbar-header
+      button.navbar-toggle data-target=".bs-navbar-collapse" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      = link_to 'Nuita', root_path, class: "navbar-brand"
+    nav.collapse.navbar-collapse.bs-navbar-collapse role="navigation"
+      ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          li = link_to current_user.handle_name, "#"
+          li = link_to 'プロフィール変更', edit_user_registration_path
+          li = link_to 'ログアウト', destroy_user_session_path, method: :delete
+        - else
+          li = link_to '新規登録', new_user_registration_path
+          li = link_to 'ログイン', new_user_session_path
