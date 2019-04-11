@@ -1,3 +1,4 @@
-- provide(:title, 'ホーム')
-h1 Pages#home
-p Find me in app/views/pages/home.html.slim
+- if user_signed_in?
+  = render('pages/user_home')
+- else
+  = render('pages/landing')
