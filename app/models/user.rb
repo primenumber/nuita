@@ -6,7 +6,7 @@ class User < ApplicationRecord
          #:confirmable, :lockable, :timeoutable #,
          #:omniauthable, omniauth_providers: [:twitter]
 
-  has_many :nweets
+  has_many :nweets, dependent: :destroy
 
   validates :screen_name, presence: true, uniqueness: true, length: {maximum: 20}
   validates :screen_name, format: {with: /[0-9a-zA-Z_]/}
