@@ -1,0 +1,14 @@
+today:
+  did_at: <%= 8.hours.ago %>
+
+doubleheader:
+  did_at: <%= 5.hours.ago %>
+
+modasho:
+  did_at: <%= 1.hour.ago %>
+
+yesterday:
+  did_at: <%= 1.day.ago %>
+
+saytwo:
+  did_at: <%= 10.years.ago %>

@@ -25,4 +25,9 @@ class NweetTest < ActiveSupport::TestCase
     @nweet.did_at = 1.hour.ago
     assert @nweet.valid?
   end
+
+  test 'nweet should be most recent first' do
+    assert_equal nweets(:modasho), Nweet.first
+    assert_equal nweets(:saytwo), Nweet.last
+  end
 end
