@@ -1,2 +1,10 @@
-h1 Users#show
-p Find me in app/views/users/show.html.slim
+- provide(:title, "#{@user.handle_name}さんはNuitaを利用しています")
+.container
+  .row
+    .col-md-3
+      section.user_info
+        h3
+          span.handle_name = @user.handle_name
+          span.screen_name = "@" + @user.screen_name
+    .col-md-8.col-md-offset-1
+      p posts will be shown here

@@ -3,6 +3,12 @@
 @import 'font-awesome';
 @import url('https://fonts.googleapis.com/css?family=Questrial');
 
+$light-shades: #ECEAE3;
+$light-accent: #85A394;
+$brand-color: #5FC10C;
+$dark-accent: #9C712E;
+$dark-shades: #1C2826;
+
 .navbar-inverse { background-color: #5FC10C}
 .navbar-inverse .navbar-nav>.active>a:hover,.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus { background-color: #6AD70E}
 .navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus { background-color: #6AD70E}
@@ -13,9 +19,9 @@
 .navbar-inverse {
   box-shadow: 0px 0.2px 2px gray;
 }
-.navbar-inverse .navbar-brand { color: #FFFFFF}
+.navbar-inverse .navbar-brand { color: #fff}
 .navbar-inverse .navbar-brand:hover { color: #FFFFFF}
-.navbar-inverse .navbar-nav>li>a { color: #F8F6F5}
+.navbar-inverse .navbar-nav>li>a { color: $light-shades}
 .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus { color: #FFFFFF}
 .navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus { color: #FFFFFF}
 .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus { color: #FFFFFF}
@@ -29,6 +35,8 @@
 body{
   padding-top: 48px;
   font-family: sans-serif;
+  background-color: $light-shades;
+  color: $dark-shades;
 }
 
 .logo-font{
@@ -52,6 +60,10 @@ body{
 .alert{
   margin: 0px;
   padding: 0px;
+}
+
+.jumbotron{
+  background-color: #fcfcfa;
 }
 
 .jumbotron.jumbotron-fluid.jumbotron-image{
@@ -81,4 +93,23 @@ body{
 
 .wider-margintop{
   margin-top: 15px;
+}
+
+/* show user */
+.user_info{
+  padding: 10px 10px 10px 10px;
+  margin: 30px 10px 10px 10px;
+  border-radius: 10px;
+  background-color: #fcfcfc;
+}
+
+.handle_name{
+  padding-right: 5px;
+}
+
+.screen_name{
+  font-size: 12px;
+  font-weight: normal;
+  font-family: "Questrial", sans-serif;
+  color: $dark-accent;
 }
