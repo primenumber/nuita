@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = users(:michael)
+    @user = users(:chikuwa)
   end
 
   test 'should be valid' do
