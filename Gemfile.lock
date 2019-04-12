@@ -88,6 +88,8 @@ GEM
       warden (~> 1.2.3)
     erubi (1.8.0)
     execjs (2.7.0)
+    faker (1.9.3)
+      i18n (>= 0.7)
     ffi (1.10.0)
     font-awesome-sass (5.8.1)
       sassc (>= 1.11)
@@ -247,6 +249,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  faker
   font-awesome-sass
   html2slim
   jbuilder (~> 2.5)
