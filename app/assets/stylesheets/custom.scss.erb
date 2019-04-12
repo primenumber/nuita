@@ -96,7 +96,7 @@ body{
 }
 
 /* show user */
-.user_info{
+.user-info{
   padding: 10px 10px 10px 10px;
   margin: 30px 10px 10px 10px;
   border-radius: 10px;
@@ -105,6 +105,10 @@ body{
 
 .handle_name{
   padding-right: 5px;
+  a {
+    text-decoration: none;
+    color: $dark-shades;
+  }
 }
 
 .screen_name{
@@ -112,4 +116,40 @@ body{
   font-weight: normal;
   font-family: "Questrial", sans-serif;
   color: $dark-accent;
+
+  a{
+    text-decoration: none;
+    color: $dark-accent;
+  }
+}
+
+/* feed */
+.nweet-feed{
+  padding: 10px 10px 10px 10px;
+  margin: 30px 10px 10px 10px;
+  border-radius: 10px;
+  background-color: #fcfcfc;
+
+  .nweet-count{
+    border-bottom: $light-accent, 1px, solid;
+    font-size: small;
+    text-align: right;
+    color: $dark-accent;
+  }
+
+  .nweets-list{
+    list-style: none;
+  }
+
+  .nweet{
+    padding: 10px 10px 30px 5px;
+    border-bottom: $dark-accent, 1px, solid;
+
+    .timestamp{
+    }
+
+    .user_info{
+      border-bottom: $light-accent, 1px, solid;
+    }
+  }
 }
