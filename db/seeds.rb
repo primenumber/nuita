@@ -8,6 +8,7 @@
 
 User.create!(handle_name: 'ちくわ大明神', screen_name: 'chikuwa', email: 'chikuwa@daimyojin.com', password: 'chikuwa00')
 
+
 Faker::Config.locale = :en
 49.times do |n|
   handle_name = Faker::Name.unique.name
@@ -15,6 +16,9 @@ Faker::Config.locale = :en
   email = Faker::Internet.email
   password = Faker::Internet.password
   user = User.create!(handle_name: handle_name, screen_name: screen_name, email: email, password: password)
+end
+
+User.all.map do |user|
   10.times do
     user.nweets.create(did_at: Faker::Time.backward(50))
   end
