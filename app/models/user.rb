@@ -12,6 +12,10 @@ class User < ApplicationRecord
   validates :screen_name, format: {with: /[0-9a-zA-Z_]/}
   validates :handle_name, length: {maximum: 30}
 
+  def timeline
+    Nweet.where("user_id = ?", id)
+  end
+
   class << self
     def screen_name_formatter(str)
       str.gsub(/\W/, '_')[0...20]
