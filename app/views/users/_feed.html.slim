@@ -1,0 +1,10 @@
+.nweet-feed
+  - if @user.nweets.any?
+    .nweet-count
+      = @user.nweets.count
+      | 件のヌイート
+    ol.nweets-list
+      = render @nweets
+    = will_paginate @nweets
+  - else
+    p まだヌイートはありません (T_T)

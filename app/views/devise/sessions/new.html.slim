@@ -1,7 +1,7 @@
 .container
-  .jumbotron
+  .jumbotron.wider-margintop
     .row
-      h1 ログイン
+      h2 ログイン
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field
           = f.label :email

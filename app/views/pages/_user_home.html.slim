@@ -1,5 +1,12 @@
 - provide(:title, 'ホーム')
 
 .container
-  .jumbotron
-    .center.col-md-8 ようこそ!
+  .row
+    .col-md-4.hidden-sm.hidden-xs
+      section.user-info
+        h3
+          span.handle_name = current_user.handle_name
+        span.screen_name = "@" + current_user.screen_name
+    .col-md-8
+      = render 'nweets/create_form'
+      = render 'pages/timeline'

@@ -3,6 +3,13 @@
 @import 'font-awesome';
 @import url('https://fonts.googleapis.com/css?family=Questrial');
 
+$light-shades: #ECEAE3;
+$light-accent: #85A394;
+$brand-color: #5FC10C;
+
+$dark-accent: #9C712E;
+$dark-shades: #1C2826;
+
 .navbar-inverse { background-color: #5FC10C}
 .navbar-inverse .navbar-nav>.active>a:hover,.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus { background-color: #6AD70E}
 .navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus { background-color: #6AD70E}
@@ -13,9 +20,9 @@
 .navbar-inverse {
   box-shadow: 0px 0.2px 2px gray;
 }
-.navbar-inverse .navbar-brand { color: #FFFFFF}
+.navbar-inverse .navbar-brand { color: #fff}
 .navbar-inverse .navbar-brand:hover { color: #FFFFFF}
-.navbar-inverse .navbar-nav>li>a { color: #F8F6F5}
+.navbar-inverse .navbar-nav>li>a { color: $light-shades}
 .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus { color: #FFFFFF}
 .navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus { color: #FFFFFF}
 .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus { color: #FFFFFF}
@@ -26,13 +33,24 @@
 .navbar-inverse .navbar-nav>.dropdown>a .caret { border-bottom-color: #F8F6F5}
 .navbar-inverse .navbar-nav>.dropdown>a:hover .caret { border-bottom-color: #FFFFFF}
 
+body{
+  padding-top: 48px;
+  font-family: "Questrial", sans-serif;
+  background-color: $light-shades;
+  color: $dark-shades;
+}
+
+.logo-font{
+  font-family: "Questrial", sans-serif;
+}
+
 .navbar{
   margin: 0px;
 }
 
 .navbar-brand{
-  font-family: "Questrial", sans-serif;
   font-size: 3rem;
+  font-family: "Questrial", sans-serif;
 }
 
 .notice{
@@ -43,6 +61,10 @@
 .alert{
   margin: 0px;
   padding: 0px;
+}
+
+.jumbotron{
+  background-color: #fcfcfa;
 }
 
 .jumbotron.jumbotron-fluid.jumbotron-image{
@@ -68,4 +90,91 @@
 
 .container-landing{
   background-color: rgba(255,255,255,0.9)
+}
+
+.wider-margintop{
+  margin-top: 15px;
+}
+
+/* show user */
+.user-info{
+  padding: 10px 10px 10px 10px;
+  margin: 30px 10px 10px 10px;
+  border-radius: 10px;
+  background-color: #fcfcfc;
+}
+
+.handle_name{
+  padding-right: 5px;
+  a {
+    text-decoration: none;
+    color: $dark-shades;
+  }
+}
+
+.screen_name{
+  font-size: 12px;
+  font-weight: normal;
+  font-family: "Questrial", sans-serif;
+  color: $dark-accent;
+
+  a{
+    text-decoration: none;
+    color: $dark-accent;
+  }
+}
+
+/* feed */
+.nweet-feed{
+  padding: 10px 10px 10px 10px;
+  margin: 30px 10px 10px 10px;
+  border-radius: 10px;
+  background-color: #fcfcfc;
+
+  .nweet-count{
+    border-bottom: $light-accent, 1px, solid;
+    font-size: small;
+    text-align: right;
+    color: $dark-accent;
+  }
+
+  .nweets-list{
+    list-style: none;
+  }
+
+  .nweet{
+    padding: 10px 10px 30px 5px;
+    border-bottom: $dark-accent, 1px, solid;
+
+    .timestamp{
+    }
+
+    .user_info{
+      border-bottom: $light-accent, 1px, solid;
+    }
+  }
+}
+
+.btn-nuita {
+  // ボタンの幅が飛び出るのでどうにかしたい
+  font-size: larger;
+  margin: 30px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  background-color: #55ad0a;/*ボタン色*/
+  color: #fff;
+  border-bottom: solid 3px #627295;
+  border-radius: 2px;
+  &:hover {
+    background-color: $brand-color;
+    color: #fff;
+  }
+  &:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+    border-bottom: none;
+  }
 }
