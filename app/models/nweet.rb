@@ -11,4 +11,10 @@ class Nweet < ApplicationRecord
       errors.add(:did_at, "is not in the past") unless did_at <= Time.zone.now
     end
   end
+
+  def create
+  end
+
+  def destroy
+  end
 end

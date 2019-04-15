@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
     if user_signed_in?
-      @new_nweet = current_user.nweets.build
+      @nweet = current_user.nweets.build
       @feed_items = current_user.timeline.paginate(page: params[:page])
     end
   end
