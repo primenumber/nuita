@@ -24,7 +24,7 @@ production:
   adapter: mysql2
   encoding: utf8
   pool: 5
-  database: kyp_production
+  database: nuita_production
   username: root
   password: change_this_PW_before_comm1t!
   socket: /var/lib/mysql/mysql.sock
