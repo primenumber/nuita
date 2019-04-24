@@ -50,7 +50,7 @@ namespace :deploy do
                   sql = "CREATE DATABASE IF NOT EXISTS nuita_production;"
                   # クエリの実行。
                 # userとpasswordはmysqlの設定に合わせて
-                execute "mysql --user=root --password=change_thisPW_before_comm1t! -e '#{sql}'"
+                execute "mysql --user=root --password=change_this_PW_before_comm1t! -e '#{sql}'"
 
         end
       end
