@@ -21,5 +21,10 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  database: kyp_production
+  username: root
+  password: change_this_PW_before_comm1t!
+  socket: /var/lib/mysql/mysql.sock
