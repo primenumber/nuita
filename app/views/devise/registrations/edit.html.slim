@@ -26,14 +26,14 @@
       .field
         = f.label :password
         i
-          | (leave blank if you don't want to change it)
+          | (変更したくない場合は空欄のままにしてください)
         br
         = f.password_field :password, autocomplete: "new-password"
         - if @minimum_password_length
           br
           em
             = @minimum_password_length
-            |  characters minimum
+            |  文字以下
       .field
         = f.label :password_confirmation
         br
@@ -41,14 +41,13 @@
       .field
         = f.label :current_password
         i
-          | (we need your current password to confirm your changes)
+          | (必須)
         br
         = f.password_field :current_password, autocomplete: "current-password"
       .actions
-        = f.submit "Update"
+        = f.submit "更新する"
     h3
-      | Cancel my account
+      | アカウントを削除する
     p
-      | Unhappy?
-      = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
-    = link_to "Back", :back
+      = button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete
+    = link_to "戻る", :back
