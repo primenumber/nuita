@@ -16,6 +16,11 @@ class User < ApplicationRecord
     Nweet.where("user_id = ?", id)
   end
 
+  # list nweets shown in timeline.
+  def timeline
+    Nweet.all # currently it is global! (since FF is not implemented)
+  end
+
   class << self
     def screen_name_formatter(str)
       str.gsub(/\W/, '_')[0...20]
