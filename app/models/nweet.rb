@@ -15,6 +15,4 @@ class Nweet < ApplicationRecord
   def create
   end
 
-  def destroy
-  end
 end
