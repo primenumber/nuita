@@ -5,9 +5,10 @@ class NweetsControllerTest < ActionDispatch::IntegrationTest
     @nweet = nweets(:today)
   end
 
-  test 'should get show' do
-    get nweet_path(@nweet)
-    assert_response :success
-  end
+  # 'nweet#show' doesn't have an independent page for now.
+  # test 'should get show' do
+  #   get nweet_path(@nweet)
+  #   assert_response :success
+  #end
 
 end
