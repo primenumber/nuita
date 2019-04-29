@@ -3,7 +3,7 @@ require 'test_helper'
 class NweetTest < ActiveSupport::TestCase
   def setup
     @user = users(:chikuwa)
-    @nweet = @user.nweets.build(did_at: 2.hours.ago)
+    @nweet = @user.nweets.build(did_at: Time.zone.now)
   end
 
   test 'should be valid' do

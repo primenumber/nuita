@@ -3,6 +3,7 @@ require 'test_helper'
 class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:chikuwa)
+    @shinji = users(:shinji)
   end
 
   test 'should get show' do
@@ -11,10 +12,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'associated nweets must be destroyed' do
-    @user.save
-    @user.nweets.create!(did_at: 1.minute.ago)
     assert_difference 'Nweet.count', -1 do
-      @user.destroy
+      @shinji.destroy
     end
+  end
+
+  test 'nweets should have interval of 3 min' do
+    @user.nweets.create!(did_at: 2.minutes.ago)
+    nweet = @user.nweets.build(did_at: Time.zone.now)
+    assert_not nweet.valid?
   end
 end

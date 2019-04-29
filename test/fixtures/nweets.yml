@@ -1,14 +1,19 @@
 today:
   did_at: <%= 8.hours.ago %>
+  user: chikuwa
 
 doubleheader:
   did_at: <%= 5.hours.ago %>
+  user: chikuwa
 
 modasho:
-  did_at: <%= 1.hour.ago %>
+  did_at: <%= 2.hour.ago %>
+  user: chikuwa
 
 yesterday:
   did_at: <%= 1.day.ago %>
+  user: shinji
 
 saytwo:
   did_at: <%= 10.years.ago %>
+  user: emiya
