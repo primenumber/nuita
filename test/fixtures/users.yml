@@ -2,3 +2,13 @@ chikuwa:
   handle_name: "ちくわ大明神"
   screen_name: "chikuwa"
   email: "testing@example.com"
+
+emiya:
+  handle_name: "えみや"
+  screen_name: "emiya_shiro"
+  email: "shiro@emiya.com"
+
+shinji:
+  handle_name: "S. Mato"
+  screen_name: "mato_shinji"
+  email: "shinji@matou.com"

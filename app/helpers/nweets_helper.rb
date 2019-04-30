@@ -8,4 +8,8 @@ module NweetsHelper
       str + "前"
     end
   end
+
+  def enough_interval?(time = Time.zone.now)
+    time > current_user.nweets.first.did_at + 3.minutes
+  end
 end
