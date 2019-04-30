@@ -12,10 +12,6 @@ class User < ApplicationRecord
   validates :screen_name, format: {with: /[0-9a-zA-Z_]/}
   validates :handle_name, length: {maximum: 30}
 
-  def timeline
-    Nweet.where("user_id = ?", id)
-  end
-
   # list nweets shown in timeline.
   def timeline
     Nweet.all # currently it is global! (since FF is not implemented)
