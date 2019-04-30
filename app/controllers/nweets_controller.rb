@@ -4,10 +4,10 @@ class NweetsController < ApplicationController
   def create
     @nweet = current_user.nweets.build(new_nweet_params)
     if @nweet.save
-      redirect_to root_url
+      redirect_to root_url(success: true)
     else
       flash[:danger] = @nweet.errors.full_messages
-      render 'pages/home'
+      redirect_to root_url(success: false)
     end
   end
 
