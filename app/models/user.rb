@@ -7,6 +7,7 @@ class User < ApplicationRecord
          #:omniauthable, omniauth_providers: [:twitter]
 
   has_many :nweets, dependent: :destroy
+  mount_uploader :icon, IconUploader
 
   validates :screen_name, presence: true, uniqueness: true, length: {maximum: 20}
   validates :screen_name, format: {with: /[0-9a-zA-Z_]/}
