@@ -52,6 +52,7 @@ GEM
     autoprefixer-rails (9.5.1)
       execjs
     bcrypt (3.1.12)
+    bcrypt_pbkdf (1.0.1)
     bindex (0.7.0)
     bootsnap (1.4.3)
       msgpack (~> 1.0)
@@ -100,6 +101,7 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    ed25519 (1.2.4)
     erubi (1.8.0)
     execjs (2.7.0)
     faker (1.9.3)
@@ -273,6 +275,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt_pbkdf
   bootsnap (>= 1.1.0)
   bootstrap-sass
   bootstrap-will_paginate
@@ -285,6 +288,7 @@ DEPENDENCIES
   carrierwave
   chromedriver-helper
   devise
+  ed25519
   faker
   font-awesome-sass
   html2slim

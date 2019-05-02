@@ -24,6 +24,9 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
+
 gem 'slim-rails'
 gem 'html2slim'
 
