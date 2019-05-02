@@ -3,10 +3,7 @@
 .container
   .row
     .col-md-4.hidden-sm.hidden-xs
-      section.user-info
-        h3
-          span.handle_name = current_user.handle_name
-        span.screen_name = "@" + current_user.screen_name
+      = render 'users/user_info', {user: current_user}
     .col-md-8
       = render 'nweets/create_form'
       = render 'pages/timeline'

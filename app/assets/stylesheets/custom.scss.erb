@@ -6,6 +6,7 @@
 $light-shades: #ECEAE3;
 $light-accent: #85A394;
 $brand-color: #5FC10C;
+$brand-color-dark: #55ad0a;
 
 $dark-accent: #9C712E;
 $dark-shades: #1C2826;
@@ -97,11 +98,39 @@ body{
 }
 
 /* show user */
+.usericon{
+  border-radius: 50%;
+}
+
 .user-info{
   padding: 10px 10px 10px 10px;
   margin-top: 30px;
   border-radius: 10px;
   background-color: #fcfcfc;
+
+  .usericon{
+    float: left;
+    margin-right: 10px;
+  }
+
+  .screen_name{
+    color: $dark-shades;
+  }
+
+  h3{
+    margin: 2px 0px 0px 0px;
+  }
+
+  .stat-label{
+    font-size: x-small;
+  }
+
+  .nweet-stats{
+    font-size: x-large;
+    margin-right: 0px;
+    color: $brand-color-dark;
+    font-weight: bold;
+  }
 }
 
 .handle_name{
@@ -172,7 +201,7 @@ body{
   padding: 10px 10px 10px 10px;
   border-radius: 10px;
   text-decoration: none;
-  background-color: #55ad0a;/*ボタン色*/
+  background-color: $brand-color-dark;/*ボタン色*/
   color: #fff;
   border-bottom: solid 3px #627295;
   border-radius: 2px;
