@@ -17,6 +17,7 @@ ja:
         profile: "プロフィール文"
         email: "メールアドレス"
         password_confirmation: "パスワード(確認)"
+        icon: "アイコン"
   date:
     abbr_day_names:
     - 日

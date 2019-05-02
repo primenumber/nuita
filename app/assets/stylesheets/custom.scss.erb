@@ -6,6 +6,7 @@
 $light-shades: #ECEAE3;
 $light-accent: #85A394;
 $brand-color: #5FC10C;
+$brand-color-dark: #55ad0a;
 
 $dark-accent: #9C712E;
 $dark-shades: #1C2826;
@@ -97,11 +98,39 @@ body{
 }
 
 /* show user */
+.usericon{
+  border-radius: 50%;
+}
+
 .user-info{
   padding: 10px 10px 10px 10px;
-  margin: 30px 10px 10px 10px;
+  margin-top: 30px;
   border-radius: 10px;
   background-color: #fcfcfc;
+
+  .usericon{
+    float: left;
+    margin-right: 10px;
+  }
+
+  .screen_name{
+    color: $dark-shades;
+  }
+
+  h3{
+    margin: 2px 0px 0px 0px;
+  }
+
+  .stat-label{
+    font-size: x-small;
+  }
+
+  .nweet-stats{
+    font-size: x-large;
+    margin-right: 0px;
+    color: $brand-color-dark;
+    font-weight: bold;
+  }
 }
 
 .handle_name{
@@ -126,7 +155,8 @@ body{
 
 /* feed */
 .nweet-feed{
-  padding: 10px 10px 10px 10px;
+  width: 100%;
+  padding: 10px 10px 10px 0px;
   margin: 30px 10px 10px 10px;
   border-radius: 10px;
   background-color: #fcfcfc;
@@ -140,19 +170,50 @@ body{
 
   .nweets-list{
     list-style: none;
+    padding: 0px 15px 0px 35px;
   }
 
   .nweet{
-    padding: 10px 10px 30px 5px;
-    border-bottom: $dark-accent, 1px, solid;
+    padding: 25px 0px 0px 10px;
+    margin-right: 30px;
+    display: block;
+    border-bottom: 1px solid #eee;
+
+    .content{
+      font-size: large;
+      padding-bottom: 20px;
+    }
 
     .timestamp{
+      text-align: right;
+      font-size: x-small;
+      color: #aaaaaa;
+      margin-bottom: 0px;
+      padding-bottom: 0px;
     }
 
     .user_info{
+      margin-top: 5px;
+      margin-bottom: 7px;
       border-bottom: $light-accent, 1px, solid;
+      display: block;
+    }
+
+    .usericon {
+      float: left;
+      margin-right: 20px;
+      margin-top: 5px;
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
     }
   }
+}
+
+.registration_button{
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .btn-nuita {
@@ -162,7 +223,7 @@ body{
   padding: 10px 10px 10px 10px;
   border-radius: 10px;
   text-decoration: none;
-  background-color: #55ad0a;/*ボタン色*/
+  background-color: $brand-color-dark;/*ボタン色*/
   color: #fff;
   border-bottom: solid 3px #627295;
   border-radius: 2px;
