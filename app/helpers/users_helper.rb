@@ -6,11 +6,15 @@ module UsersHelper
 
   # iconのイメージ返す　設定なしならデフォルト
   def icon_for(user, size: 80)
+    if !user
+      return image_tag(asset_path('icon_default'), size: size.to_s, class:'usericon', id: 'usericon-new')
+    end
+
     if user.icon.url.present?
       url = user.icon.url
     else
       url = asset_path('icon_default')
     end
-    image_tag(url, alt: user.handle_name, size: size.to_s, class:'usericon', id: "user-#{user.id}")
-  end
+      image_tag(url, alt: user.handle_name, size: size.to_s, class:'usericon', id: "usericon-#{user.id}")
+    end
 end
