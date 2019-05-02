@@ -1,9 +1,10 @@
 li.nweet
+  = link_to icon_for(nweet.user, size: 50), nweet.user
   .user_info
     span.handle_name = link_to nweet.user.handle_name, nweet.user
     span.screen_name
       | @
       = link_to nweet.user.screen_name, nweet.user
-  span.timestamp
+  .timestamp
     span.time = time_ago_in_japanese(nweet.did_at)
     | に射精しました
