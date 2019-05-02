@@ -5,6 +5,8 @@ li.nweet
     span.screen_name
       | @
       = link_to nweet.user.screen_name, nweet.user
-  .timestamp
+  .content
     span.time = time_ago_in_japanese(nweet.did_at)
     | に射精しました
+  .timestamp
+    = nweet.did_at.in_time_zone('Tokyo')
