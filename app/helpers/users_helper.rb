@@ -15,6 +15,10 @@ module UsersHelper
     else
       url = asset_path('icon_default')
     end
-      image_tag(url, alt: user.handle_name, size: size.to_s, class:'usericon', id: "usericon-#{user.id}")
-    end
+    image_tag(url, alt: user.handle_name, size: size.to_s, class:'usericon', id: "usericon-#{user.id}")
+  end
+
+  def current_user?(user)
+    user == current_user
+  end
 end

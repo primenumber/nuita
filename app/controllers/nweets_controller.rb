@@ -1,5 +1,6 @@
 class NweetsController < ApplicationController
-  # before_action :logged_in_user, only: [:create, :destroy] TODO!
+  before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :correct_user, only: [:destroy]
 
   def create
     @nweet = current_user.nweets.build(new_nweet_params)
@@ -12,6 +13,9 @@ class NweetsController < ApplicationController
   end
 
   def destroy
+    @nweet.destroy
+    flash[:success] = 'ヌイートを削除しました'
+    redirect_to root_url
   end
 
   def show
@@ -21,5 +25,10 @@ class NweetsController < ApplicationController
     # strong parameters
     def new_nweet_params
       params.require(:nweet).permit(:did_at)
+    end
+
+    def correct_user
+      @nweet = current_user.nweets.find_by(id: params[:id])
+      redirect_to root_url if @nweet.nil?
     end
 end

@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:sign_up, keys: [:handle_name, :screen_name, :icon])
       devise_parameter_sanitizer.permit(:account_update, keys: [:handle_name, :screen_name, :icon])
     end
+
+    def current_user?(user)
+      current_user == @user
+    end
 end
