@@ -1,6 +1,6 @@
 class NweetsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:destroy, :update]
 
   def create
     @nweet = current_user.nweets.build(new_nweet_params)
@@ -19,10 +19,26 @@ class NweetsController < ApplicationController
     redirect_to root_url
   end
 
+  def update
+    @nweet = Nweet.find(params[:id])
+
+    if @nweet.update_attributes(edit_nweet_params)
+      flash[:success] = 'ヌイートを更新しました'
+      redirect_to root_url
+    else
+      flash[:danger] = @nweet.errors.full_messages
+      redirect_to root_url
+    end
+  end
+
   private
     # strong parameters
     def new_nweet_params
       params.require(:nweet).permit(:did_at)
+    end
+
+    def edit_nweet_params
+      params.require(:nweet).permit(:statement)
     end
 
     def correct_user

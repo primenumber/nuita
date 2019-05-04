@@ -4,7 +4,7 @@ class Nweet < ApplicationRecord
   validates :did_at, presence: true
   validates :statement, length: {maximum: 100}
   validate :did_at_past?
-  validate :have_enough_interval?
+  validate :have_enough_interval?, on: :create
 
   default_scope -> { order(did_at: :desc) }
 

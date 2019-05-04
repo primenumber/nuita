@@ -44,4 +44,16 @@ class NweetsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'logged-in user can edit their own nweet' do
+    login_as(@user)
+
+    patch nweet_path(@nweet), params: {nweet: {statement: '誰だ今の'} }
+    @nweet.reload
+    assert_equal '誰だ今の', @nweet.statement
+
+    patch nweet_path(@friend_nweet), params: {nweet: {statement: '誰だ今の'} }
+    @friend_nweet.reload
+    assert_not_equal '誰だ今の', @friend_nweet.statement
+  end
+
 end
