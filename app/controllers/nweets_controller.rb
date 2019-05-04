@@ -4,8 +4,8 @@ class NweetsController < ApplicationController
 
   def create
     @nweet = current_user.nweets.build(new_nweet_params)
-    if @nweet.save
-      redirect_to root_url(success: true)
+    if @nweet.save # edit に移すべきかも
+      redirect_to root_url(success: true, id: @nweet.id)
     else
       flash[:danger] = @nweet.errors.full_messages
       redirect_to root_url(success: false)
