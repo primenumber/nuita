@@ -13,12 +13,10 @@ class NweetsController < ApplicationController
   end
 
   def destroy
+    @nweet = Nweet.find(params[:id])
     @nweet.destroy
     flash[:success] = 'ヌイートを削除しました'
     redirect_to root_url
-  end
-
-  def show
   end
 
   private
