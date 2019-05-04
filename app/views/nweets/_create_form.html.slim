@@ -1,11 +1,5 @@
 = form_with(model: @nweet) do |f|
   /= render 'shared/error_messages', object: f.object
   .field
-  - if params[:success] != 'true'
-    /= f.text_area :content, placeholder: "何で抜いた？"
-    /span で
     = hidden_field_tag 'nweet[did_at]', Time.zone.now
     = f.submit "#nuita!", class: "btn btn-nuita btn-block", id: "button-nuita"
-  - else
-    = hidden_field_tag 'nweet[did_at]', Time.zone.now
-    = f.submit "おめでとうございます🎉🎉🎉🎉🎉", disabled: true, class: "btn btn-block btn-nuita", id: "button-nuita"

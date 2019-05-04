@@ -1,0 +1,3 @@
+= form_with(model: @nweet) do |f|
+  = hidden_field_tag 'nweet[did_at]', Time.zone.now
+  = f.submit "おめでとうございます🎉🎉🎉🎉🎉", disabled: true, class: "btn btn-block btn-nuita", id: "button-nuita"
