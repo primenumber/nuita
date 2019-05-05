@@ -30,4 +30,15 @@ class NweetTest < ActiveSupport::TestCase
     assert_equal nweets(:modasho), Nweet.first
     assert_equal nweets(:saytwo), Nweet.last
   end
+
+  test 'statement should be valid' do
+    @nweet.statement = nil
+    assert @nweet.valid?
+
+    @nweet.statement = 'a' * 150
+    assert_not @nweet.valid?
+
+    @nweet.statement = '誰だ今の'
+    assert @nweet.valid?
+  end
 end

@@ -1,12 +1,14 @@
 @import 'bootstrap';
 @import 'bootstrap-sprockets';
 @import 'font-awesome';
+@import 'font-awesome-sprockets';
 @import url('https://fonts.googleapis.com/css?family=Questrial');
 
 $light-shades: #ECEAE3;
 $light-accent: #85A394;
 $brand-color: #5FC10C;
 $brand-color-dark: #55ad0a;
+$brand-color-light: #8fd354;
 
 $dark-accent: #9C712E;
 $dark-shades: #1C2826;
@@ -180,8 +182,18 @@ body{
     border-bottom: 1px solid #eee;
 
     .content{
-      font-size: large;
+      font-size: normal;
       padding-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .quote {
+      padding: 6px 0px 6px 16px;
+      margin: 0px 0px 10px 0px;
+      box-sizing: border-box;
+      font-style: italic;
+      color: #444;
+      border-left: 1px solid $brand-color-light;
     }
 
     .timestamp{
@@ -189,14 +201,19 @@ body{
       font-size: x-small;
       color: #aaaaaa;
       margin-bottom: 0px;
-      padding-bottom: 0px;
+      padding: 0px 0px 10px 0px;
+    }
+
+    .maincontent{
+      padding-bottom: 15px;
     }
 
     .user_info{
       margin-top: 5px;
-      margin-bottom: 7px;
+      margin-bottom: 10px;
       border-bottom: $light-accent, 1px, solid;
       display: block;
+      font-weight: bold;
     }
 
     .usericon {
@@ -219,7 +236,7 @@ body{
 .btn-nuita {
   // ボタンの幅が飛び出るのでどうにかしたい
   font-size: larger;
-  margin: 30px 10px 10px 10px;
+  margin: 30px 10px 20px 10px;
   padding: 10px 10px 10px 10px;
   border-radius: 10px;
   text-decoration: none;
@@ -244,6 +261,30 @@ body{
       color: #fff;
     }
   }
+}
+
+.btn-edit{
+  margin-top: 10px;
+}
+
+/* edit */
+.statement {
+  margin: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
+	border: 1px solid $brand-color-light;
+	border-radius: 10px;
+	width: 100%;
+  resize: none;
+
+  &:focus {
+    border: 2px solid $brand-color-light;
+    outline: 0;
+  }
+}
+
+.statement-label {
+  margin: 10px 10px 0px 5px;
+  padding: 10px 10px 0px 5px;
 }
 
 /* footer */

@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_02_065659) do
+ActiveRecord::Schema.define(version: 2019_05_04_173055) do
 
   create_table "nweets", force: :cascade do |t|
     t.datetime "did_at"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "statement", limit: 100
     t.index ["user_id", "did_at"], name: "index_nweets_on_user_id_and_did_at"
     t.index ["user_id"], name: "index_nweets_on_user_id"
   end

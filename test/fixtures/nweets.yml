@@ -13,7 +13,9 @@ modasho:
 yesterday:
   did_at: <%= 1.day.ago %>
   user: shinji
+  statement: 'とても爽快な気分になりました。'
 
 saytwo:
   did_at: <%= 10.years.ago %>
   user: emiya
+  statement: '？？？？？？？？？？？？？'
