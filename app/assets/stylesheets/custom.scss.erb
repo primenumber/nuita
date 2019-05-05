@@ -1,6 +1,7 @@
 @import 'bootstrap';
 @import 'bootstrap-sprockets';
 @import 'font-awesome';
+@import 'font-awesome-sprockets';
 @import url('https://fonts.googleapis.com/css?family=Questrial');
 
 $light-shades: #ECEAE3;
@@ -183,10 +184,16 @@ body{
     .content{
       font-size: normal;
       padding-bottom: 20px;
+      overflow: hidden;
     }
 
-    .quote{
+    .quote {
+      padding: 6px 0px 6px 16px;
+      margin: 0px 0px 10px 0px;
+      box-sizing: border-box;
       font-style: italic;
+      color: #444;
+      border-left: 1px solid $brand-color-light;
     }
 
     .timestamp{
@@ -194,14 +201,19 @@ body{
       font-size: x-small;
       color: #aaaaaa;
       margin-bottom: 0px;
-      padding-bottom: 0px;
+      padding: 0px 0px 10px 0px;
+    }
+
+    .maincontent{
+      padding-bottom: 15px;
     }
 
     .user_info{
       margin-top: 5px;
-      margin-bottom: 7px;
+      margin-bottom: 10px;
       border-bottom: $light-accent, 1px, solid;
       display: block;
+      font-weight: bold;
     }
 
     .usericon {
