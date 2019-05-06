@@ -6,6 +6,7 @@ ruby '2.6.2'
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog-aws'
 
 gem 'omniauth-twitter'
 
