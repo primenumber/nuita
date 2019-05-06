@@ -76,6 +76,7 @@ end
 group :production, :staging do
   gem 'mysql2'
   gem 'unicorn'
+  gem 'google-analytics-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
