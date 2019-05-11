@@ -14,6 +14,6 @@ module NweetsHelper
   end
 
   def delete_possible?(did_at, user)
-    did_at > 1.day.ago && user == current_user
+    did_at > 1.hour.ago && user == current_user
   end
 end
