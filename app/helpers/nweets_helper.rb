@@ -12,4 +12,8 @@ module NweetsHelper
   def enough_interval?(time = Time.zone.now)
     time > current_user.nweets.first.did_at + 3.minutes
   end
+
+  def delete_possible?(did_at, user)
+    did_at > 1.day.ago && user == current_user
+  end
 end
