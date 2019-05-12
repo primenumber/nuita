@@ -36,7 +36,7 @@ gem 'jquery-rails'
 gem 'font-awesome-sass'
 
 gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+gem 'will_paginate-bootstrap4'
 
 # Use CoffeeScript for .coffee assets and views
 #gem 'coffee-rails', '~> 4.2'
