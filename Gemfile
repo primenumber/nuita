@@ -31,12 +31,12 @@ gem 'bcrypt_pbkdf'
 gem 'slim-rails'
 gem 'html2slim'
 
-gem 'bootstrap-sass'
-gem 'jquery'
+gem 'bootstrap', '~>4.1.1'
+gem 'jquery-rails'
 gem 'font-awesome-sass'
 
 gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+gem 'will_paginate-bootstrap4'
 
 # Use CoffeeScript for .coffee assets and views
 #gem 'coffee-rails', '~> 4.2'
