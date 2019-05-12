@@ -10,4 +10,17 @@ module ApplicationHelper
     end
     text
   end
+
+  # urlだけ返す
+  def icon_url(user: current_user)
+    if !user
+      return asset_path('icon_default')
+    end
+
+    if user.icon.url.present?
+      user.icon.url
+    else
+      url = asset_path('icon_default')
+    end
+  end
 end
