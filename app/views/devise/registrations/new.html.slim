@@ -2,46 +2,45 @@
 
 .container
   .jumbotron.wider-margintop
-    .row
-      h2 Nuitaに登録する
+    h2 Nuitaに登録する
+    br
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      = f.label :icon
       br
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = render "devise/shared/error_messages", resource: resource
-        = f.label :icon
+      = icon_for(nil, size: 120)
+      br
+      /= f.label :remove_icon
+      /= f.check_box :remove_icon
+      = f.file_field :icon
+      = f.hidden_field :icon_cache
+      br
+      .field
+        = f.label :handle_name
         br
-        = icon_for(nil, size: 120)
+        = f.text_field :handle_name, autofocus: true, autocomplete: "nickname"
+      .field
+        = f.label :screen_name
         br
-        /= f.label :remove_icon
-        /= f.check_box :remove_icon
-        = f.file_field :icon
-        = f.hidden_field :icon_cache
+        span @
+        = f.text_field :screen_name, autocomplete: "username"
+      .field
+        = f.label :email
         br
-        .field
-          = f.label :handle_name
-          br
-          = f.text_field :handle_name, autofocus: true, autocomplete: "nickname"
-        .field
-          = f.label :screen_name
-          br
-          span @
-          = f.text_field :screen_name, autocomplete: "username"
-        .field
-          = f.label :email
-          br
-          = f.email_field :email, autocomplete: "email"
-        .field
-          = f.label :password
-          - if @minimum_password_length
-            em
-              | (
-              = @minimum_password_length
-              |  文字以下)
-          br
-          = f.password_field :password, autocomplete: "new-password"
-        .field
-          = f.label :password_confirmation
-          br
-          = f.password_field :password_confirmation, autocomplete: "new-password"
-        .actions
-          = f.submit "登録する！", class: "registration_button"
-      = render "devise/shared/links"
+        = f.email_field :email, autocomplete: "email"
+      .field
+        = f.label :password
+        - if @minimum_password_length
+          em
+            | (
+            = @minimum_password_length
+            |  文字以下)
+        br
+        = f.password_field :password, autocomplete: "new-password"
+      .field
+        = f.label :password_confirmation
+        br
+        = f.password_field :password_confirmation, autocomplete: "new-password"
+      .actions
+        = f.submit "登録する！", class: "btn btn-brandcolor registration_button"
+    = render "devise/shared/links"
