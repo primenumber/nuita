@@ -6,7 +6,7 @@ class PagesController < ApplicationController
       else
         @nweet = current_user.nweets.build
       end
-      @feed_items = current_user.timeline.paginate(page: params[:page])
+      @feed_items = current_user.timeline.paginate(page: params[:page], per_page: 100)
     end
   end
 
