@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_04_173055) do
+ActiveRecord::Schema.define(version: 2019_05_22_140204) do
 
   create_table "nweets", force: :cascade do |t|
     t.datetime "did_at"
@@ -45,9 +45,11 @@ ActiveRecord::Schema.define(version: 2019_05_04_173055) do
     t.string "handle_name", limit: 30
     t.string "screen_name", limit: 20
     t.string "icon"
+    t.string "url_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["screen_name"], name: "index_users_on_screen_name", unique: true
+    t.index ["url_digest"], name: "index_users_on_url_digest", unique: true
   end
 
 end
