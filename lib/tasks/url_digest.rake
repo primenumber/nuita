@@ -4,7 +4,7 @@ namespace :url_digest do
   task :set_url_digest => :environment do
     User.all.each do |user|
       if user.url_digest.nil?
-        user.url_digest = SecureRandom.urlsafe_base64
+        user.url_digest = SecureRandom.alphanumeric
         user.save
       end
     end

@@ -28,6 +28,6 @@ class User < ApplicationRecord
 
   private
     def set_url_digest
-      self.url_digest = SecureRandom.urlsafe_base64
+      self.url_digest = SecureRandom.alphanumeric
     end
 end
