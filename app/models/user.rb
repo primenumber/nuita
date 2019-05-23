@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  before_create :set_url_digest
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -18,9 +20,18 @@ class User < ApplicationRecord
     Nweet.all # currently it is global! (since FF is not implemented)
   end
 
+  def to_param
+    url_digest
+  end
+
   class << self
     def screen_name_formatter(str)
       str.gsub(/\W/, '_')[0...20]
     end
   end
+
+  private
+    def set_url_digest
+      self.url_digest = SecureRandom.alphanumeric
+    end
 end

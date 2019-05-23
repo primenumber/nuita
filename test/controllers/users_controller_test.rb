@@ -7,6 +7,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get show' do
+    assert_not_equal user_path(@user), "/users/#{@user.id}"
+    assert_equal user_path(@user), "/users/#{@user.url_digest}"
+
     get user_path(@user)
     assert_response :success
   end
