@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/about'
 
-  resources :users, except: [:index]
+  resources :users, except: [:index], param: :url_digest
   resources :nweets, only: [:create, :update, :destroy]
 end

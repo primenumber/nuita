@@ -20,6 +20,10 @@ class User < ApplicationRecord
     Nweet.all # currently it is global! (since FF is not implemented)
   end
 
+  def to_param
+    url_digest
+  end
+
   class << self
     def screen_name_formatter(str)
       str.gsub(/\W/, '_')[0...20]
