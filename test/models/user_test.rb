@@ -28,4 +28,10 @@ class UserTest < ActiveSupport::TestCase
     @user.handle_name = " "
     assert @user.valid?
   end
+
+  test 'url_digest must be generated' do
+    new_user = User.new(screen_name: "kaburanai", email: "kaburan@gmail.com", password: "hogehoge")
+    new_user.save
+    assert_not_empty new_user.url_digest
+  end
 end

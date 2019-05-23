@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  before_create :set_url_digest
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -23,4 +25,9 @@ class User < ApplicationRecord
       str.gsub(/\W/, '_')[0...20]
     end
   end
+
+  private
+    def set_url_digest
+      self.url_digest = SecureRandom.urlsafe_base64
+    end
 end
