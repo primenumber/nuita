@@ -25,4 +25,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     nweet = @user.nweets.build(did_at: Time.zone.now)
     assert_not nweet.valid?
   end
+
+  # have to make add test (but how?)
+  test 'can delete twitter account' do
+    assert_not_empty @user.twitter_uid
+    @user.delete_twitter_account
+    assert_nil @user.twitter_uid
+    assert_nil @user.twitter_url
+    assert_nil @user.twitter_screen_name
+  end
 end

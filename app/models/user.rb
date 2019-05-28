@@ -28,6 +28,10 @@ class User < ApplicationRecord
     self.update_attributes(twitter_url: auth.info.urls.Twitter, twitter_uid: auth['uid'], twitter_screen_name: auth['info']['nickname'])
   end
 
+  def delete_twitter_account
+    self.update_attributes(twitter_url: nil, twitter_uid: nil, twitter_screen_name: nil)
+  end
+
   class << self
     def screen_name_formatter(str)
       str.gsub(/\W/, '_')[0...20]
