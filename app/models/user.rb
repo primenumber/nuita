@@ -24,6 +24,10 @@ class User < ApplicationRecord
     url_digest
   end
 
+  def add_twitter_account(auth)
+    self.update_attributes(twitter_url: auth.info.urls.Twitter, twitter_uid: auth['uid'], twitter_screen_name: auth['info']['nickname'])
+  end
+
   class << self
     def screen_name_formatter(str)
       str.gsub(/\W/, '_')[0...20]
