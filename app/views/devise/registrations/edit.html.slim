@@ -1,29 +1,35 @@
 = provide(:title, "プロフィールを編集する")
 
-.container
-  .jumbotron.wider-margintop
-    h2 プロフィールを編集する
-    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+.container.wider-margintop
+  .jumbotron
+    h1 プロフィールを編集する
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-group" }) do |f|
       = render "devise/shared/error_messages", resource: resource
-      .field
-        = icon_for(current_user, size: 120)
-        /= f.label :remove_icon
-        /= f.check_box :remove_icon
-        = f.file_field :icon
-        = f.hidden_field :icon_cache
-        br
-        = f.label :handle_name
-        br
-        = f.text_field :handle_name, autofocus: true, autocomplete: "nickname"
-      .field
-        = f.label :screen_name
-        br
-        span @
-        = f.text_field :screen_name, autocomplete: "username"
-      .field
-        = f.label :email
-        br
-        = f.email_field :email, autofocus: true, autocomplete: "email"
+      .form-group.row.align-items-center
+        .col-md-3
+          = icon_for(current_user, size: 120)
+        .col-md-9
+          /= f.label :remove_icon
+          /= f.check_box :remove_icon
+          = f.file_field :icon, class: "custom-file-field"
+          = f.hidden_field :icon_cache
+      .form-group.row
+        .col-md-3
+          = f.label :handle_name, class: "col-form-label"
+        .col-md-9
+          = f.text_field :handle_name, autofocus: true, autocomplete: "nickname", class: "form-control"
+      .form-group.row
+        .col-md-3
+          = f.label :screen_name, class: "col-form-label"
+        .col-md-9.input-group
+          .input-group-prepend
+            .input-group-text @
+          = f.text_field :screen_name, autocomplete: "username", class: "form-control"
+      .form-group.row
+        .col-md-3
+          = f.label :email, class: "col-form-label"
+        .col-md-9
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         div
           | Currently waiting confirmation for:
@@ -43,16 +49,24 @@
           = f.label :password_confirmation
           br
           = f.password_field :password_confirmation, autocomplete: "new-password"
-      .field
-        = f.label :current_password
-        i
-          | (必須)
-        br
-        = f.password_field :current_password, autocomplete: "current-password"
+      .form-group.row
+        .col-md-3
+          = f.label :current_password, class: "col-form-label"
+          i
+            | (必須)
+        .col-md-9
+          = f.password_field :current_password, autocomplete: "current-password", class: "form-control"
       .actions
         = f.submit "更新する", class: "btn btn-brandcolor registration_button"
-    h3
-      | アカウントを削除する
-    p
-      = button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete
+    h3 twitter連携
+    - if current_user.twitter_screen_name.nil?
+      p = link_to "twitterアカウントを登録", "/auth/twitter", class: "btn btn-twitter"
+    - else
+      .form-group.row.align-items-center
+        .col-md-3
+          = link_to "@#{current_user.twitter_screen_name}", current_user.twitter_url
+        .col-md-9
+          = button_to "連携を解除", "#", class: "btn btn-link"
+    h3 その他のオプション
+    p = button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete, class: "btn btn-danger"
     = link_to "戻る", :back

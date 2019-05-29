@@ -5,13 +5,15 @@
 
 $light-shades: #ECEAE3;
 $light-accent: #85A394;
+$dark-accent: #9C712E;
+$dark-shades: #1C2826;
+
 $brand-color: #5FC10C;
 $brand-color-hover: #6fc724;
 $brand-color-dark: #55ad0a;
 $brand-color-light: #8fd354;
 
-$dark-accent: #9C712E;
-$dark-shades: #1C2826;
+$twitter-color: #00acee;
 
 .navbar{
   background-color: $brand-color;
@@ -231,6 +233,16 @@ body{
 
 .btn-brandcolor{
   background-color: $brand-color;
+  color: white;
+
+  &:hover{
+    background-color: $brand-color-dark;
+    color: white; 
+  }
+}
+
+.btn-twitter{
+  background-color: $twitter-color;
   color: white;
 }
 
