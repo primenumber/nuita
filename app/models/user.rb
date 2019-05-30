@@ -25,11 +25,23 @@ class User < ApplicationRecord
   end
 
   def add_twitter_account(auth)
-    self.update_attributes(twitter_url: auth.info.urls.Twitter, twitter_uid: auth['uid'], twitter_screen_name: auth['info']['nickname'])
+    self.update_attributes(
+      twitter_url: auth.info.urls.Twitter,
+      twitter_uid: auth.uid,
+      twitter_screen_name: auth.info.nickname,
+      twitter_access_token: auth.credentials.token,
+      twitter_access_secret: auth.credentials.secret
+    )
   end
 
   def delete_twitter_account
-    self.update_attributes(twitter_url: nil, twitter_uid: nil, twitter_screen_name: nil)
+    self.update_attributes(
+      twitter_url: nil,
+      twitter_uid: nil,
+      twitter_screen_name: nil,
+      twitter_access_token: nil,
+      twitter_access_secret: nil
+    )
   end
 
   class << self
