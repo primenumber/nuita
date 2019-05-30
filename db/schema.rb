@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_30_160737) do
+ActiveRecord::Schema.define(version: 2019_05_30_164925) do
 
   create_table "nweets", force: :cascade do |t|
     t.datetime "did_at"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2019_05_30_160737) do
     t.string "twitter_url"
     t.string "twitter_access_secret"
     t.string "twitter_access_token"
+    t.boolean "autotweet_enabled", default: false
+    t.text "autotweet_content", default: "#nuita"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["screen_name"], name: "index_users_on_screen_name", unique: true
