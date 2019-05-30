@@ -5,3 +5,7 @@ section.user-info
   .user_stats
     span.nweet-stats = user.nweets.count
     span.stat-label ヌイート
+  .user_links
+    - if user.twitter_url?
+      = link_to user.twitter_url do
+        = fa_icon "twitter", text: "@" + user.twitter_screen_name
