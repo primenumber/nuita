@@ -44,6 +44,17 @@ class User < ApplicationRecord
     )
   end
 
+  def tweet(content)
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key = Rails.application.credentials.twitter[:api_key]
+      config.consumer_secret = Rails.application.credentials.twitter[:api_secret]
+      config.access_token = self.twitter_access_token
+      config.access_token_secret = self.twitter_access_secret
+    end
+
+    client.update(content)
+  end
+
   class << self
     def screen_name_formatter(str)
       str.gsub(/\W/, '_')[0...20]

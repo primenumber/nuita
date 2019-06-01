@@ -6,6 +6,7 @@ class NweetsController < ApplicationController
     @nweet = current_user.nweets.build(new_nweet_params)
     if @nweet.save # edit に移すべきかも
       redirect_to root_url(success: true, id: @nweet.id)
+      tweet if current_user.autotweet_enabled
     else
       flash[:danger] = @nweet.errors.full_messages
       redirect_to root_url(success: false)
