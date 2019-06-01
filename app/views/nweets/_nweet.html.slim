@@ -13,6 +13,9 @@ li.nweet
       .quote = text_url_to_link(nweet.statement).html_safe
   .timestamp
     - if delete_possible?(nweet.did_at, nweet.user)
-      = link_to "削除", nweet, method: :delete, class: "nweet-delete", data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" }
-    = link_to "詳細", nweet, class: "nweet-delete" unless @detail
+      = link_to nweet, method: :delete, class: "nweet-delete", data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" } do
+        = fa_icon "trash"
+    - unless @detail
+      = link_to nweet, class: "nweet-delete" do
+        = fa_icon "external-link"
     = nweet.did_at.in_time_zone('Tokyo')
