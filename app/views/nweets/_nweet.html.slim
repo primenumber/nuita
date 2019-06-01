@@ -14,4 +14,5 @@ li.nweet
   .timestamp
     - if delete_possible?(nweet.did_at, nweet.user)
       = link_to "削除", nweet, method: :delete, class: "nweet-delete", data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" }
+    = link_to "詳細", nweet, class: "nweet-delete" unless @detail
     = nweet.did_at.in_time_zone('Tokyo')

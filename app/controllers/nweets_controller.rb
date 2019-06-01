@@ -13,6 +13,11 @@ class NweetsController < ApplicationController
     end
   end
 
+  def show
+    @nweet = Nweet.find(params[:id])
+    @detail = true
+  end
+
   def destroy
     @nweet = Nweet.find(params[:id])
     @nweet.destroy
