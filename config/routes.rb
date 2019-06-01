@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   delete '/auth/twitter', :to => 'twitters#destroy'
 
   resources :users, except: [:index], param: :url_digest
-  resources :nweets, only: [:create, :update, :destroy, :show]
+  resources :nweets, only: [:create, :update, :destroy, :show], param: :url_digest
 end

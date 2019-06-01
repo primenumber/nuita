@@ -24,4 +24,7 @@ class Nweet < ApplicationRecord
   def create
   end
 
+  def to_param
+    url_digest
+  end
 end

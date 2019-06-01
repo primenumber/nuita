@@ -5,7 +5,7 @@ class NweetsController < ApplicationController
   def create
     @nweet = current_user.nweets.build(new_nweet_params)
     if @nweet.save # edit に移すべきかも
-      redirect_to root_url(success: true, id: @nweet.id)
+      redirect_to root_url(success: true, url_digest: @nweet.url_digest)
       tweet if current_user.autotweet_enabled
     else
       flash[:danger] = @nweet.errors.full_messages
@@ -14,19 +14,19 @@ class NweetsController < ApplicationController
   end
 
   def show
-    @nweet = Nweet.find(params[:id])
+    @nweet = Nweet.find_by(url_digest: params[:url_digest])
     @detail = true
   end
 
   def destroy
-    @nweet = Nweet.find(params[:id])
+    @nweet = Nweet.find_by(url_digest: params[:url_digest])
     @nweet.destroy
     flash[:success] = 'ヌイートを削除しました'
     redirect_to root_url
   end
 
   def update
-    @nweet = Nweet.find(params[:id])
+    @nweet = Nweet.find_by(url_digest: params[:url_digest])
 
     if @nweet.update_attributes(edit_nweet_params)
       flash[:success] = 'ヌイートを更新しました'
@@ -48,7 +48,7 @@ class NweetsController < ApplicationController
     end
 
     def correct_user
-      @nweet = current_user.nweets.find_by(id: params[:id])
+      @nweet = current_user.nweets.find_by(url_digest: params[:url_digest])
       redirect_to root_url if @nweet.nil?
     end
 end
