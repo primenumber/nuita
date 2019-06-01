@@ -1,4 +1,6 @@
 class Nweet < ApplicationRecord
+  before_create :set_url_digest
+
   belongs_to :user
   validates :user_id, presence: true
   validates :did_at, presence: true
@@ -27,4 +29,9 @@ class Nweet < ApplicationRecord
   def to_param
     url_digest
   end
+
+  private
+    def set_url_digest
+      self.url_digest = SecureRandom.alphanumeric
+    end
 end
