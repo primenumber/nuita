@@ -1,4 +1,4 @@
-namespace :url_digest do
+namespace :user_task do
   desc "Set random url-digest to existing users"
 
   task :set_url_digest => :environment do
