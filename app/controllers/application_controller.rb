@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def tweet(content = current_user.autotweet_content)
+  def tweet(content = render_tweet(current_user.autotweet_content))
     current_user.tweet(content)
   end
 
@@ -14,5 +14,10 @@ class ApplicationController < ActionController::Base
 
     def current_user?(user)
       current_user == @user
+    end
+
+    # generate content of tweet from user-specific template
+    def render_tweet(nweet)
+      current_user.autotweet_content.gsub(/\[LINK\]/, nweet_url(@nweet))
     end
 end
