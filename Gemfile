@@ -8,7 +8,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 
+gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'twitter'
 
 gem 'faker'
 
@@ -34,6 +36,7 @@ gem 'html2slim'
 gem 'bootstrap', '>= 4.3.1'
 gem 'jquery-rails'
 gem 'font-awesome-sass'
+gem 'font-awesome-rails'
 
 gem 'will_paginate'
 gem 'will_paginate-bootstrap4'

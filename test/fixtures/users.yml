@@ -3,6 +3,9 @@ chikuwa:
   screen_name: "chikuwa"
   email: "testing@example.com"
   url_digest: "E87P1n4T7umwj6zm"
+  twitter_uid: "1133391706987139072"
+  twitter_screen_name: "chikuwameltdown"
+  twitter_url: "https://twitter.com/chikuwameltdown"
 
 emiya:
   handle_name: "えみや"

@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   def home
     if user_signed_in?
       if params[:success] == 'true'
-        @nweet = Nweet.find(params[:id])
+        @nweet = Nweet.find_by(url_digest: params[:url_digest])
       else
         @nweet = current_user.nweets.build
       end

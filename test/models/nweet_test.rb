@@ -41,4 +41,9 @@ class NweetTest < ActiveSupport::TestCase
     @nweet.statement = '誰だ今の'
     assert @nweet.valid?
   end
+
+  test 'url_digest must be generated' do
+    new_nweet = @user.nweets.create(did_at: Time.zone.now)
+    assert_not_empty new_nweet.url_digest
+  end
 end

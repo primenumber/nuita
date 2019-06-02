@@ -10,6 +10,14 @@ class NweetsControllerTest < ActionDispatch::IntegrationTest
     @user = users(:chikuwa)
   end
 
+  test 'should get show' do
+    assert_not_equal nweet_path(@nweet), "/nweets/#{@nweet.id}"
+    assert_equal nweet_path(@nweet), "/nweets/#{@nweet.url_digest}"
+
+    get nweet_path(@nweet)
+    assert_response :success
+  end
+
   test 'should redirect create when not logged in' do
     assert_no_difference 'Nweet.count' do
       post nweets_path, params: {nweet: {did_at: Time.zone.now}}

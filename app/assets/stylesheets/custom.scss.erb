@@ -5,13 +5,15 @@
 
 $light-shades: #ECEAE3;
 $light-accent: #85A394;
+$dark-accent: #9C712E;
+$dark-shades: #1C2826;
+
 $brand-color: #5FC10C;
 $brand-color-hover: #6fc724;
 $brand-color-dark: #55ad0a;
 $brand-color-light: #8fd354;
 
-$dark-accent: #9C712E;
-$dark-shades: #1C2826;
+$twitter-color: #00acee;
 
 .navbar{
   background-color: $brand-color;
@@ -122,6 +124,16 @@ body{
     color: $brand-color;
     font-weight: bold;
   }
+
+  .user_links{
+    a{
+      text-decoration: none;
+      color: $brand-color;
+    }
+    i{
+      color: $dark-shades;
+    }
+  }
 }
 
 .handle_name{
@@ -189,7 +201,7 @@ body{
 
     .timestamp{
       text-align: right;
-      font-size: x-small;
+      font-size: small;
       color: #aaaaaa;
       margin-bottom: 0px;
       padding: 0px 0px 10px 0px;
@@ -232,6 +244,20 @@ body{
 .btn-brandcolor{
   background-color: $brand-color;
   color: white;
+
+  &:hover{
+    background-color: $brand-color-dark;
+    color: white;
+  }
+}
+
+.btn-twitter{
+  background-color: $twitter-color;
+  color: white;
+  &:hover{
+    color: white;
+    background-color: #00a2e0;
+  }
 }
 
 .btn-nuita {
@@ -264,6 +290,10 @@ body{
   }
 }
 
+.btn-link{
+  color: $brand-color;
+}
+
 .btn-edit{
   margin-top: 10px;
 }
@@ -274,7 +304,7 @@ body{
 
 /* edit */
 .statement {
-  margin: 10px 10px 10px 10px;
+  margin: 10px 0px;
   padding: 10px 0px;
 	border: 1px solid $brand-color-light;
 	border-radius: 10px;
@@ -288,8 +318,11 @@ body{
 }
 
 .statement-label {
-  margin: 10px 10px 0px 5px;
-  padding: 10px 10px 0px 5px;
+
+}
+
+textarea{
+  resize: none;
 }
 
 /* footer */

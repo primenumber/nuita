@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_22_140204) do
+ActiveRecord::Schema.define(version: 2019_06_02_045707) do
 
   create_table "nweets", force: :cascade do |t|
     t.datetime "did_at"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2019_05_22_140204) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "statement", limit: 100
+    t.string "url_digest"
+    t.index ["url_digest"], name: "index_nweets_on_url_digest", unique: true
     t.index ["user_id", "did_at"], name: "index_nweets_on_user_id_and_did_at"
     t.index ["user_id"], name: "index_nweets_on_user_id"
   end
@@ -46,6 +48,13 @@ ActiveRecord::Schema.define(version: 2019_05_22_140204) do
     t.string "screen_name", limit: 20
     t.string "icon"
     t.string "url_digest"
+    t.string "twitter_uid"
+    t.string "twitter_screen_name"
+    t.string "twitter_url"
+    t.string "twitter_access_secret"
+    t.string "twitter_access_token"
+    t.boolean "autotweet_enabled", default: false
+    t.text "autotweet_content", default: "射精しました！ #nuita [LINK]"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["screen_name"], name: "index_users_on_screen_name", unique: true
