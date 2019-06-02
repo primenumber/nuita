@@ -7,5 +7,4 @@
       .nweet-feed.row_top
         = render @nweet
         = link_to "このユーザーの詳細を見る", @nweet.user, class: "btn btn-link btn-block"
-        - if user_signed_in?
-          = link_to "ホームに戻る", @nweet.user, class: "btn btn-link btn-block"
+        = link_to "ホームに戻る", root_path, class: "btn btn-link btn-block"
