@@ -1,16 +1,18 @@
 li.nweet
-  = link_to icon_for(nweet.user, size: 50), nweet.user
-  .user_info
-    span.handle_name = link_to nweet.user.handle_name, nweet.user
-    span.screen_name
-      | @
-      = link_to nweet.user.screen_name, nweet.user
-  .content
-    .maincontent
-      span.time = time_ago_in_japanese(nweet.did_at)
-      | に射精しました。
-    - if nweet.statement?
-      .quote = text_url_to_link(nweet.statement).html_safe
+  .icon
+    = link_to icon_for(nweet.user, size: 50), nweet.user
+  .right
+    .user_info
+      span.handle_name = link_to nweet.user.handle_name, nweet.user
+      span.screen_name
+        | @
+        = link_to nweet.user.screen_name, nweet.user
+    .content
+      .maincontent
+        span.time = time_ago_in_japanese(nweet.did_at)
+        | に射精しました。
+      - if nweet.statement?
+        .quote = text_url_to_link(nweet.statement).html_safe
   .timestamp
     - if delete_possible?(nweet.did_at, nweet.user)
       = link_to nweet, method: :delete, class: "nweet-delete", data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" } do
