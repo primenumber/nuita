@@ -3,6 +3,8 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   def setup
     @user = users(:chikuwa)
+    @nweet = nweets(:today)
+    @new_user = users(:girl)
   end
 
   test 'should be valid' do
@@ -36,11 +38,18 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'associated nweets must be destroyed' do
-    new_user = User.new(screen_name: "kaburanai", email: "kaburan@gmail.com", password: "hogehoge")
-    new_user.save
-    new_user.nweets.create!(did_at: Time.zone.now)
+    @new_user.save
+    @new_user.nweets.create!(did_at: Time.zone.now)
     assert_difference 'Nweet.count', -1 do
-      new_user.destroy
+      @new_user.destroy
+    end
+  end
+
+  test 'associated favorites must be destroyed' do
+    @new_user.save
+    @new_user.favorites.create!(nweet: @nweet)
+    assert_difference 'Favorite.count', -1 do
+      @new_user.destroy
     end
   end
 end
