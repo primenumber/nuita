@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_12_082409) do
+ActiveRecord::Schema.define(version: 2019_06_12_123148) do
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "nweet_id"
-    t.integer "user_id"
+    t.integer "nweet_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["nweet_id"], name: "index_favorites_on_nweet_id"
+    t.index ["user_id", "nweet_id"], name: "index_favorites_on_user_id_and_nweet_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
