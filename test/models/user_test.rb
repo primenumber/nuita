@@ -34,4 +34,13 @@ class UserTest < ActiveSupport::TestCase
     new_user.save
     assert_not_empty new_user.url_digest
   end
+
+  test 'associated nweets must be destroyed' do
+    new_user = User.new(screen_name: "kaburanai", email: "kaburan@gmail.com", password: "hogehoge")
+    new_user.save
+    new_user.nweets.create!(did_at: Time.zone.now)
+    assert_difference 'Nweet.count', -1 do
+      new_user.destroy
+    end
+  end
 end
