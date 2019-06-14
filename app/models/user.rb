@@ -57,6 +57,10 @@ class User < ApplicationRecord
     client.update(content)
   end
 
+  def faved?(nweet)
+    self.favorites.exists?(nweet_id: nweet.id)
+  end
+
   class << self
     def screen_name_formatter(str)
       str.gsub(/\W/, '_')[0...20]
