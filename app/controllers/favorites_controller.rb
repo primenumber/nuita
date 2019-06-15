@@ -6,5 +6,9 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
+    nweet = Nweet.find_by(url_digest: params[:nweet])
+    @favorite = Favorite.find_by(nweet_id: nweet.id, user_id: current_user.id)
+    @favorite.destroy
+    redirect_back(fallback_location: root_path)
   end
 end

@@ -16,8 +16,10 @@ li.nweet
   .timestamp
     - if user_signed_in?
       - if current_user.faved?(nweet)
+        = link_to favorite_path(nweet: nweet), method: :delete
+          = fa_icon "star"
       - else
-        = link_to favorites_path(nweet: nweet), method: :post do
+        = link_to favorite_path(nweet: nweet), method: :post do
           = fa_icon "star-o"
     - if delete_possible?(nweet.did_at, nweet.user)
       = link_to nweet, method: :delete, class: "nweet-delete", data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" } do

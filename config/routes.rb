@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   resources :users, except: [:index], param: :url_digest
   resources :nweets, only: [:create, :update, :destroy, :show], param: :url_digest
-  resources :favorites, only: [:create, :destroy]
+  resource :favorite, only: [:create, :destroy]
 end
