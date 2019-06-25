@@ -13,18 +13,21 @@ li.nweet
         | に射精しました。
       - if nweet.statement?
         .quote = text_url_to_link(nweet.statement).html_safe
-  .timestamp
-    - if user_signed_in?
-      - if current_user.faved?(nweet)
-        = link_to favorite_path(nweet: nweet), method: :delete
-          = fa_icon "star"
-      - else
-        = link_to favorite_path(nweet: nweet), method: :post do
-          = fa_icon "star-o"
-    - if delete_possible?(nweet.did_at, nweet.user)
-      = link_to nweet, method: :delete, class: "nweet-delete", data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" } do
-        = fa_icon "trash"
-    - unless @detail
-      = link_to nweet, class: "nweet-delete" do
-        = fa_icon "external-link"
-    = nweet.did_at.in_time_zone('Tokyo')
+    .timestamp
+      .float-left
+        - if user_signed_in?
+          .fav-btn
+            - if current_user.faved?(nweet)
+              = link_to favorite_path(nweet: nweet), method: :delete
+                = fa_icon "star"
+            - else
+              = link_to favorite_path(nweet: nweet), method: :post do
+                = fa_icon "star-o"
+      .text-right
+        - if delete_possible?(nweet.did_at, nweet.user)
+          = link_to nweet, method: :delete, class: "nweet-delete", data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" } do
+            = fa_icon "trash"
+        - unless @detail
+          = link_to nweet, class: "nweet-delete" do
+            = fa_icon "external-link"
+        = nweet.did_at.in_time_zone('Tokyo')
