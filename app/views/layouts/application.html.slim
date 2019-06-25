@@ -4,7 +4,13 @@ html
     title = yield(:title) + ' | Nuita'
     = csrf_meta_tags
     = csp_meta_tag
-    meta content="width=device-width, initial-scale=1" name="viewport" /
+    meta content="width=device-width, initial-scale=1" name="viewport"
+    meta name="twitter:card" content="summary"
+    meta name="twitter:site" content="@nuita_net"
+    meta property="og:url" content="#{request.url}"
+    meta name="twitter:title" content="#{yield(:title)}"
+    meta name="twitter:description" content="Nuitaは射精報告SNSです。あなたもNuitaで射精報告を始めてみませんか？"
+    meta name="twitter:image" content="#{asset_url('logomark_color.png')}"
     = favicon_link_tag('favicon.ico')
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
