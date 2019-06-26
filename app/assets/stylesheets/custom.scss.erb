@@ -15,7 +15,8 @@ $brand-color-light: #8fd354;
 
 $twitter-color: #00acee;
 
-$fav-color: #f03328;
+$fav-color: #c73b31;
+$fav-color-light: #aa544e;
 
 .navbar{
   background-color: $brand-color;
@@ -210,10 +211,18 @@ body{
       .fav-btn{
         margin: 0;
         a{
-          color: $brand-color-dark;
-          font-size: 1rem;
+          color: #aaa;
+          &:hover{
+            color: $fav-color;
+          }
         }
-        line-height: 1rem;
+      }
+
+      i.faved{
+        color: $fav-color;
+        &:hover{
+          color: $fav-color-light;
+        }
       }
 
       .text-right{

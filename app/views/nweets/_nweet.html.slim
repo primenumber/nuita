@@ -19,10 +19,10 @@ li.nweet
           .fav-btn
             - if current_user.faved?(nweet)
               = link_to favorite_path(nweet: nweet), method: :delete
-                = fa_icon "star"
+                = fa_icon "heart", class: 'faved'
             - else
               = link_to favorite_path(nweet: nweet), method: :post do
-                = fa_icon "star-o"
+                = fa_icon "heart-o"
       .text-right
         - if delete_possible?(nweet.did_at, nweet.user)
           = link_to nweet, method: :delete, class: "nweet-delete", data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" } do
