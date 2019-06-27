@@ -12,6 +12,7 @@ $brand-color: #5FC10C;
 $brand-color-hover: #6fc724;
 $brand-color-dark: #55ad0a;
 $brand-color-light: #8fd354;
+$brand-color-white: #EFF8E6;
 
 $twitter-color: #00acee;
 
@@ -23,7 +24,7 @@ $fav-color-light: #aa544e;
   box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
 
   .navbar-brand{
-    font-size: 1.8rem;
+    font-size: 1rem;
   }
 
   .navbar-nav{
@@ -34,6 +35,29 @@ $fav-color-light: #aa544e;
       font-size: 1rem;
       &:hover{
         color: #fff;
+      }
+    }
+  }
+
+  .navbar-center{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -2px;
+  }
+
+  .dropdown-menu{
+    background-color: $brand-color;
+  }
+
+  .mode-nav{
+    color: white;
+    font-size: 1.4rem;
+    li{
+      padding-right: 1rem;
+      &:hover{
+        color: $brand-color-white;
+        transition-duration: 0.2s;
       }
     }
   }
