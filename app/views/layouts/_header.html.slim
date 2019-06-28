@@ -4,11 +4,17 @@ nav.navbar.navbar-expand-md.navbar-fixed-top.fixed-top.class_selector.navbar-dar
       span.navbar-toggler-icon
 
     ul.nav.navbar-nav.mode-nav
-      li.nav_item = fa_icon 'home'
-      li.nav_item = fa_icon 'bell'
-      li.nav_item = fa_icon 'heart'
+      li.nav_item#home-nav
+        = link_to root_url do
+          = fa_icon 'home'
+      li.nav_item#notifications-nav
+        = link_to '#' do
+          = fa_icon 'bell'
+      li.nav_item#favorites-nav
+        = link_to '#' do
+          = fa_icon 'heart'
     ul.nav.navbar-nav.mx-auto.navbar-center
-      = link_to root_url, class: "navbar-brand" do
+      = link_to '#', class: "navbar-brand" do
        = image_tag image_path('brandlogo.png'), height: '48px'
     .collapse.navbar-collapse.text-center#navbarNav
       ul.navbar-nav.navbar-right

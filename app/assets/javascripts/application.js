@@ -17,3 +17,14 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+
+// ロゴを押すとトップへ戻る
+$(function(){
+  var topBtn=$('.navbar-brand');
+
+  topBtn.click(function(){
+    $('body,html').animate({
+    scrollTop: 0},500);
+    return false;
+  });
+});
