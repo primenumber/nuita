@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   has_many :nweets, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :fav_nweets, through: :favorites, source: :nweets
+  has_many :fav_nweets, through: :favorites, source: :nweet
   mount_uploader :icon, IconUploader
 
   validates :screen_name, presence: true, uniqueness: true, length: {maximum: 20}
