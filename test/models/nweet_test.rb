@@ -3,6 +3,7 @@ require 'test_helper'
 class NweetTest < ActiveSupport::TestCase
   def setup
     @user = users(:chikuwa)
+    @new_user = users(:girl)
     @nweet = @user.nweets.build(did_at: Time.zone.now)
   end
 
@@ -45,5 +46,13 @@ class NweetTest < ActiveSupport::TestCase
   test 'url_digest must be generated' do
     new_nweet = @user.nweets.create(did_at: Time.zone.now)
     assert_not_empty new_nweet.url_digest
+  end
+
+  test 'associated favorites must be destroyed' do
+    @new_user.save
+    @new_user.favorites.create!(nweet: @nweet)
+    assert_difference 'Favorite.count', -1 do
+      @nweet.destroy
+    end
   end
 end

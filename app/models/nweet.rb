@@ -2,6 +2,9 @@ class Nweet < ApplicationRecord
   before_create :set_url_digest
 
   belongs_to :user
+  has_many :favorites, dependent: :destroy
+  has_many :fav_users, through: :favorites, source: :user
+
   validates :user_id, presence: true
   validates :did_at, presence: true
   validates :statement, length: {maximum: 100}

@@ -1,0 +1,10 @@
+.nweet-feed.row_top
+  - if current_user.fav_nweets.any?
+    .nweet-count
+      = current_user.fav_nweets.count
+      | 件のいいね
+    ol.nweets-list
+      = render @feed_items
+    = will_paginate @feed_items
+  - else
+    p まだ「いいね！」した投稿はありません (T_T)

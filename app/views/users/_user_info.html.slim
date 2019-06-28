@@ -2,9 +2,13 @@ section.user-info
   = icon_for(user, size: 60)
   h3.handle_name = user.handle_name
   .screen_name = "@" + user.screen_name
-  .user_stats
-    span.nweet-stats = user.nweets.count
-    span.stat-label ヌイート
+  ul.user_stats
+    li = link_to user_path(user) do
+      span.nweet-stats = user.nweets.count
+      span.stat-label ヌイート
+    li = link_to likes_path(user) do
+      span.nweet-stats = user.fav_nweets.count
+      span.stat-label いいね
   .user_links
     - if user.twitter_url?
       = link_to user.twitter_url do

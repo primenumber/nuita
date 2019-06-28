@@ -18,3 +18,9 @@ shinji:
   screen_name: "mato_shinji"
   email: "shinji@matou.com"
   url_digest: "bJUPf2DQrGHlxqVB"
+
+# no nweets, no favs... because he is a girl.
+girl:
+  handle_name: "girl"
+  screen_name: "i_am@girl.com"
+  url_digest: "mrFKjWLgvntmDviE"

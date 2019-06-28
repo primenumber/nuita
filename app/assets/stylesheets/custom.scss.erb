@@ -12,15 +12,20 @@ $brand-color: #5FC10C;
 $brand-color-hover: #6fc724;
 $brand-color-dark: #55ad0a;
 $brand-color-light: #8fd354;
+$brand-color-white: #EFF8E6;
 
 $twitter-color: #00acee;
+
+$fav-color: #c73b31;
+$fav-color-light: #aa544e;
 
 .navbar{
   background-color: $brand-color;
   box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  height: 56px;
 
   .navbar-brand{
-    font-size: 1.8rem;
+    font-size: 1rem;
   }
 
   .navbar-nav{
@@ -32,6 +37,75 @@ $twitter-color: #00acee;
       &:hover{
         color: #fff;
       }
+    }
+  }
+
+  .navbar-center{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -2px;
+  }
+
+  .dropdown-menu{
+    background-color: $brand-color;
+    transform: translateX(-50%);
+  }
+
+  .dropdown-item{
+    background-color: $brand-color;
+    &:hover{
+      background-color: $brand-color-hover;
+    }
+    &:active{
+      background-color: $brand-color-hover;
+    }
+  }
+
+  .mode-nav{
+    font-size: 1.4rem;
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    li{
+      padding-right: 1rem;
+
+      a{
+        color: white;
+        &:hover{
+          color: $brand-color-white;
+          transition-duration: 0.2s;
+        }
+      }
+    }
+
+  }
+
+  #navbarNav{
+    margin-left: auto;
+    margin-right: 0px;
+    position: inherit;
+    #navbarDropdownMenuLink{
+      text-align: right;
+    }
+  }
+}
+
+@media screen and (max-width: 575px){
+  .navbar{
+    #navbarNav{
+      position: absolute;
+      right: 8px;
+      top: 0;
+      #navbarDropdownMenuLink{
+        text-align: right;
+      }
+    }
+
+    .dropdown-menu{
+      transform: none;
     }
   }
 }
@@ -108,21 +182,38 @@ body{
 
   .screen_name{
     color: $dark-accent;
+    padding-bottom: 0.4rem;
   }
 
   h3{
     margin: 2px 0px 0px 0px;
   }
 
-  .stat-label{
-    font-size: x-small;
-  }
+  ul.user_stats{
+    box-sizing: border-box;
+    padding-left: 0px;
 
-  .nweet-stats{
-    font-size: x-large;
-    margin-right: 3px;
-    color: $brand-color;
-    font-weight: bold;
+    li{
+      list-style: none;
+      float: left;
+      line-height: 1.5rem;
+      margin-right: 1rem;
+      a{
+        .nweet-stats{
+          font-size: x-large;
+          color: $brand-color;
+          font-weight: bold;
+          &:hover{
+            color: $brand-color-hover;
+          }
+        }
+        .stat-label{
+          font-size: x-small;
+          color: black;
+        }
+        text-decoration: none;
+      }
+    }
   }
 
   .user_links{
@@ -200,20 +291,40 @@ body{
     }
 
     .timestamp{
-      text-align: right;
       font-size: small;
       color: #aaaaaa;
       margin-bottom: 0px;
       padding: 0px 0px 10px 0px;
+
+      .fav-btn{
+        margin: 0;
+        a{
+          color: #aaa;
+          &:hover{
+            color: $fav-color;
+          }
+        }
+      }
+
+      i.faved{
+        color: $fav-color;
+        &:hover{
+          color: $fav-color-light;
+        }
+      }
+
+      .text-right{
+        line-height: 1rem;
+      }
     }
 
     .maincontent{
-      padding-bottom: 15px;
+      padding-bottom: 10px;
     }
 
     .user_info{
       margin-top: 5px;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       border-bottom: $light-accent, 1px, solid;
       display: block;
       font-weight: bold;
