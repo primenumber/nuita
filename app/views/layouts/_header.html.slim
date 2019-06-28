@@ -1,9 +1,6 @@
 nav.navbar.navbar-expand-md.navbar-fixed-top.fixed-top.class_selector.navbar-dark.py-0
   .container
-    button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
-      span.navbar-toggler-icon
-
-    ul.nav.navbar-nav.mode-nav
+    ul.nav.mode-nav.ml-0
       li.nav_item#home-nav
         = link_to root_url do
           = fa_icon 'home'
@@ -16,7 +13,7 @@ nav.navbar.navbar-expand-md.navbar-fixed-top.fixed-top.class_selector.navbar-dar
     ul.nav.navbar-nav.mx-auto.navbar-center
       = link_to '#', class: "navbar-brand" do
        = image_tag image_path('brandlogo.png'), height: '48px'
-    .collapse.navbar-collapse.text-center#navbarNav
+    .text-center#navbarNav
       ul.navbar-nav.navbar-right
         - if user_signed_in?
           li.dropdown.nav-item

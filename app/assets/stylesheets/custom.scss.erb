@@ -22,6 +22,7 @@ $fav-color-light: #aa544e;
 .navbar{
   background-color: $brand-color;
   box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  height: 56px;
 
   .navbar-brand{
     font-size: 1rem;
@@ -48,8 +49,9 @@ $fav-color-light: #aa544e;
 
   .dropdown-menu{
     background-color: $brand-color;
+    transform: translateX(-50%);
   }
-  
+
   .dropdown-item{
     background-color: $brand-color;
     &:hover{
@@ -62,6 +64,11 @@ $fav-color-light: #aa544e;
 
   .mode-nav{
     font-size: 1.4rem;
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
     li{
       padding-right: 1rem;
       a{
@@ -71,6 +78,32 @@ $fav-color-light: #aa544e;
           transition-duration: 0.2s;
         }
       }
+    }
+  }
+
+  #navbarNav{
+    margin-left: auto;
+    margin-right: 0px;
+    position: inherit;
+    #navbarDropdownMenuLink{
+      text-align: right;
+    }
+  }
+}
+
+@media screen and (max-width: 575px){
+  .navbar{
+    #navbarNav{
+      position: absolute;
+      right: 8px;
+      top: 0;
+      #navbarDropdownMenuLink{
+        text-align: right;
+      }
+    }
+
+    .dropdown-menu{
+      transform: none;
     }
   }
 }
