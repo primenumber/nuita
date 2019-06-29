@@ -1,28 +1,6 @@
 nav.navbar.navbar-expand-md.navbar-fixed-top.fixed-top.class_selector.navbar-dark.py-0
   .container
-    ul.nav.mode-nav.ml-0
-      li.nav_item#home-nav
-        = link_to root_url do
-          = fa_icon 'home'
-      /li.nav_item#notifications-nav
-        = link_to '#' do
-          = fa_icon 'bell'
-      li.nav_item#favorites-nav
-        = link_to likes_path do
-          = fa_icon 'heart'
-    ul.nav.navbar-nav.mx-auto.navbar-center
-      = link_to '#', class: "navbar-brand" do
-       = image_tag image_path('brandlogo.png'), height: '48px'
-    .text-center#navbarNav
-      ul.navbar-nav.navbar-right
-        - if user_signed_in?
-          li.dropdown.nav-item
-            a.nav-link.dropdown-toggle data-toggle="dropdown" role="button" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false"
-              = icon_for(current_user, size: 40)
-            .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
-              .dropdown-item = link_to current_user.handle_name, user_path(current_user), class: 'nav-link'
-              .dropdown-item = link_to 'プロフィール変更', edit_user_registration_path, class: 'nav-link'
-              .dropdown-item = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link'
-        - else
-          li.nav-item = link_to '新規登録', new_user_registration_path, class: 'nav-link'
-          li.nav-item = link_to 'ログイン', new_user_session_path, class: 'nav-link'
+    - if user_signed_in?
+      = render 'layouts/user_header'
+    - else
+      = render 'layouts/guest_header'
