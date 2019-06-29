@@ -6,7 +6,7 @@ ul.nav.mode-nav.ml-0
     = link_to '#' do
       = fa_icon 'bell'
   li.nav_item#favorites-nav
-    = link_to likes_path do
+    = link_to likes_user_path(current_user) do
       = fa_icon 'heart'
 ul.nav.navbar-nav.mx-auto.navbar-center
   = link_to '#', class: "navbar-brand" do
