@@ -18,14 +18,14 @@ li.nweet
         - if user_signed_in?
           .fav-btn
             - if current_user.faved?(nweet)
-              = link_to favorite_path(nweet: nweet), method: :delete
+              = link_to favorite_path(nweet: nweet), method: :delete, remote: true do
                 = fa_icon "heart", class: 'faved'
             - else
-              = link_to favorite_path(nweet: nweet), method: :post do
+              = link_to favorite_path(nweet: nweet), method: :post, remote: :true do
                 = fa_icon "heart-o"
       .text-right
         - if delete_possible?(nweet.did_at, nweet.user)
-          = link_to nweet, method: :delete, class: "nweet-delete", data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" } do
+          = link_to nweet, method: :delete, class: "nweet-delete", remote: :true, data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" } do
             = fa_icon "trash"
         - unless @detail
           = link_to nweet, class: "nweet-delete" do
