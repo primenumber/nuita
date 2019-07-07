@@ -23,6 +23,7 @@ li.nweet
             - else
               = link_to favorite_path(nweet: nweet), method: :post, remote: :true do
                 = fa_icon "heart-o"
+            span#fav-flash
       .text-right
         - if delete_possible?(nweet.did_at, nweet.user)
           = link_to nweet, method: :delete, class: "nweet-delete", remote: :true, data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" } do
