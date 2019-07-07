@@ -10,6 +10,7 @@ document.addEventListener('turbolinks:load', function(){
         i.classList.replace('fa-heart', 'fa-heart-o');
         a.setAttribute('data-method', 'post');
         span.classList.remove('faved-flash')
+        span.innerHTML = '';
       }else{
         i.classList.replace('fa-heart-o', 'fa-heart');
         a.setAttribute('data-method', 'delete');
