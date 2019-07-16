@@ -1,4 +1,6 @@
 require "uri"
+require "nokogiri"
+require "open-uri"
 
 module ApplicationHelper
   def text_url_to_link(text)
@@ -23,4 +25,7 @@ module ApplicationHelper
       url = asset_path('icon_default')
     end
   end
+
+
+
 end
