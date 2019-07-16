@@ -1,4 +1,7 @@
 - provide(:title, "#{@nweet.user.handle_name}さんのヌイート")
+- if @nweet.statement?
+  - provide(:description, "\"#{@nweet.statement}\"")
+
 .container
   .row
     .col-md-4
