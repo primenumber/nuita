@@ -1,24 +1,27 @@
+require 'open-uri'
+require 'nokogiri'
+
 class LinksController < ApplicationController
   def create
     @link = Link.create!(url: params[:url])
 
     if @link.valid?
-      page = Nokogiri::HTML.parse(open(link.url))
+      page = Nokogiri::HTML.parse(open(@link.url).read, @link.url)
       @link.title = parse_title(page)
       @link.description = parse_description(page)
       @link.image = parse_image(page)
 
       @link.save
     end
-    
-    head :no_content
+
+    head :created
   end
 
   def parse_title(page)
-    if page.css('//meta[property="og:site_name"]/@content').empty?
+    if page.css('//meta[property="og:title"]/@content').empty?
       page.title.to_s
     else
-      page.css('//meta[property="og:site_name"]/@content').to_s
+      page.css('//meta[property="og:title"]/@content').to_s
     end
   end
 
@@ -31,6 +34,6 @@ class LinksController < ApplicationController
   end
 
   def parse_image(page)
-    parse.css('//meta[property="og:image"]/@content').to_s
+    page.css('//meta[property="og:image"]/@content').to_s
   end
 end
