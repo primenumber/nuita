@@ -39,6 +39,6 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
     post link_path, params: {url: url}
 
     @link = Link.find_by(url: url)
-    assert @link.title, @link.url
+    assert_equal @link.title, @link.url
   end
 end
