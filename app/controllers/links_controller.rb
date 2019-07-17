@@ -3,15 +3,19 @@ require 'nokogiri'
 
 class LinksController < ApplicationController
   def create
-    @link = Link.create!(url: params[:url])
+    @link = Link.new(url: params[:url])
 
     if @link.valid?
-      page = Nokogiri::HTML.parse(open(@link.url).read, @link.url)
-      @link.title = parse_title(page)
-      @link.description = parse_description(page)
-      @link.image = parse_image(page)
+      begin
+        page = Nokogiri::HTML.parse(open(@link.url).read, @link.url)
+        @link.title = parse_title(page)
+        @link.description = parse_description(page)
+        @link.image = parse_image(page)
 
-      @link.save
+        @link.save
+      rescue
+        @link.title = @link.url
+      end
     end
 
     head :created

@@ -32,6 +32,13 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil @link
     assert_equal 'Example Domain', @link.title
     assert_empty @link.description
+  end
 
+  test 'deal correctly with incorrect url' do
+    url = 'http://val.id/'
+    post link_path, params: {url: url}
+
+    @link = Link.find_by(url: url)
+    assert @link.title, @link.url
   end
 end
