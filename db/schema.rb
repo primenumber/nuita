@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_16_100407) do
+ActiveRecord::Schema.define(version: 2019_07_19_135706) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "nweet_id", null: false
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2019_07_16_100407) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["url"], name: "index_links_on_url", unique: true
+  end
+
+  create_table "nweet_links", force: :cascade do |t|
+    t.integer "nweet_id"
+    t.integer "link_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["link_id"], name: "index_nweet_links_on_link_id"
+    t.index ["nweet_id"], name: "index_nweet_links_on_nweet_id"
   end
 
   create_table "nweets", force: :cascade do |t|
