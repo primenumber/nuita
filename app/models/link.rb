@@ -1,9 +1,13 @@
 class Link < ApplicationRecord
-  validates :url, :url => true
   before_create :fetch_infos
 
+  has_many :nweet_links, dependent: :destroy
+  has_many :nweets, through: :nweet_links
+
+  validates :url, :url => true
+
   private
-  
+
     def fetch_infos
       begin
         page = Nokogiri::HTML.parse(open(self.url).read)

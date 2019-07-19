@@ -8,6 +8,9 @@ class Nweet < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :fav_users, through: :favorites, source: :user
 
+  has_many :nweet_links, dependent: :destroy
+  has_many :links, through: :nweet_links
+
   validates :user_id, presence: true
   validates :did_at, presence: true
   validates :statement, length: {maximum: 100}
@@ -45,7 +48,7 @@ class Nweet < ApplicationRecord
       if self.statement
         URI.extract(self.statement, ['http', 'https']).uniq.each do |url|
           unless Link.find_by(url: url)
-            Link.create(url: url)
+            self.links.create(url: url)
           end
         end
       end
