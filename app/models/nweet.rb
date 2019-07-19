@@ -1,5 +1,8 @@
+require 'uri'
+
 class Nweet < ApplicationRecord
   before_create :set_url_digest
+  after_save :create_link
 
   belongs_to :user
   has_many :favorites, dependent: :destroy
@@ -36,5 +39,15 @@ class Nweet < ApplicationRecord
   private
     def set_url_digest
       self.url_digest = SecureRandom.alphanumeric
+    end
+
+    def create_link
+      if self.statement
+        URI.extract(self.statement, ['http', 'https']).uniq.each do |url|
+          unless Link.find_by(url: url)
+            Link.create(url: url)
+          end
+        end
+      end
     end
 end
