@@ -17,9 +17,9 @@ li.nweet
         = link_to nweet.links.first.url, target: '_blank', class: 'card mt-2' do
           .row.no-gutters.align-items-center
             - if nweet.links.first.image?
-              .col-sm-6.col-lg-6.p-0
+              .col-md-6.p-0
                 = image_tag nweet.links.first.image, class: 'card-img'
-            .col-sm-6.col-lg-6.p-0
+            .col.p-0
               .card-body
                 h5.card-title = nweet.links.first.title
                 p.card-text = nweet.links.first.description
