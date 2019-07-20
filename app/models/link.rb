@@ -29,9 +29,9 @@ class Link < ApplicationRecord
 
     def parse_description(page)
       if page.css('//meta[property="og:description"]/@content').empty?
-        page.css('//meta[name$="description"]/@content').to_s
+        page.css('//meta[name$="description"]/@content').to_s.truncate(72)
       else
-        page.css('//meta[property="og:description"]/@content').to_s
+        page.css('//meta[property="og:description"]/@content').to_s.truncate(72)
       end
     end
 
