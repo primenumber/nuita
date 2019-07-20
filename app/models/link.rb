@@ -6,6 +6,11 @@ class Link < ApplicationRecord
 
   validates :url, :url => true
 
+  def refetch
+    fetch_infos
+    save
+  end
+
   private
 
     def fetch_infos

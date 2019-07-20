@@ -44,6 +44,7 @@ class Nweet < ApplicationRecord
       URI.extract(self.statement, ['http', 'https']).uniq.each do |url|
         if l = Link.find_by(url: url)
           self.links << l
+          l.refetch
         else
           self.links.create(url: url)
         end
