@@ -67,9 +67,13 @@ class NweetTest < ActiveSupport::TestCase
     assert_match 'Hikakin', link.title
     assert_match 'ヒカキン', link.description
 
-    # 再生成はしない
+    nweet_again = nil
+    # Linkの再生成はしない
     assert_no_difference 'Link.count' do
-      @user.nweets.create(did_at: Time.zone.now, statement: url)
+      nweet_again = @user.nweets.create(did_at: Time.zone.now, statement: url)
     end
+
+    # けど関連付けはされてる
+    assert_equal link, nweet_again.links.first
   end
 end
