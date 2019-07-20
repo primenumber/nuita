@@ -39,20 +39,20 @@ class Nweet < ApplicationRecord
     url_digest
   end
 
+  def create_link
+    if self.statement
+      URI.extract(self.statement, ['http', 'https']).uniq.each do |url|
+        if l = Link.find_by(url: url)
+          self.links << l
+        else
+          self.links.create(url: url)
+        end
+      end
+    end
+  end
+
   private
     def set_url_digest
       self.url_digest = SecureRandom.alphanumeric
-    end
-
-    def create_link
-      if self.statement
-        URI.extract(self.statement, ['http', 'https']).uniq.each do |url|
-          if l = Link.find_by(url: url)
-            self.links << l
-          else
-            self.links.create(url: url)
-          end
-        end
-      end
     end
 end

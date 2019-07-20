@@ -9,4 +9,10 @@ namespace :nweet_task do
       end
     end
   end
+
+  task :refresh_link => :environment do
+    Nweet.all.each do |nweet|
+      nweet.create_link
+    end
+  end
 end
