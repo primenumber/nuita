@@ -4,6 +4,9 @@ class Link < ApplicationRecord
   has_many :nweet_links, dependent: :destroy
   has_many :nweets, through: :nweet_links
 
+  validates :title, length: {maximum: 100}
+  validates :description, length: {maximum: 500}
+
   validates :url, :url => true
 
   def refetch
@@ -26,9 +29,9 @@ class Link < ApplicationRecord
 
     def parse_title(page)
       if page.css('//meta[property="og:title"]/@content').empty?
-        page.title.to_s
+        page.title.to_s.truncate(50)
       else
-        page.css('//meta[property="og:title"]/@content').to_s
+        page.css('//meta[property="og:title"]/@content').to_s.truncate(50)
       end
     end
 
