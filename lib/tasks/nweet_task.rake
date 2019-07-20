@@ -15,4 +15,8 @@ namespace :nweet_task do
       nweet.create_link
     end
   end
+
+  task :remove_link => :environment do
+    Link.delete_all
+  end
 end
