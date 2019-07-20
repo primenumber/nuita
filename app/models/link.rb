@@ -29,13 +29,13 @@ class Link < ApplicationRecord
 
     def parse_description(page)
       if page.css('//meta[property="og:description"]/@content').empty?
-        page.css('//meta[name$="description"]/@content').to_s.truncate(72)
+        page.css('//meta[name$="description"]/@content').to_s.truncate(90)
       else
-        page.css('//meta[property="og:description"]/@content').to_s.truncate(72)
+        page.css('//meta[property="og:description"]/@content').to_s.truncate(90)
       end
     end
 
     def parse_image(page)
-      page.css('//meta[property="og:image"]/@content').to_s
+      page.css('//meta[property="og:image"]/@content').first.to_s
     end
 end
