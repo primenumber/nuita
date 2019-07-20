@@ -17,6 +17,6 @@ namespace :nweet_task do
   end
 
   task :remove_link => :environment do
-    Link.delete_all
+    Link.destroy_all
   end
 end
