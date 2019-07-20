@@ -41,6 +41,11 @@ class Link < ApplicationRecord
     end
 
     def parse_image(page)
-      page.css('//meta[property="og:image"]/@content').first.to_s
+      case self.url
+      when /dlsite/
+        page.css('//meta[property="og:image"]/@content').first.to_s.sub(/sam/, 'main')
+      else
+        page.css('//meta[property="og:image"]/@content').first.to_s
+      end
     end
 end
