@@ -28,6 +28,21 @@ class LinkTest < ActiveSupport::TestCase
     assert_empty @link.description
   end
 
+  test 'fetch nijie correctly' do
+    url = 'https://sp.nijie.info/view_popup.php?id=319985'
+    url = Link.normalize_url(url)
+    @link = Link.create(url: url)
+
+    assert_equal 'https://nijie.info/view.php?id=319985', @link.url
+    assert_match '発情めめめ', @link.title
+
+    url = 'https://nijie.info/view.php?id=319985'
+    url = Link.normalize_url(url)
+    assert_no_difference 'Link.count' do
+      @link = Link.create(url: url)
+    end
+  end
+
   test 'deal correctly with incorrect url' do
     url = 'http://not-val.id/'
     @link = Link.create(url: url)
