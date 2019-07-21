@@ -1,3 +1,5 @@
+require 'json'
+
 class Link < ApplicationRecord
   before_create :fetch_infos
 
@@ -12,6 +14,18 @@ class Link < ApplicationRecord
   def refetch
     fetch_infos
     save
+  end
+
+  class << self
+    def normalize_url(url)
+      case url
+      when /nijie/
+        url.sub!(/sp.nijie/, 'nijie')
+        url.sub(/view_popup/, 'view')
+      else
+        url
+      end
+    end
   end
 
   private
@@ -47,6 +61,14 @@ class Link < ApplicationRecord
       case self.url
       when /dlsite/
         page.css('//meta[property="og:image"]/@content').first.to_s.sub(/sam/, 'main')
+      when /nijie/
+        str = page.css('//script[@type="application/ld+json"]/text()').first.to_s
+
+        if s = str.match(/https:\/\/pic.nijie.net\/(\d+)\/[^\/]+\/nijie_picture\/([^"]+)/)
+          'https://pic.nijie.net/' + s[1] + '/nijie_picture/' + s[2]
+        else
+          page.css('//meta[property="og:image"]/@content').first.to_s
+        end
       else
         page.css('//meta[property="og:image"]/@content').first.to_s
       end
