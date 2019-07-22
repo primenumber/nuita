@@ -34,4 +34,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_nil @user.twitter_url
     assert_nil @user.twitter_screen_name
   end
+
+  test 'autotweet is disabled when delete twitter account' do
+    @user.autotweet_enabled = true
+    @user.delete_twitter_account
+
+    assert_not @user.autotweet_enabled
+  end
 end

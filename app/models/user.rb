@@ -42,7 +42,8 @@ class User < ApplicationRecord
       twitter_uid: nil,
       twitter_screen_name: nil,
       twitter_access_token: nil,
-      twitter_access_secret: nil
+      twitter_access_secret: nil,
+      autotweet_enabled: false
     )
   end
 
