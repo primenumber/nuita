@@ -2,7 +2,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def tweet(content = render_tweet(current_user.autotweet_content))
-    current_user.tweet(content)
+    begin
+      current_user.tweet(content)
+    rescue
+      flash[:warning] = 'ツイートに失敗しました。Twitterアカウントの状態を確認してください。'
+    end
   end
 
   protected
