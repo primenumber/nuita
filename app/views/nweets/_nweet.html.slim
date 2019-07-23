@@ -11,10 +11,8 @@ li.nweet
       .maincontent
         span.time = time_ago_in_japanese(nweet.did_at)
         | に射精しました。
-      - if nweet.statement?
-        .quote = text_url_to_link(nweet.statement).html_safe
       - if nweet.links.any?
-        = link_to nweet.links.first.url, target: '_blank', class: 'card mt-2' do
+        = link_to nweet.links.first.url, target: '_blank', class: 'card my-1' do
           .row.no-gutters.align-items-center
             - if nweet.links.first.image?
               .col-md-6.p-0
@@ -23,6 +21,9 @@ li.nweet
               .card-body
                 h5.card-title = nweet.links.first.title
                 p.card-text = nweet.links.first.description
+      - if nweet.statement?
+        .quote = text_url_to_link(nweet.statement).html_safe
+
     .timestamp
       .float-left
         - if user_signed_in?
