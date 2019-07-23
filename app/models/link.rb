@@ -70,7 +70,7 @@ class Link < ApplicationRecord
         else
           page.css('//meta[property="og:image"]/@content').first.to_s
         end
-      when /pixiv.*illust_id=(\d+)/
+      when /pixiv.*[^fanbox]illust_id=(\d+)/
         proxy_url = "https://pixiv.cat/#{$1}.jpg"
         # ↑で404だったら複数絵かも
         case Net::HTTP.get_response(URI.parse(proxy_url))
