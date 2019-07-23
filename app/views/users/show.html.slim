@@ -1,7 +1,7 @@
 - provide(:title, "#{@user.handle_name}さんはNuitaを利用しています")
 .container
   .row
-    .col-md-4
+    .col-md-3
       = render 'users/user_info', {user: @user}
-    .col-md-8
+    .col-md-9
       = render 'users/feed'
