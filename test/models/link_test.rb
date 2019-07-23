@@ -38,9 +38,7 @@ class LinkTest < ActiveSupport::TestCase
 
     url = 'https://nijie.info/view.php?id=319985'
     url = Link.normalize_url(url)
-    assert_no_difference 'Link.count' do
-      @link = Link.create(url: url)
-    end
+    assert_match @link.url, url
   end
 
   test 'fetch pixiv correctly' do
