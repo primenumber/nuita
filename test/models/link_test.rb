@@ -49,6 +49,22 @@ class LinkTest < ActiveSupport::TestCase
 
     assert_match '地鶏', @link.title
     assert_equal 'https://pixiv.cat/75763842.jpg', @link.image
+
+    # これは完全に冗長なテストだけどかわいいから見て
+    url = 'https://www.pixiv.net/member_illust.php?mode=medium&illust_id=73718144'
+    @link = Link.create(url: url)
+
+    assert_match 'んあー・・・', @link.title
+    assert_match 'ん？あげませんよ！', @link.description
+    assert_equal 'https://pixiv.cat/73718144.jpg', @link.image
+
+    # manga. これで抜く人いなそう
+    url = 'https://www.pixiv.net/member_illust.php?mode=medium&illust_id=75871400'
+    @link = Link.create(url: url)
+
+    assert_match 'DWU', @link.title
+    assert_match '浅瀬', @link.description
+    assert_equal 'https://pixiv.cat/75871400-1.jpg', @link.image
   end
 
   test 'deal correctly with incorrect url' do
