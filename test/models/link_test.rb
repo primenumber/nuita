@@ -43,6 +43,14 @@ class LinkTest < ActiveSupport::TestCase
     end
   end
 
+  test 'fetch pixiv correctly' do
+    url = 'https://www.pixiv.net/member_illust.php?mode=medium&illust_id=75763842'
+    @link = Link.create(url: url)
+
+    assert_match '地鶏', @link.title
+    assert_equal 'https://pixiv.cat/75763842.jpg', @link.image
+  end
+
   test 'deal correctly with incorrect url' do
     url = 'http://not-val.id/'
     @link = Link.create(url: url)

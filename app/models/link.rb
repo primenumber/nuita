@@ -69,6 +69,8 @@ class Link < ApplicationRecord
         else
           page.css('//meta[property="og:image"]/@content').first.to_s
         end
+      when /pixiv.*illust_id=(\d+)/
+        "https://pixiv.cat/#{$1}.jpg"
       else
         page.css('//meta[property="og:image"]/@content').first.to_s
       end
