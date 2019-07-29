@@ -23,6 +23,8 @@ class Link < ApplicationRecord
       when /nijie/
         url.sub!(/sp.nijie/, 'nijie')
         url.sub(/view_popup/, 'view')
+      when /melon/
+        url + '&adult_view=1'
       else
         url
       end
@@ -79,6 +81,8 @@ class Link < ApplicationRecord
         end
 
         proxy_url
+      when /melonbooks/
+        str = page.css('//meta[name="twitter:image"]/@content').first.to_s.sub(/&c=1/, '')
       else
         page.css('//meta[property="og:image"]/@content').first.to_s
       end
