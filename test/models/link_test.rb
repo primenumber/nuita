@@ -74,6 +74,15 @@ class LinkTest < ActiveSupport::TestCase
     assert_match 'めちゃシコごちうさアソート', @link.title
     assert_match 'image=212001143963.jpg', @link.image
     assert_no_match 'c=1', @link.image
+    assert_match 'めちゃシコシリーズ', @link.description
+
+    # スタッフの推薦文ない作品は構造変わるからテスト
+    url = 'https://www.melonbooks.co.jp/detail/detail.php?product_id=242938'
+    url = Link.normalize_url(url)
+    @link = Link.create(url: url)
+
+    assert_match 'ぬめぬめ', @link.title
+    assert_match '諏訪子様にショタがいじめられる話です。', @link.description #かわいそう…
   end
 
   test 'deal correctly with incorrect url' do

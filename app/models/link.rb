@@ -53,10 +53,22 @@ class Link < ApplicationRecord
     end
 
     def parse_description(page)
-      if page.css('//meta[property="og:description"]/@content').empty?
-        page.css('//meta[name$="description"]/@content').to_s.truncate(90)
+      case self.url
+      when /melonbooks/
+        # スタッフの紹介文でidが分岐
+        special_description = page.xpath('//div[@id="special_description"]//p/text()')
+        if special_description.any?
+          special_description.first.to_s.truncate(90)
+        else
+          description = page.xpath('//div[@id="description"]//p/text()')
+          description.first.to_s.truncate(90)
+        end
       else
-        page.css('//meta[property="og:description"]/@content').to_s.truncate(90)
+        if page.css('//meta[property="og:description"]/@content').empty?
+          page.css('//meta[name$="description"]/@content').to_s.truncate(90)
+        else
+          page.css('//meta[property="og:description"]/@content').to_s.truncate(90)
+        end
       end
     end
 
