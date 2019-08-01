@@ -79,8 +79,13 @@ class Link < ApplicationRecord
       when /nijie/
         str = page.css('//script[@type="application/ld+json"]/text()').first.to_s
 
-        if s = str.match(/https:\/\/pic.nijie.net\/(\d+)\/[^\/]+\/nijie_picture\/([^"]+)/)
-          'https://pic.nijie.net/' + s[1] + '/nijie_picture/' + s[2]
+        if s = str.match(/https:\/\/pic.nijie.(net|info)\/(\d+)\/[^\/]+\/nijie_picture\/([^"]+)/)
+          # 動画は容量大きすぎるし取らない
+          if s[2] =~ (/(jpg|png)/)
+            'https://pic.nijie.net/' + s[1] + '/nijie_picture/' + s[2]
+          else
+            str
+          end
         else
           page.css('//meta[property="og:image"]/@content').first.to_s
         end

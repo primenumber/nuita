@@ -39,6 +39,13 @@ class LinkTest < ActiveSupport::TestCase
     url = 'https://nijie.info/view.php?id=319985'
     url = Link.normalize_url(url)
     assert_match @link.url, url
+
+    # アニメはサムネに留めておく
+    url = 'http://nijie.info/view.php?id=177736'
+    url = Link.normalize_url(url)
+    @link = Link.create(url: url)
+
+    assert_match '__rs_l160x160', @link.image
   end
 
   test 'fetch pixiv correctly' do
