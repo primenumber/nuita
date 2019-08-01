@@ -23,6 +23,8 @@ class Link < ApplicationRecord
       when /nijie/
         url.sub!(/sp.nijie/, 'nijie')
         url.sub(/view_popup/, 'view')
+      when /melon/
+        url + '&adult_view=1'
       else
         url
       end
@@ -51,10 +53,22 @@ class Link < ApplicationRecord
     end
 
     def parse_description(page)
-      if page.css('//meta[property="og:description"]/@content').empty?
-        page.css('//meta[name$="description"]/@content').to_s.truncate(90)
+      case self.url
+      when /melonbooks/
+        # スタッフの紹介文でidが分岐
+        special_description = page.xpath('//div[@id="special_description"]//p/text()')
+        if special_description.any?
+          special_description.first.to_s.truncate(90)
+        else
+          description = page.xpath('//div[@id="description"]//p/text()')
+          description.first.to_s.truncate(90)
+        end
       else
-        page.css('//meta[property="og:description"]/@content').to_s.truncate(90)
+        if page.css('//meta[property="og:description"]/@content').empty?
+          page.css('//meta[name$="description"]/@content').to_s.truncate(90)
+        else
+          page.css('//meta[property="og:description"]/@content').to_s.truncate(90)
+        end
       end
     end
 
@@ -79,6 +93,8 @@ class Link < ApplicationRecord
         end
 
         proxy_url
+      when /melonbooks/
+        str = page.css('//meta[name="twitter:image"]/@content').first.to_s.sub(/&c=1/, '')
       else
         page.css('//meta[property="og:image"]/@content').first.to_s
       end
