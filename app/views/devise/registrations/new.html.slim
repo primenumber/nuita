@@ -1,8 +1,8 @@
 - provide(:title, "新規登録")
 
 .container.wider-margintop
-  .jumbotron
-    h1 Nuitaに登録する
+  .jumbotron.not-so-jumbo.mx-auto
+    h1.mb-4 Nuitaに登録する
     = form_for(resource, as: resource_name, html: {class: "form-group"}, url: registration_path(resource_name)) do |f|
       = render "devise/shared/error_messages", resource: resource
       .form-group.row.align-items-center
