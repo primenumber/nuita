@@ -84,7 +84,7 @@ class Link < ApplicationRecord
           if s[:imagename] =~ (/(jpg|png)/)
             'https://pic.nijie.net/' + s[:servername] + '/nijie_picture/' + s[:imagename]
           else
-            str
+            s[0]
           end
         else
           page.css('//meta[property="og:image"]/@content').first.to_s
