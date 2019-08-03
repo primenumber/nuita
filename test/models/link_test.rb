@@ -46,6 +46,13 @@ class LinkTest < ActiveSupport::TestCase
     @link = Link.create(url: url)
 
     assert_match '__rs_l160x160', @link.image
+
+    # cf: issue #59
+    url = 'https://nijie.info/view.php?id=322323'
+    url = Link.normalize_url(url)
+    @link = Link.create(url: url)
+
+    assert_equal 'https://pic.nijie.net/05/nijie_picture/3965_20190710041444_0.png', @link.image
   end
 
   test 'fetch pixiv correctly' do
