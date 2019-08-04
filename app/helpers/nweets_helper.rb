@@ -17,4 +17,11 @@ module NweetsHelper
     did_at > 1.hour.ago && user == current_user
   end
 
+  def likes_number(nweet)
+    if nweet.favorites.count > 0
+      nweet.favorites.count
+    else
+      nil
+    end
+  end
 end
