@@ -30,7 +30,7 @@ document.addEventListener('turbolinks:load', function(){
       }else{
         i.classList.replace('fa-heart-o', 'fa-heart');
         a.setAttribute('data-method', 'delete');
-        flash.innerText = 'いいねしました！';
+        //flash.innerText = 'いいねしました！';
         flash.classList.add('faved-flash');
         n++;
         num.innerText = n;
