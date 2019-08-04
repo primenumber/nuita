@@ -7,6 +7,7 @@ li.nweet
       span.screen_name
         | @
         = link_to nweet.user.screen_name, nweet.user
+      span.timestamp = nweet.did_at.in_time_zone('Tokyo')
     .content
       .maincontent
         span.time = time_ago_in_japanese(nweet.did_at)
@@ -24,22 +25,21 @@ li.nweet
       - if nweet.statement?
         .quote = text_url_to_link(nweet.statement).html_safe
 
-    .timestamp
-      .float-left
-        - if user_signed_in?
-          .fav-btn
-            - if current_user.faved?(nweet)
-              = link_to favorite_path(nweet: nweet), method: :delete, remote: true do
-                = fa_icon "heart", class: 'faved'
-            - else
-              = link_to favorite_path(nweet: nweet), method: :post, remote: :true do
-                = fa_icon "heart-o"
-            span#fav-flash
-      .text-right
-        - if delete_possible?(nweet.did_at, nweet.user)
-          = link_to nweet, method: :delete, class: "nweet-delete", data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" } do
-            = fa_icon "trash"
-        - unless @detail
-          = link_to nweet, class: "nweet-delete" do
-            = fa_icon "external-link"
-        = nweet.did_at.in_time_zone('Tokyo')
+      .nweet-bottom
+        .float-left
+          - if user_signed_in?
+            .fav-btn
+              - if current_user.faved?(nweet)
+                = link_to favorite_path(nweet: nweet), class: 'btn', method: :delete, remote: true do
+                  = fa_icon "heart", class: 'faved'
+              - else
+                = link_to favorite_path(nweet: nweet), class: 'btn', method: :post, remote: :true do
+                  = fa_icon "heart-o"
+              span#fav-flash
+        .text-right
+          - if delete_possible?(nweet.did_at, nweet.user)
+            = link_to nweet, method: :delete, class: "nweet-delete btn", data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" } do
+              = fa_icon "trash"
+          - unless @detail
+            = link_to nweet, class: "nweet-delete btn pr-0" do
+              = fa_icon "external-link"

@@ -254,6 +254,13 @@ body{
   }
 }
 
+.timestamp{
+  font-size: x-small;
+  padding-top: 10px;
+  color: #aaaaaa;
+  float: right;
+}
+
 .flash-container{
   padding-top: 1rem;
   padding-bottom: 0px;
@@ -286,7 +293,7 @@ body{
 
     .content{
       font-size: normal;
-      padding-bottom: 20px;
+      padding-bottom: 5px;
     }
 
     .quote {
@@ -303,19 +310,24 @@ body{
       }
     }
 
-    .timestamp{
-      font-size: small;
-      color: #aaaaaa;
+    .nweet-bottom{
       margin-bottom: 0px;
-      padding: 0px 0px 10px 0px;
+      padding: 0;
+      color: #aaaaaa;
 
       .fav-btn{
         margin: 0;
-        a{
+
+        a.btn{
           color: #aaa;
           &:hover{
             color: $fav-color;
           }
+          &:focus{
+            outline: none;
+            box-shadow: none;
+          }
+          padding-left: 0;
         }
 
         #fav-flash{
@@ -336,6 +348,11 @@ body{
 
       .text-right{
         line-height: 1rem;
+      }
+
+      .btn{
+        outline: none;
+        box-shadow: none;
       }
     }
 
@@ -363,7 +380,6 @@ body{
 
     a.nweet-delete{
       color: inherit;
-      margin-right: 3px;
     }
   }
 }
