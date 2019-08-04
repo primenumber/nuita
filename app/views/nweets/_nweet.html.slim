@@ -30,11 +30,13 @@ li.nweet
           - if user_signed_in?
             .fav-btn
               - if current_user.faved?(nweet)
-                = link_to favorite_path(nweet: nweet), class: 'btn', method: :delete, remote: true do
-                  = fa_icon "heart", class: 'faved'
+                = link_to favorite_path(nweet: nweet), class: 'btn faved', method: :delete, remote: true do
+                  = fa_icon "heart"
+                  span.pl-1.faved#likes-number = likes_number(nweet)
               - else
                 = link_to favorite_path(nweet: nweet), class: 'btn', method: :post, remote: :true do
                   = fa_icon "heart-o"
+                  span.pl-1#likes-number = likes_number(nweet)
               span#fav-flash
         .text-right
           - if delete_possible?(nweet.did_at, nweet.user)

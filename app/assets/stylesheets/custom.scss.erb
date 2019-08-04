@@ -110,6 +110,10 @@ $fav-color-light: #aa544e;
       transform: none;
     }
   }
+
+  .timestamp{
+    display: none;
+  }
 }
 
 body{
@@ -332,19 +336,19 @@ body{
           padding-left: 0;
         }
 
+        .btn.faved{
+          color: $fav-color;
+          &:hover{
+            color: $fav-color-light;
+          }
+        }
+
         #fav-flash{
           font-size: x-small;
           padding-left: 0.25rem;
         }
         .faved-flash{
           color: $fav-color;
-        }
-      }
-
-      i.faved{
-        color: $fav-color;
-        &:hover{
-          color: $fav-color-light;
         }
       }
 
