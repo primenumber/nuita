@@ -1,13 +1,13 @@
 ul.nav.mode-nav.ml-0
   li.nav_item#home-nav
     = link_to root_url do
-      = fa_icon 'home'
+      = icon 'fas', 'home'
   /li.nav_item#notifications-nav
     = link_to '#' do
-      = fa_icon 'bell'
+      = icon 'fas', 'bell'
   li.nav_item#favorites-nav
     = link_to likes_user_path(current_user) do
-      = fa_icon 'heart'
+      = icon 'fas', 'heart'
 ul.nav.navbar-nav.mx-auto.navbar-center
   = link_to '#', class: "navbar-brand" do
    = image_tag image_path('brandlogo.png'), height: '48px'

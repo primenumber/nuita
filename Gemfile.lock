@@ -129,9 +129,7 @@ GEM
     fog-xml (0.1.3)
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
-    font-awesome-rails (4.7.0.5)
-      railties (>= 3.2, < 6.1)
-    font-awesome-sass (5.8.1)
+    font-awesome-sass (5.9.0)
       sassc (>= 1.11)
     formatador (0.2.5)
     globalid (0.4.2)
@@ -360,8 +358,7 @@ DEPENDENCIES
   ed25519
   faker
   fog-aws
-  font-awesome-rails
-  font-awesome-sass
+  font-awesome-sass (~> 5.9.0)
   google-analytics-rails
   html2slim
   jbuilder (~> 2.5)
