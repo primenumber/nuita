@@ -31,17 +31,17 @@ li.nweet
             .fav-btn
               - if current_user.faved?(nweet)
                 = link_to favorite_path(nweet: nweet), class: 'btn faved', method: :delete, remote: true do
-                  = fa_icon "heart"
+                  = icon 'fas', 'heart'
                   span.pl-1.faved#likes-number = likes_number(nweet)
               - else
                 = link_to favorite_path(nweet: nweet), class: 'btn', method: :post, remote: :true do
-                  = fa_icon "heart-o"
+                  = icon 'far', 'heart'
                   span.pl-1#likes-number = likes_number(nweet)
               span#fav-flash
         .text-right
           - if delete_possible?(nweet.did_at, nweet.user)
             = link_to nweet, method: :delete, class: "nweet-delete btn", data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" } do
-              = fa_icon "trash"
+              = icon 'fas', 'trash'
           - unless @detail
             = link_to nweet, class: "nweet-delete btn pr-0" do
-              = fa_icon "external-link"
+              = icon 'fas', 'external-link-alt'
