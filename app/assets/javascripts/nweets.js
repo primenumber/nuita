@@ -16,8 +16,8 @@ document.addEventListener('turbolinks:load', function(){
         n = 0;
       }
 
-      if(i.classList.contains('fa-heart')){
-        i.classList.replace('fa-heart', 'fa-heart-o');
+      if(i.classList.contains('fas')){
+        i.classList.replace('fas', 'far');
         a.setAttribute('data-method', 'post');
         flash.classList.remove('faved-flash')
         flash.innerText = '';
@@ -28,7 +28,7 @@ document.addEventListener('turbolinks:load', function(){
           num.innerText = "";
         }
       }else{
-        i.classList.replace('fa-heart-o', 'fa-heart');
+        i.classList.replace('far', 'fas');
         a.setAttribute('data-method', 'delete');
         //flash.innerText = 'いいねしました！';
         flash.classList.add('faved-flash');
