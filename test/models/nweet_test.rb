@@ -41,6 +41,10 @@ class NweetTest < ActiveSupport::TestCase
 
     @nweet.statement = '誰だ今の'
     assert @nweet.valid?
+
+    # utf8mb4
+    @nweet.statemnt = '🕦 💍 📱 🏎 👠 🚼 🎭 👢 🏜 📖'
+    assert @nweet.valid?
   end
 
   test 'url_digest must be generated' do
