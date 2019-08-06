@@ -17,10 +17,10 @@ gem 'faker'
 gem 'nokogiri'
 gem 'valid_url'
 
+gem 'mysql2'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.3.6'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -81,7 +81,6 @@ group :test do
 end
 
 group :production, :staging do
-  gem 'mysql2'
   gem 'unicorn'
   gem 'google-analytics-rails'
 end

@@ -12,9 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_07_19_135706) do
 
-  create_table "favorites", force: :cascade do |t|
-    t.integer "nweet_id", null: false
-    t.integer "user_id", null: false
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "nweet_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["nweet_id"], name: "index_favorites_on_nweet_id"
@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(version: 2019_07_19_135706) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "links", force: :cascade do |t|
-    t.text "title", limit: 100
-    t.text "description", limit: 500
+  create_table "links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "title", limit: 255
+    t.text "description"
     t.string "image"
     t.string "card"
     t.string "url", null: false
@@ -33,28 +33,28 @@ ActiveRecord::Schema.define(version: 2019_07_19_135706) do
     t.index ["url"], name: "index_links_on_url", unique: true
   end
 
-  create_table "nweet_links", force: :cascade do |t|
-    t.integer "nweet_id"
-    t.integer "link_id"
+  create_table "nweet_links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "nweet_id"
+    t.bigint "link_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["link_id"], name: "index_nweet_links_on_link_id"
     t.index ["nweet_id"], name: "index_nweet_links_on_nweet_id"
   end
 
-  create_table "nweets", force: :cascade do |t|
+  create_table "nweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "did_at"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "statement", limit: 100
+    t.text "statement", limit: 255
     t.string "url_digest"
     t.index ["url_digest"], name: "index_nweets_on_url_digest", unique: true
     t.index ["user_id", "did_at"], name: "index_nweets_on_user_id_and_did_at"
     t.index ["user_id"], name: "index_nweets_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -91,4 +91,9 @@ ActiveRecord::Schema.define(version: 2019_07_19_135706) do
     t.index ["url_digest"], name: "index_users_on_url_digest", unique: true
   end
 
+  add_foreign_key "favorites", "nweets"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "nweet_links", "links"
+  add_foreign_key "nweet_links", "nweets"
+  add_foreign_key "nweets", "users"
 end
