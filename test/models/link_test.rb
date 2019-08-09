@@ -99,6 +99,13 @@ class LinkTest < ActiveSupport::TestCase
     assert_match '諏訪子様にショタがいじめられる話です。', @link.description #かわいそう…
   end
 
+  test 'fetch komiflo correctly' do
+    url = 'https://komiflo.com/#!/comics/4635/read/page/3'
+    url = Link.normalize_url(url)
+    @link = Link.create(url: url)
+
+    assert_equal 'https://komiflo.com/comics/4635', @link.url
+  end
   test 'deal correctly with incorrect url' do
     url = 'http://not-val.id/'
     @link = Link.create(url: url)

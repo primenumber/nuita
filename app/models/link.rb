@@ -25,6 +25,8 @@ class Link < ApplicationRecord
         url.sub(/view_popup/, 'view')
       when /melon/
         url + '&adult_view=1'
+      when /komiflo\.com(?:\/#!)?\/comics\/(\d+)/
+        'https://komiflo.com/comics/' + $1
       else
         url
       end
