@@ -105,7 +105,11 @@ class LinkTest < ActiveSupport::TestCase
     @link = Link.create(url: url)
 
     assert_equal 'https://komiflo.com/comics/4635', @link.url
+    assert_match '晴れ時々露出予報', @link.title
+    assert_match 'NAZ', @link.description
+    assert_equal 'https://t.komiflo.com/564_mobile_large_3x/contents/cdcfb81ea67a74519b8ad9dea6de8c5d4cec9f9f.jpg', @link.image
   end
+
   test 'deal correctly with incorrect url' do
     url = 'http://not-val.id/'
     @link = Link.create(url: url)

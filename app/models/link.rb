@@ -36,13 +36,19 @@ class Link < ApplicationRecord
   private
 
     def fetch_infos
-      begin
-        page = Nokogiri::HTML.parse(open(self.url).read)
-        self.title = parse_title(page)
-        self.description = parse_description(page)
-        self.image = parse_image(page)
-      rescue
-        self.title = self.url
+      case self.url
+      when /komiflo\.com(?:\/#!)?\/comics\/(\d+)/
+        resolve_komiflo($1)
+      else
+        begin
+          page = Nokogiri::HTML.parse(open(self.url).read)
+          # これは本当に最悪　全部サイトごとの関数にリファクタリングする
+          self.title = parse_title(page)
+          self.description = parse_description(page)
+          self.image = parse_image(page)
+        rescue
+          self.title = self.url
+        end
       end
     end
 
@@ -105,5 +111,28 @@ class Link < ApplicationRecord
       else
         page.css('//meta[property="og:image"]/@content').first.to_s
       end
+    end
+
+    # 項目ごとに分岐するのは失敗だった気がする。最初にサイトごとに分岐してしまったほうが楽
+    # 特にkomifloの場合は全項目jsonから判断しなきゃいけないので……
+    def resolve_komiflo(id)
+      uri = URI.parse("https://api.komiflo.com/content/id/#{id}")
+      json = JSON.parse(Net::HTTP.get(uri))
+
+      begin
+        author = json['content']['attributes']['artists']['children'][0]['data']['name']
+      rescue
+        self.title = self.url
+        return
+      end
+      
+      comic_title = json['content']['data']['title']
+      self.title = "#{comic_title} | Komiflo"
+
+      parent = json['content']['parents'][0]['data']['title']
+      self.description = '著: ' + author if author
+      self.description += " / #{parent}" if parent
+
+      self.image = 'https://t.komiflo.com/564_mobile_large_3x/' + json['content']['named_imgs']['cover']['filename'];
     end
 end
