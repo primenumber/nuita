@@ -116,23 +116,22 @@ class Link < ApplicationRecord
     # 項目ごとに分岐するのは失敗だった気がする。最初にサイトごとに分岐してしまったほうが楽
     # 特にkomifloの場合は全項目jsonから判断しなきゃいけないので……
     def resolve_komiflo(id)
-      uri = URI.parse("https://api.komiflo.com/content/id/#{id}")
-      json = JSON.parse(Net::HTTP.get(uri))
-
       begin
+        uri = URI.parse("https://api.komiflo.com/content/id/#{id}")
+        json = JSON.parse(Net::HTTP.get(uri))
+        
         author = json['content']['attributes']['artists']['children'][0]['data']['name']
+
+        comic_title = json['content']['data']['title']
+        self.title = "#{comic_title} | Komiflo"
+
+        parent = json['content']['parents'][0]['data']['title']
+        self.description = '著: ' + author if author
+        self.description += " / #{parent}" if parent
+
+        self.image = 'https://t.komiflo.com/564_mobile_large_3x/' + json['content']['named_imgs']['cover']['filename'];
       rescue
         self.title = self.url
-        return
       end
-      
-      comic_title = json['content']['data']['title']
-      self.title = "#{comic_title} | Komiflo"
-
-      parent = json['content']['parents'][0]['data']['title']
-      self.description = '著: ' + author if author
-      self.description += " / #{parent}" if parent
-
-      self.image = 'https://t.komiflo.com/564_mobile_large_3x/' + json['content']['named_imgs']['cover']['filename'];
     end
 end
