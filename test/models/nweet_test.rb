@@ -43,7 +43,7 @@ class NweetTest < ActiveSupport::TestCase
     assert @nweet.valid?
 
     # utf8mb4
-    @nweet.statemnt = '🕦 💍 📱 🏎 👠 🚼 🎭 👢 🏜 📖'
+    @nweet.statement = '🕦 💍 📱 🏎 👠 🚼 🎭 👢 🏜 📖'
     assert @nweet.valid?
   end
 
