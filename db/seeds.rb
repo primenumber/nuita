@@ -23,3 +23,10 @@ User.all.map do |user|
     user.nweets.create(did_at: Faker::Time.backward(50))
   end
 end
+
+users = User.all
+user  = users.first
+followees = users[2..50]
+followers = users[3..40]
+followees.each { |followee| user.follow(followee) }
+followers.each { |follower| follower.follow(user) }
