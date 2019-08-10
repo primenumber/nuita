@@ -193,31 +193,33 @@ body{
     margin: 2px 0px 0px 0px;
   }
 
-  ul.user_stats{
-    box-sizing: border-box;
-    padding-left: 0px;
-    overflow: auto;
+  h3.handle_name{
+    font-size: 1.25rem;
+    padding: 0px;
+  }
 
-    li{
-      list-style: none;
-      float: left;
-      line-height: 1.5rem;
-      margin-right: 1rem;
-      a{
-        .nweet-stats{
-          font-size: x-large;
-          color: $brand-color;
-          font-weight: bold;
-          &:hover{
-            color: $brand-color-hover;
-          }
-        }
-        .stat-label{
-          font-size: x-small;
-          color: black;
-        }
-        text-decoration: none;
-      }
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .badge-brand{
+    background-color: $brand-color;
+    color: #fff;
+    font-size: 1rem;
+
+    &:hover{
+      background-color: $brand-color-light;
+    }
+  }
+
+  .list-group-item{
+    background-color: #fcfcfc;
+    padding: 0.25rem 0;
+    border: none;
+    &:hover{
+      color: $brand-color-dark;
+      transition: 0.2s;
     }
   }
 
@@ -408,6 +410,15 @@ body{
 @media screen and (min-width: 766px) {
   .not-so-jumbo{
     width: 766px;
+  }
+
+  .user-info{
+    .media{
+      flex-direction: column;
+    }
+    .list-group{
+      font-size: small;
+    }
   }
 }
 
