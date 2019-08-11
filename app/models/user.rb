@@ -71,8 +71,12 @@ class User < ApplicationRecord
     self.active_relationships.find_by(followee_id: other_user).destroy
   end
 
-  def following?(other_user)
+  def followee?(other_user)
     self.followees.include?(other_user)
+  end
+
+  def follower?(other_user)
+    self.followers.include?(other_user)
   end
 
   def faved?(nweet)
