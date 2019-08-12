@@ -209,7 +209,31 @@ body{
     font-size: 1rem;
 
     &:hover{
-      background-color: $brand-color-light;
+      background-color: $brand-color-hover;
+    }
+  }
+
+  .badge-brand.active{
+    background-color: #fff;
+    color: $brand-color;
+    position: relative;
+
+    &:after{
+      border: 1px solid $brand-color;
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 2px solid $brand-color;
+      border-radius: 10rem;
+
+      &:hover{
+        background-color: #fff;
+        color: $brand-color-light;
+        border: 2px solid $brand-color-light;
+      }
     }
   }
 
@@ -218,7 +242,7 @@ body{
     padding: 0.25rem 0;
     border: none;
     &:hover{
-      color: $brand-color-dark;
+      color: #132602;
       transition: 0.2s;
     }
   }
