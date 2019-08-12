@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users, except: [:index], param: :url_digest do
     member do
       get :likes
+      get :followers, :followees
     end
   end
 

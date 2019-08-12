@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
+  include Warden::Test::Helpers
+
   def setup
+    Warden.test_mode!
     @user = users(:chikuwa)
     @shinji = users(:shinji)
   end
@@ -40,5 +43,19 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @user.delete_twitter_account
 
     assert_not @user.autotweet_enabled
+  end
+
+  test 'should redirect followees view when not logged in' do
+    get followees_user_path(@user)
+    assert_redirected_to root_url
+
+    login_as(@user)
+    # shinjiはフォロワー0人. フォローはしてる
+    get followees_user_path(@shinji)
+    assert_redirected_to root_url
+
+    @user.follow(@shinji)
+    get followees_user_path(@shinji)
+    assert_response :success
   end
 end
