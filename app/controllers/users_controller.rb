@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :friend_user, only: [:likes, :followers, :followees]
+  before_action :friend_user, only: [:likes]
+  before_action :authenticate_user!, only: [:followers, :followees]
 
   def show
     @user = User.find_by(url_digest: params[:url_digest])
@@ -8,9 +9,6 @@ class UsersController < ApplicationController
 
   def likes
     @user = User.find_by(url_digest: params[:url_digest])
-
-    redirect_to root_url unless @user == current_user
-
     @feed_items = @user.fav_nweets.paginate(page: params[:page], per_page: 100)
   end
 

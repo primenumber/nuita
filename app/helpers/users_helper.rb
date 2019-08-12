@@ -21,4 +21,8 @@ module UsersHelper
   def current_user?(user)
     user == current_user
   end
+
+  def friend?(user)
+    user == current_user || (user.followee?(current_user) && user.follower?(current_user))
+  end
 end
