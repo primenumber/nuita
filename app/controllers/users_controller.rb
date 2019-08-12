@@ -15,10 +15,16 @@ class UsersController < ApplicationController
   end
 
   def followers
+    @topic = 'フォロワー'
+    @user = User.find_by(url_digest: params[:url_digest])
+    @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
 
   def followees
+    @topic = 'フォロー'
+    @user = User.find_by(url_digest: params[:url_digest])
+    @users = @user.followees.paginate(page: params[:page])
     render 'show_follow'
   end
 
