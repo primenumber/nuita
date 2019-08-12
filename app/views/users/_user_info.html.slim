@@ -15,7 +15,7 @@ section.user-info
       = link_to(followees_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
         | フォロー
         span.badge.badge-brand.badge-pill = user.followees.count
-      = link_to(likes_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
+      = link_to(followers_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
         | フォロワー
         span.badge.badge-brand.badge-pill = user.followers.count
   .user_links
