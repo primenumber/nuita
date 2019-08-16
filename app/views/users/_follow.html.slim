@@ -1,0 +1,4 @@
+.user-follow-form
+  = form_for(current_user.active_relationships.build) do |f|
+    = hidden_field_tag :followee_id, user.id
+    = f.submit "フォローする", class: "btn btn-follow btn-outline-primary"

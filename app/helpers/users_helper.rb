@@ -25,4 +25,9 @@ module UsersHelper
   def friend?(user)
     user == current_user || (user.followee?(current_user) && user.follower?(current_user))
   end
+
+  # 「自分がログイン済みで、かつ相手が自分以外のユーザーかどうか」
+  def other_user?(user)
+    !!current_user && current_user != user
+  end
 end

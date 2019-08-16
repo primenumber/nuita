@@ -4,6 +4,11 @@ section.user-info
     .media-body.user-info-content
       h3.handle_name = user.handle_name
       .screen_name = "@" + user.screen_name
+  - if other_user?(user)
+    - if current_user.followee?(user)
+      = render 'unfollow', user: user
+    - else
+      = render 'follow', user: user
   .list-group
     = link_to(user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
       |  ヌイート

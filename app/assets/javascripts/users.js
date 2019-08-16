@@ -16,3 +16,19 @@ document.addEventListener('turbolinks:load', function(){
     element.classList.add('active');
   }
 });
+
+document.addEventListener('turbolinks:load', function(){
+  var btn = document.getElementById('buttonUnfollow');
+
+  if(!!btn){
+    btn.addEventListener('click', () => {
+      btn.value = 'フォローする';
+    }, false);
+    btn.addEventListener('mouseover', () => {
+      btn.value = 'フォロー解除';
+    }, false);
+    btn.addEventListener('mouseout', () => {
+      btn.value = 'フォロー中';
+    }, false);
+  }
+});
