@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :friend_user, only: [:likes]
-  before_action :authenticate_user!, only: [:followers, :followees]
+  before_action :correct_user, only: [:followers, :followees]
 
   def show
     @user = User.find_by(url_digest: params[:url_digest])
@@ -31,7 +31,14 @@ class UsersController < ApplicationController
     def friend_user
       @user = User.find_by(url_digest: params[:url_digest])
       unless @user == current_user || (@user.followee?(current_user) && @user.follower?(current_user))
-        redirect_to(root_url)
+        redirect_to(new_user_session_url)
+      end
+    end
+
+    def correct_user
+      user = User.find_by(url_digest: params[:url_digest])
+      unless user == current_user
+        redirect_to(new_user_session_url)
       end
     end
 end

@@ -45,17 +45,29 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not @user.autotweet_enabled
   end
 
-  test 'should redirect followees view when not logged in' do
+  test 'should redirect followees view to other user' do
     get followees_user_path(@user)
-    assert_redirected_to root_url
+    assert_redirected_to new_user_session_url
 
     login_as(@user)
     # shinjiはフォロワー0人. フォローはしてる
     get followees_user_path(@shinji)
-    assert_redirected_to root_url
+    assert_redirected_to new_user_session_url
 
-    @user.follow(@shinji)
-    get followees_user_path(@shinji)
+    get followees_user_path(@user)
+    assert_response :success
+  end
+
+  test 'should redirect followers view to other user' do
+    get followers_user_path(@user)
+    assert_redirected_to new_user_session_url
+
+    login_as(@user)
+    # shinjiはフォロワー0人. フォローはしてる
+    get followers_user_path(@shinji)
+    assert_redirected_to new_user_session_url
+
+    get followers_user_path(@user)
     assert_response :success
   end
 end
