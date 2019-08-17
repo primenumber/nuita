@@ -6,6 +6,7 @@ chikuwa:
   twitter_uid: "1133391706987139072"
   twitter_screen_name: "chikuwameltdown"
   twitter_url: "https://twitter.com/chikuwameltdown"
+  biography: "誰だ今の"
 
 emiya:
   handle_name: "えみや"
@@ -18,6 +19,7 @@ shinji:
   screen_name: "mato_shinji"
   email: "shinji@matou.com"
   url_digest: "bJUPf2DQrGHlxqVB"
+  biography: "こんにちは〜"
 
 # no nweets, no favs... because he is a girl.
 girl:
