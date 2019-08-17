@@ -30,4 +30,8 @@ module UsersHelper
   def other_user?(user)
     !!current_user && current_user != user
   end
+
+  def followee_or_self?(user)
+    current_user == user || current_user.followee?(user)
+  end
 end
