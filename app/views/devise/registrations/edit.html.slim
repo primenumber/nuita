@@ -1,7 +1,7 @@
 = provide(:title, "プロフィールを編集する")
 
 .container.wider-margintop
-  .jumbotron
+  .jumbotron.not-so-jumbo.mx-auto
     h1 プロフィールを編集する
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-group" }) do |f|
       = render "devise/shared/error_messages", resource: resource
@@ -30,6 +30,11 @@
           = f.label :email, class: "col-form-label"
         .col-md-9
           = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+      .form-group.row
+        .col-md-3
+          = f.label :biography, class: "col-form-label"
+        .col-md-9
+          = f.text_area :biography, maxlength: 100, rows: 2, class: "form-control"
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         div
           | Currently waiting confirmation for:
@@ -49,10 +54,8 @@
           = f.label :password_confirmation
           br
           = f.password_field :password_confirmation, autocomplete: "new-password"
-      h5.font-weight-bold.pt-2 Twitter連携
-      - if current_user.twitter_screen_name.nil?
-        p = link_to "twitterアカウントを登録", "/auth/twitter", class: "btn btn-twitter"
-      - else
+      - if current_user.twitter_screen_name.present?
+        h5.font-weight-bold.pt-2 Twitter連携
         .form-group.row.align-items-center
           .col-md-3
             .col-form-label = link_to "@#{current_user.twitter_screen_name}", current_user.twitter_url
@@ -80,6 +83,8 @@
           = f.password_field :current_password, autocomplete: "current-password", class: "form-control"
       .actions
         = f.submit "更新する", class: "btn btn-brandcolor registration_button"
+    - if current_user.twitter_screen_name.nil?
+      p = link_to "twitterアカウントを登録", "/auth/twitter", class: "btn btn-twitter"
     h3 その他のオプション
     p = button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete, class: "btn btn-danger"
     = link_to "戻る", :back

@@ -70,4 +70,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get followers_user_path(@user)
     assert_response :success
   end
+
+  test 'should show or hide biography' do
+    get user_path(@shinji)
+    assert_no_match @shinji.biography, response.body
+
+    login_as @user
+    post relationships_path, params: {followee_id: @shinji.id}
+    get user_path(@shinji)
+    assert_match @shinji.biography, response.body
+  end
 end

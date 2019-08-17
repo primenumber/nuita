@@ -6,8 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(handle_name: 'ちくわ大明神', screen_name: 'chikuwa', email: 'chikuwa@daimyojin.com', password: 'chikuwa00')
-
+User.create!(handle_name: 'ちくわ大明神', screen_name: 'chikuwa', email: 'chikuwa@daimyojin.com', password: 'chikuwa00', biography: '誰だ今の')
 
 Faker::Config.locale = :en
 49.times do |n|
@@ -16,6 +15,7 @@ Faker::Config.locale = :en
   email = Faker::Internet.email
   password = Faker::Internet.password
   user = User.create!(handle_name: handle_name, screen_name: screen_name, email: email, password: password)
+  biography = Faker::Lorem.sentence 
 end
 
 User.all.map do |user|

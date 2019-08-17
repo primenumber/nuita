@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_09_080420) do
+ActiveRecord::Schema.define(version: 2019_08_17_100841) do
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "nweet_id", null: false
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2019_08_09_080420) do
     t.string "twitter_access_token"
     t.boolean "autotweet_enabled", default: false
     t.string "autotweet_content", limit: 40, default: "射精しました！ #nuita [LINK]"
+    t.string "biography", limit: 140
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["screen_name"], name: "index_users_on_screen_name", unique: true
