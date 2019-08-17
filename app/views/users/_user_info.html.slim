@@ -9,6 +9,9 @@ section.user-info
       = render 'unfollow', user: user
     - else
       = render 'follow', user: user
+    - if current_user.follower?(user)
+      .my-1#you-are-followed
+        span.label-muted フォローされています
   .list-group
     = link_to(user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
       |  ヌイート
