@@ -55,6 +55,7 @@
           br
           = f.password_field :password_confirmation, autocomplete: "new-password"
       - if current_user.twitter_screen_name.present?
+        h5.font-weight-bold.pt-2 Twitter連携
         .form-group.row.align-items-center
           .col-md-3
             .col-form-label = link_to "@#{current_user.twitter_screen_name}", current_user.twitter_url
@@ -82,7 +83,6 @@
           = f.password_field :current_password, autocomplete: "current-password", class: "form-control"
       .actions
         = f.submit "更新する", class: "btn btn-brandcolor registration_button"
-    h5.font-weight-bold.pt-2 Twitter連携
     - if current_user.twitter_screen_name.nil?
       p = link_to "twitterアカウントを登録", "/auth/twitter", class: "btn btn-twitter"
     h3 その他のオプション
