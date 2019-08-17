@@ -31,6 +31,6 @@ section.user-info
         | フォロワー
         span.badge.badge-brand.badge-pill#badgeFollowers = user.followers.count
   .user_links
-    - if user.twitter_url?
+    - if friend?(user) && user.twitter_url?
       = link_to user.twitter_url do
         = icon('fab', 'twitter', '@' + user.twitter_screen_name)
