@@ -10,6 +10,8 @@
           = @users.count
           | 人の
           = @topic
+      - else
+        .nweet-count = "まだ#{@topic}がありません……"
       ul.nweets-list
         = render @users
       = will_paginate
