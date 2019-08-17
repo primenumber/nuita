@@ -1,0 +1,14 @@
+li.nweet
+  .icon
+    = link_to icon_for(user, size: 50), user
+  .right
+    .user_info
+      span.handle_name = link_to user.handle_name, user
+      span.screen_name
+        | @
+        = link_to user.screen_name, user
+    .content
+      .maincontent
+        .user-status-in-list
+          span.font-weight-bold = user.nweets.count
+          span.pl-1.small ヌイート

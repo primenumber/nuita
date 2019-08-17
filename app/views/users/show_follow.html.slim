@@ -1,0 +1,15 @@
+- provide(:title, "#{@user.handle_name}さんの#{@topic}")
+
+.container
+  .row
+    .d-md-block.col-md-3
+      = render 'users/user_info', {user: @user}
+    .col.nweet-feed.row_top
+      - if @users.any?
+        .nweet-count
+          = @users.count
+          | 人の
+          = @topic
+      ul.nweets-list
+        = render @users
+      = will_paginate

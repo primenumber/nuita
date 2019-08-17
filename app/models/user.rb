@@ -17,6 +17,11 @@ class User < ApplicationRecord
   validates :screen_name, format: {with: /[0-9a-zA-Z_]/}
   validates :handle_name, length: {maximum: 30}
 
+  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  has_many :followees, through: :active_relationships
+  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followee_id', dependent: :destroy
+  has_many :followers, through: :passive_relationships
+
   # list nweets shown in timeline.
   def timeline
     Nweet.all # currently it is global! (since FF is not implemented)
@@ -56,6 +61,22 @@ class User < ApplicationRecord
     end
 
     client.update(content)
+  end
+
+  def follow(other_user)
+    self.followees << other_user
+  end
+
+  def unfollow(other_user)
+    self.active_relationships.find_by(followee_id: other_user).destroy
+  end
+
+  def followee?(other_user)
+    self.followees.include?(other_user)
+  end
+
+  def follower?(other_user)
+    self.followers.include?(other_user)
   end
 
   def faved?(nweet)

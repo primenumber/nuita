@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:likes]
+  before_action :friend_user, only: [:likes]
+  before_action :correct_user, only: [:followers, :followees]
 
   def show
     @user = User.find_by(url_digest: params[:url_digest])
@@ -8,9 +9,36 @@ class UsersController < ApplicationController
 
   def likes
     @user = User.find_by(url_digest: params[:url_digest])
-
-    redirect_to root_url unless @user == current_user
-
     @feed_items = @user.fav_nweets.paginate(page: params[:page], per_page: 100)
   end
+
+  def followers
+    @topic = 'フォロワー'
+    @user = User.find_by(url_digest: params[:url_digest])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followees
+    @topic = 'フォロー'
+    @user = User.find_by(url_digest: params[:url_digest])
+    @users = @user.followees.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  private
+
+    def friend_user
+      @user = User.find_by(url_digest: params[:url_digest])
+      unless @user == current_user || (@user.followee?(current_user) && @user.follower?(current_user))
+        redirect_to(new_user_session_url)
+      end
+    end
+
+    def correct_user
+      user = User.find_by(url_digest: params[:url_digest])
+      unless user == current_user
+        redirect_to(new_user_session_url)
+      end
+    end
 end

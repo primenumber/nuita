@@ -22,7 +22,7 @@ li.nweet
               .card-body
                 h5.card-title = nweet.links.first.title
                 p.card-text = nweet.links.first.description
-      - if nweet.statement?
+      - if nweet.statement? && (!@timeline || followee_or_self?(nweet.user))
         .quote = text_url_to_link(nweet.statement).html_safe
 
       .nweet-bottom
