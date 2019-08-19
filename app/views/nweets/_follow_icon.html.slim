@@ -1,0 +1,11 @@
+/ 普通にヘルパー使えば良い気がするけど、
+  条件分岐こうやって書いたほうがクエリ呼び出し2回で済んで早い気がする
+- if current_user.followee?(user)
+  span.follow-icon.unfollowable
+    - if current_user.follower?(user)
+      = icon 'fas', 'exchange-alt'
+    - else
+      = icon 'fas', 'user-check'
+- else
+  span.follow-icon.followable
+    = icon 'fas', 'user-plus'

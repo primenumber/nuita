@@ -8,6 +8,8 @@ li.nweet
         | @
         = link_to nweet.user.screen_name, nweet.user
       span.timestamp = nweet.did_at.in_time_zone('Tokyo')
+      - if @timeline && other_user?(nweet.user)
+        = render 'nweets/follow_icon', user: nweet.user
     .content
       .maincontent
         span.time = time_ago_in_japanese(nweet.did_at)
@@ -16,7 +18,6 @@ li.nweet
         = render 'nweets/card', nweet: nweet
       - if nweet.statement? && (!@timeline || followee_or_self?(nweet.user))
         .quote = text_url_to_link(nweet.statement).html_safe
-
       .nweet-bottom
         .float-left
           - if user_signed_in?
