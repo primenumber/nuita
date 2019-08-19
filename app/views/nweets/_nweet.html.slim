@@ -13,31 +13,14 @@ li.nweet
         span.time = time_ago_in_japanese(nweet.did_at)
         | に射精しました。
       - if nweet.links.any?
-        = link_to nweet.links.first.url, target: '_blank', class: 'card my-1' do
-          .row.no-gutters.align-items-center
-            - if nweet.links.first.image?
-              .col-md-6.p-0
-                = image_tag nweet.links.first.image, class: 'card-img'
-            .col.p-0
-              .card-body
-                h5.card-title = nweet.links.first.title
-                p.card-text = nweet.links.first.description
+        = render 'nweets/card', nweet: nweet
       - if nweet.statement? && (!@timeline || followee_or_self?(nweet.user))
         .quote = text_url_to_link(nweet.statement).html_safe
 
       .nweet-bottom
         .float-left
           - if user_signed_in?
-            .fav-btn
-              - if current_user.faved?(nweet)
-                = link_to favorite_path(nweet: nweet), class: 'btn faved', method: :delete, remote: true do
-                  = icon 'fas', 'heart'
-                  span.pl-1.faved#likes-number = likes_number(nweet)
-              - else
-                = link_to favorite_path(nweet: nweet), class: 'btn', method: :post, remote: :true do
-                  = icon 'far', 'heart'
-                  span.pl-1#likes-number = likes_number(nweet)
-              span#fav-flash
+            = render 'nweets/favorite_form', nweet: nweet
         .text-right
           - if delete_possible?(nweet.did_at, nweet.user)
             = link_to nweet, method: :delete, class: "nweet-delete btn", data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" } do
