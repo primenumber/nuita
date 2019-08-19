@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   resources :nweets, only: [:create, :update, :destroy, :show], param: :url_digest
   resource :favorite, only: [:create, :destroy]
   resource :link, only: [:create]
-  resources :relationships, only: [:create, :destroy]
+  resource :relationship, only: [:create, :destroy]
 end

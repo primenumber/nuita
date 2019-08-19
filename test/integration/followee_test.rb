@@ -16,7 +16,7 @@ class FolloweeTest < ActionDispatch::IntegrationTest
     get root_path
     assert_no_match @nweet.statement, response.body
 
-    post relationships_path, params: {followee_id: @other_user.id}
+    post relationship_path(followee: @other_user)
     get root_path
     assert_match @nweet.statement, response.body
   end

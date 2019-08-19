@@ -22,13 +22,13 @@ document.addEventListener('turbolinks:load', function(){
 
   if(!!btn){
     btn.addEventListener('click', () => {
-      btn.value = 'フォローする';
+      btn.innerText = 'フォローする';
     }, false);
     btn.addEventListener('mouseover', () => {
-      btn.value = 'フォロー解除';
+      btn.innerText = 'フォロー解除';
     }, false);
     btn.addEventListener('mouseout', () => {
-      btn.value = 'フォロー中';
+      btn.innerText = 'フォロー中';
     }, false);
   }
 });
