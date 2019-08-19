@@ -6,7 +6,6 @@ document.addEventListener('turbolinks:load', function(){
       var a = div.firstElementChild;
       var i = a.childNodes[0];
       var num = a.childNodes[1];
-      var flash = div.childNodes[1];
       a.classList.toggle('faved');
 
       var n;
@@ -19,8 +18,6 @@ document.addEventListener('turbolinks:load', function(){
       if(i.classList.contains('fas')){
         i.classList.replace('fas', 'far');
         a.setAttribute('data-method', 'post');
-        flash.classList.remove('faved-flash')
-        flash.innerText = '';
         n--;
         if(n){
           num.innerText = n;
@@ -30,8 +27,6 @@ document.addEventListener('turbolinks:load', function(){
       }else{
         i.classList.replace('far', 'fas');
         a.setAttribute('data-method', 'delete');
-        //flash.innerText = 'いいねしました！';
-        flash.classList.add('faved-flash');
         n++;
         num.innerText = n;
       }
