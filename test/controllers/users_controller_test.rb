@@ -76,7 +76,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_no_match @shinji.biography, response.body
 
     login_as @user
-    post relationships_path, params: {followee_id: @shinji.id}
+    post relationship_path(followee: @shinji)
     get user_path(@shinji)
     assert_match @shinji.biography, response.body
   end

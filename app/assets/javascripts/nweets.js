@@ -6,7 +6,6 @@ document.addEventListener('turbolinks:load', function(){
       var a = div.firstElementChild;
       var i = a.childNodes[0];
       var num = a.childNodes[1];
-      var flash = div.childNodes[1];
       a.classList.toggle('faved');
 
       var n;
@@ -19,8 +18,6 @@ document.addEventListener('turbolinks:load', function(){
       if(i.classList.contains('fas')){
         i.classList.replace('fas', 'far');
         a.setAttribute('data-method', 'post');
-        flash.classList.remove('faved-flash')
-        flash.innerText = '';
         n--;
         if(n){
           num.innerText = n;
@@ -30,11 +27,33 @@ document.addEventListener('turbolinks:load', function(){
       }else{
         i.classList.replace('far', 'fas');
         a.setAttribute('data-method', 'delete');
-        //flash.innerText = 'いいねしました！';
-        flash.classList.add('faved-flash');
         n++;
         num.innerText = n;
       }
     })
+  });
+
+  document.querySelectorAll('.follow-icon-link').forEach(function(a){
+    a.addEventListener('ajax:success', function(){
+      var span = a.firstElementChild;
+      var i = span.firstElementChild;
+
+      if(span.classList.contains('unfollowable')){
+        a.setAttribute('data-method', 'post');
+        if(i.classList.contains('fa-exchange-alt')){
+          i.classList.replace('fa-exchange-alt', 'fa-user-plus');
+        }else{
+          i.classList.replace('fa-user-check', 'fa-user-plus');
+        }
+      }else{
+        a.setAttribute('data-method', 'delete');
+        if(span.classList.contains('follower-true')){
+          i.classList.replace('fa-user-plus', 'fa-exchange-alt');
+        }else{
+          i.classList.replace('fa-user-plus', 'fa-user-check');
+        }
+      }
+      span.classList.toggle('unfollowable');
+    });
   });
 });
