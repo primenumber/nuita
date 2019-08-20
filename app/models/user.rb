@@ -28,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def nweets_at_date(date)
-    nweets.where(did_at: date.beginning_of_day...date.end_of_day)
+    nweets.where(did_at: date.beginning_of_day...date.end_of_day).reorder(did_at: :asc)
   end
 
   def to_param
