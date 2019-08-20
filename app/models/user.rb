@@ -27,6 +27,10 @@ class User < ApplicationRecord
     Nweet.all # currently it is global! (since FF is not implemented)
   end
 
+  def nweets_at_date(date)
+    nweets.where(did_at: date.beginning_of_day...date.end_of_day)
+  end
+
   def to_param
     url_digest
   end

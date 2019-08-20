@@ -4,7 +4,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(url_digest: params[:url_digest])
-    @nweets = @user.nweets.paginate(page: params[:page], per_page: 50)
+    if params[:date]
+      @nweets = @user.nweets_at_date(params[:date].to_time).paginate(page: params[:page])
+    else
+      @nweets = @user.nweets.paginate(page: params[:page], per_page: 50)
+    end
   end
 
   def likes
