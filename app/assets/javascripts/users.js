@@ -2,7 +2,7 @@ document.addEventListener('turbolinks:load', function(){
   var pathname = location.pathname;
   var element;
 
-  if(~(m = location.search.match(/\d{4}%2F\d{2}%2F\d{2}/))){
+  if(m = location.search.match(/\d{4}%2F\d{2}%2F\d{2}/)){
     element = document.getElementById('cal' + unescape(m));
   }else{
     if (~pathname.indexOf('likes')){
