@@ -615,12 +615,14 @@ a.card{
 .table-contribution{
   font-size: x-small;
   margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 1px;
 
   td{
     width: 1.5rem;
     height: 1.5rem;
     margin: 0px;
-    padding: 0;
+    padding: 0px;
     border: 2px solid #fcfcfc;
     background-color: $contribution-color-more;
 
@@ -635,6 +637,13 @@ a.card{
   }
   td.val-0{
     background-color: $contribution-color-zero;
+  }
+  td.active{
+    border: 4px;
+  }
+
+  tr{
+    margin: 0;
   }
 }
 
