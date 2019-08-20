@@ -1,8 +1,13 @@
-h3.small.mt-3.mb-2.calendar カレンダー
+- (hash, start_day = contribution_for(user, 6))
+
+.mt-3.mb-2.label-calendar
+  | グラフ
+  span.small.pl-1 = "#{start_day} - #{Date.current}"
 
 table.table-contribution
-  - (hash, start_day = contribution_for(user, 5))
   - (start_day..Date.current).each do |date|
     - if date.sunday?
       tr
-    td class = "val-#{hash[date].count}"
+    td class="val-#{hash[date].count}"
+      - if hash[date].any?
+        = link_to '', user_path(user, date: date)
