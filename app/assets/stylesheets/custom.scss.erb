@@ -16,6 +16,10 @@ $twitter-color: #00acee;
 $fav-color: #c73b31;
 $fav-color-light: #aa544e;
 
+$contribution-color-zero: rgb(235, 237, 240);
+$contribution-color-one: rgb(123, 201, 111);
+$contribution-color-more: rgb(25, 97, 39);
+
 .navbar{
   background-color: $brand-color;
   box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
@@ -601,6 +605,27 @@ textarea{
 a.card{
   text-decoration: none;
   color: inherit;
+}
+
+/* contribution graph */
+.table-contribution{
+  font-size: x-small;
+  margin: 0 auto;
+
+  td{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0px;
+    padding: 0;
+    border: 2px solid #fcfcfc;
+    background-color: $contribution-color-more;
+  }
+  td.val-1{
+    background-color: $contribution-color-one;
+  }
+  td.val-0{
+    background-color: $contribution-color-zero;
+  }
 }
 
 /* footer */
