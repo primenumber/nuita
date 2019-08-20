@@ -631,13 +631,21 @@ a.card{
       height: 100%;
       display: block;
     }
+
+    &:hover{
+      border: 2px;
+    }
   }
   td.val-1{
     background-color: $contribution-color-one;
   }
   td.val-0{
     background-color: $contribution-color-zero;
+    &:hover{
+      border: 2px solid #fcfcfc;
+    }
   }
+
   td.active{
     border: 4px;
   }
