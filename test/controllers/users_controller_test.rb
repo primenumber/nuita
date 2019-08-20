@@ -80,4 +80,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get user_path(@shinji)
     assert_match @shinji.biography, response.body
   end
+
+  test 'show nweets by date' do
+    # nweets(:christmas) 参照
+    get user_path(@user, date: "2017-12-25".to_time)
+    assert_match '😢', response.body
+  end
 end
