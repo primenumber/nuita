@@ -26,6 +26,16 @@ module ApplicationHelper
     end
   end
 
-
+  # contribution graph用
+  # collectionを渡すとcolumnの日ごとに整理されたhashになって返ってくる
+  def calendarize_data(collection, column: :created_at)
+    Hash.new([]).tap do |hash|
+      collection.each do |c|
+        date = c.send(column).to_date
+        hash[date] = [] if hash[date].empty?
+        hash[date] << c
+      end
+    end
+  end
 
 end

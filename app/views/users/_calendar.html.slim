@@ -1,0 +1,8 @@
+h6.mt-3.calendar カレンダー
+
+table.table.table-contribution
+  - (hash, start_day = contribution_for(user, 5))
+  - (start_day..Date.current).each do |date|
+    - if date.sunday?
+      tr
+    td = hash[date].count

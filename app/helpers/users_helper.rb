@@ -34,4 +34,15 @@ module UsersHelper
   def followee_or_self?(user)
     current_user == user || current_user.followee?(user)
   end
+
+  # 1つめの返り値は日にちごとのヌイートが入ったハッシュ、2つめは開始日
+  def contribution_for(user, row)
+    # カレンダーの内訳: (row - 1)行分の完全な週 + 日曜〜今日まで
+    start_day = Date.current.beginning_of_week(:sunday) - (row - 1).week
+    nweets = user.nweets.where(:created_at=> start_day..Time.current)
+
+    hash = calendarize_data(nweets, column: :did_at)
+
+    return hash, start_day
+  end
 end

@@ -34,3 +34,5 @@ section.user-info
     - if !@detail && friend?(user) && user.twitter_url?
       = link_to user.twitter_url do
         = icon('fab', 'twitter', '@' + user.twitter_screen_name)
+  - if friend?(user)
+    = render 'users/calendar', user: user, row: 5
