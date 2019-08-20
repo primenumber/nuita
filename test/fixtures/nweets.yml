@@ -1,26 +1,26 @@
 today:
-  did_at: <%= 8.hours.ago %>
+  did_at: <%= 8.hours.ago.utc %>
   user: chikuwa
   url_digest: <%= SecureRandom.alphanumeric %>
 
 doubleheader:
-  did_at: <%= 5.hours.ago %>
+  did_at: <%= 5.hours.ago.utc %>
   user: chikuwa
   url_digest: <%= SecureRandom.alphanumeric %>
 
 modasho:
-  did_at: <%= 2.hour.ago %>
+  did_at: <%= 2.hour.ago.utc %>
   user: chikuwa
   url_digest: <%= SecureRandom.alphanumeric %>
 
 yesterday:
-  did_at: <%= 1.day.ago %>
+  did_at: <%= 1.day.ago.utc %>
   user: shinji
   statement: 'とても爽快な気分になりました。'
   url_digest: <%= SecureRandom.alphanumeric %>
 
 saytwo:
-  did_at: <%= 10.years.ago %>
+  did_at: <%= 10.years.ago.utc %>
   user: emiya
   statement: '？？？？？？？？？？？？？'
   url_digest: <%= SecureRandom.alphanumeric %>
