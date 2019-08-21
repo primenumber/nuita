@@ -73,7 +73,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should show or hide biography' do
     get user_path(@shinji)
-    assert_no_match @shinji.biography, response.body
+    assert_match @shinji.biography, response.body
 
     login_as @user
     post relationship_path(followee: @shinji)

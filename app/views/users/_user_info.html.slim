@@ -12,7 +12,7 @@ section.user-info
     - if current_user.follower?(user)
       .my-1#you-are-followed
         span.label-muted フォローされています
-  - if !@timeline && user.biography && friend?(user)
+  - if user.biography
       .my-2
         = text_url_to_link(user.biography).html_safe
   .list-group
