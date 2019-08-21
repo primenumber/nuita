@@ -16,6 +16,7 @@ class User < ApplicationRecord
   validates :screen_name, presence: true, uniqueness: true, length: {maximum: 20}
   validates :screen_name, format: {with: /[0-9a-zA-Z_]/}
   validates :handle_name, length: {maximum: 30}
+  validates :biography, length: {maximum: 30}
 
   has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :followees, through: :active_relationships
