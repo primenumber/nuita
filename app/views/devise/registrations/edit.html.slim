@@ -33,8 +33,10 @@
       .form-group.row
         .col-md-3
           = f.label :biography, class: "col-form-label"
+          i
+            | (30文字以内)
         .col-md-9
-          = f.text_area :biography, maxlength: 100, rows: 2, class: "form-control"
+          = f.text_area :biography, maxlength: 30, rows: 1, class: "form-control"
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         div
           | Currently waiting confirmation for:
