@@ -119,6 +119,12 @@ $contribution-color-more: rgb(25, 97, 39);
   }
 }
 
+@media screen and (max-width: 768px){
+  input[type="submit"].btn.btn-block.btn-nuita{
+    width: 95%;
+  }
+}
+
 body{
   padding-top: 48px;
   font-family: "Questrial", sans-serif;
@@ -549,11 +555,10 @@ body{
   }
 }
 
-.btn-nuita {
-  // ボタンの幅が飛び出るのでどうにかしたい
+.btn.btn-block.btn-nuita {
   font-size: larger;
   margin: 30px auto;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 30px 10px 30px;
   border-radius: 10px;
   text-decoration: none;
   background-color: $brand-color;/*ボタン色*/
