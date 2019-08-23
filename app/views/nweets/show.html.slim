@@ -2,7 +2,7 @@
 - if @nweet.statement?
   - provide(:description, "\"#{@nweet.statement}\"")
 
-.container
+.container-fluid
   .row
     .col-md-3
       = render 'users/user_info', {user: @nweet.user}
