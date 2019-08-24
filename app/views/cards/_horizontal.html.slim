@@ -1,0 +1,6 @@
+= link_to link.url, target: '_blank', class: 'card my-1' do
+  - if link.image?
+    = image_tag link.image, class: 'card-img-top'
+  .card-body
+    h5.card-title = link.title
+    p.card-text = link.description
