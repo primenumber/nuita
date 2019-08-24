@@ -6,9 +6,11 @@
   .row
     .col-md-3
       = render 'users/user_info', {user: @nweet.user}
-    .col-md-9
+    .col.p-0
       .nweet-feed.row_top
         ol.nweets-list
           = render @nweet
         = link_to "このユーザーの詳細を見る", @nweet.user, class: "btn btn-link btn-block"
         = link_to "ホームに戻る", root_path, class: "btn btn-link btn-block"
+    .d-none.d-md-block.col-md-3
+      = render 'pages/random'
