@@ -27,6 +27,8 @@ class Link < ApplicationRecord
         url + '&adult_view=1'
       when /komiflo\.com(?:\/#!)?\/comics\/(\d+)/
         'https://komiflo.com/comics/' + $1
+      when /pixiv\.net\/member_illust.php?.*illust_id=(\d+)/
+        'https://pixiv.net/member_illust.php?mode=medium&illust_id=' + $1
       else
         url
       end
