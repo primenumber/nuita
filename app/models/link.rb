@@ -31,6 +31,10 @@ class Link < ApplicationRecord
         url
       end
     end
+
+    def random
+      Link.offset(rand(Link.count)).first
+    end
   end
 
   private
@@ -119,7 +123,7 @@ class Link < ApplicationRecord
       begin
         uri = URI.parse("https://api.komiflo.com/content/id/#{id}")
         json = JSON.parse(Net::HTTP.get(uri))
-        
+
         author = json['content']['attributes']['artists']['children'][0]['data']['name']
 
         comic_title = json['content']['data']['title']

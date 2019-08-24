@@ -1,12 +1,14 @@
 - provide(:title, 'ホーム')
 
-.container
+.container-fluid
   .row
     .d-none.d-md-block.col-md-3
       = render 'users/user_info', {user: current_user}
-    .col
+    .col.p-0
       - if params[:success] == 'true'
         = render 'nweets/edit_form'
       - else
         = render 'nweets/create_form'
       = render 'pages/timeline'
+    .d-none.d-md-block.col-md-3
+      = render 'pages/random'

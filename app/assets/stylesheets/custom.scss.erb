@@ -27,6 +27,7 @@ $contribution-color-more: rgb(25, 97, 39);
 
   .navbar-brand{
     font-size: 1rem;
+    margin-right: 0;
   }
 
   .navbar-nav{
@@ -50,7 +51,9 @@ $contribution-color-more: rgb(25, 97, 39);
 
   .dropdown-menu{
     background-color: $brand-color;
-    transform: translateX(-50%);
+    position: absolute;
+    right: 0;
+    left: auto;
   }
 
   .dropdown-item{
@@ -114,6 +117,12 @@ $contribution-color-more: rgb(25, 97, 39);
 
   .timestamp{
     display: none;
+  }
+}
+
+@media screen and (max-width: 768px){
+  input[type="submit"].btn.btn-block.btn-nuita{
+    width: 95%;
   }
 }
 
@@ -225,9 +234,10 @@ body{
   border-radius: 50%;
 }
 
-.user-info{
+.side-section{
   padding: 10px 10px 10px 10px;
   margin-top: 30px;
+  top: 77px;
   border-radius: 10px;
   background-color: #fcfcfc;
 
@@ -509,7 +519,7 @@ body{
     width: 766px;
   }
 
-  .user-info{
+  .side-section{
     .media{
       flex-direction: column;
     }
@@ -521,6 +531,10 @@ body{
   .label-calendar{
     font-size: small;
   }
+}
+
+.section-title{
+  font-size: small;
 }
 
 .registration_button{
@@ -547,11 +561,10 @@ body{
   }
 }
 
-.btn-nuita {
-  // ボタンの幅が飛び出るのでどうにかしたい
+.btn.btn-block.btn-nuita {
   font-size: larger;
   margin: 30px auto;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 30px 10px 30px;
   border-radius: 10px;
   text-decoration: none;
   background-color: $brand-color;/*ボタン色*/

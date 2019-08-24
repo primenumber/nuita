@@ -1,7 +1,9 @@
 - provide(:title, "#{@user.handle_name}さんはNuitaを利用しています")
-.container
+.container-fluid
   .row
     .col-md-3
       = render 'users/user_info', {user: @user}
-    .col
+    .col.p-0
       = render 'users/feed'
+    .d-none.d-md-block.col-md-3
+      = render 'pages/random'

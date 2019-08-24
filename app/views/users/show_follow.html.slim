@@ -1,10 +1,10 @@
 - provide(:title, "#{@user.handle_name}さんの#{@topic}")
 
-.container
+.container-fluid
   .row
     .d-md-block.col-md-3
       = render 'users/user_info', {user: @user}
-    .col.nweet-feed.row_top
+    .col.p-0.nweet-feed.row_top
       - if @users.any?
         .nweet-count
           = @users.count
@@ -15,3 +15,5 @@
       ul.nweets-list
         = render @users
       = will_paginate
+    .d-none.d-md-block.col-md-3
+      = render 'pages/random'
