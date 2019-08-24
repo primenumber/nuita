@@ -1,3 +1,4 @@
 section.sticky-top.side-section
   h5.section-title ランダムえっち
-  = render 'cards/horizontal', link: Link.random
+  - if Link.any?
+    = render 'cards/horizontal', link: Link.random
