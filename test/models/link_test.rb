@@ -116,4 +116,16 @@ class LinkTest < ActiveSupport::TestCase
 
     assert_equal @link.url, @link.title
   end
+
+  test 'link can have category' do
+    link = Link.create(url: 'https://www.pixiv.net/member_illust.php?mode=medium&illust_id=76477824')
+    assert link.valid?
+
+    category = link.categories.create!(name: 'R-18G')
+    assert category.valid?
+    assert link.valid?
+
+    link.categories << category
+    assert_not link.valid?
+  end
 end

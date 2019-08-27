@@ -7,6 +7,9 @@ class Link < ApplicationRecord
   has_many :nweet_links, dependent: :destroy
   has_many :nweets, through: :nweet_links
 
+  has_many :link_categories, dependent: :destroy
+  has_many :categories, through: :link_categories
+
   validates :title, length: {maximum: 100}
   validates :description, length: {maximum: 500}
 
