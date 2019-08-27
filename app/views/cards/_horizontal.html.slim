@@ -1,6 +1,17 @@
-= link_to link.url, target: '_blank', class: 'card my-1' do
-  - if link.image?
-    = image_tag link.image, class: 'card-img-top'
-  .card-body
-    h5.card-title = link.title
-    p.card-text = link.description
+- if tags = censored?(link)
+  .small.pb-1
+    span.pr-1 = icon('fas', 'exclamation-triangle')
+    - tags.each do |tag|
+      span.font-weight-bold.pr-1 = tag
+    span.collapse-button
+      a href= "#collapseHorizontal#{link.id}" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseHorizontal#{link.id}" 展開
+
+div id="collapseHorizontal#{link.id}" class="#{'collapse' if censored?(link)}"
+  = link_to link.url, target: '_blank', class: 'card my-1' do
+    - if link.image?
+      = image_tag link.image, class: 'card-img-top'
+    .card-body
+      h5.card-title = link.title
+      p.card-text = link.description
+
+  = render 'cards/categories', link: link

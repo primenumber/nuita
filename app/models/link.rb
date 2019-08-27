@@ -7,6 +7,9 @@ class Link < ApplicationRecord
   has_many :nweet_links, dependent: :destroy
   has_many :nweets, through: :nweet_links
 
+  has_many :link_categories, dependent: :destroy
+  has_many :categories, through: :link_categories
+
   validates :title, length: {maximum: 100}
   validates :description, length: {maximum: 500}
 
@@ -15,6 +18,21 @@ class Link < ApplicationRecord
   def refetch
     fetch_infos
     save
+  end
+
+  def set_category(name)
+    name.upcase!
+    unless c = Category.find_by(name: name)
+      c = Category.create(name: name)
+    end
+    unless categories.exists?(id: c.id)
+      self.categories << c
+    end
+  end
+
+  def remove_category(name)
+    name.upcase!
+    categories.delete(Category.find_by(name: name))
   end
 
   class << self

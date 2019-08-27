@@ -80,4 +80,15 @@ class NweetTest < ActiveSupport::TestCase
     # けど関連付けはされてる
     assert_equal link, nweet_again.links.first
   end
+
+  test 'tags in nweet must be generated as category' do
+    str = "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=75609372 #R18G #2D"
+    nweet = @user.nweets.create(did_at: Time.zone.now, statement: str)
+    link = nweet.links.first
+
+    assert link.categories.exists?(name: 'R18G', censored_by_default: true)
+    assert link.categories.exists?(name: '2D', censored_by_default: false)
+    # 将来的に実装したい
+    #assert_equal "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=75609372", nweet.statement
+  end
 end

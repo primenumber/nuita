@@ -10,6 +10,7 @@ $brand-color-hover: #6fc724;
 $brand-color-dark: #55ad0a;
 $brand-color-light: #8fd354;
 $brand-color-white: #EFF8E6;
+$brand-color-black: #132602;
 
 $twitter-color: #00acee;
 
@@ -121,8 +122,9 @@ $contribution-color-more: rgb(25, 97, 39);
 }
 
 @media screen and (max-width: 768px){
-  input[type="submit"].btn.btn-block.btn-nuita{
+  .nuita-form{
     width: 95%;
+    margin: 0 auto;
   }
 }
 
@@ -362,6 +364,32 @@ body{
   font-size: small;
   padding: 0.25rem;
   border-radius: 0.3rem;
+}
+
+.badge-tag{
+  background-color: #fcfcfc;
+  border: 1px solid $brand-color;
+  color: $brand-color;
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.badge-tag.active{
+  background-color: $brand-color;
+  color: #fff;
+  a{
+    color: inherit;
+    text-decoration: none;
+
+    .delete_icon{
+      color: $brand-color-light;
+      &:hover{
+        color: white;
+      }
+    }
+  }
 }
 
 /* feed */
@@ -604,8 +632,7 @@ body{
 
 /* edit */
 .statement {
-  margin: 10px 0px;
-  padding: 10px 0px;
+  margin: 10px auto;
 	border: 1px solid $brand-color-light;
 	border-radius: 10px;
 	width: 100%;
@@ -683,6 +710,21 @@ footer{
   .text-muted{
     a{
       color: $dark-accent;
+    }
+  }
+}
+
+.collapse-button{
+  padding: 0 0.125rem;
+  font-size: small;
+  a{
+    color: $dark-shades;
+    &:hover{
+      color: $brand-color-black;
+      text-decoration: none;
+    }
+    &:active{
+      color: $dark-shades;
     }
   }
 }

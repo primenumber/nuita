@@ -2,7 +2,7 @@ require 'uri'
 
 class Nweet < ApplicationRecord
   before_create :set_url_digest
-  after_save :create_link
+  after_save :create_link, :create_category
 
   belongs_to :user
   has_many :favorites, dependent: :destroy
@@ -48,6 +48,17 @@ class Nweet < ApplicationRecord
           l.refetch
         else
           self.links.create(url: url)
+        end
+      end
+    end
+  end
+
+  def create_category
+    if links.any?
+      # 本当は空白に置換したかったけどコールバックの前後関係で無理そう
+      self.statement.scan(/\s#\S*/) do |tag|
+        links.each do |link|
+          link.set_category(tag[2..-1])
         end
       end
     end
