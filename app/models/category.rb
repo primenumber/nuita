@@ -9,10 +9,10 @@ class Category < ApplicationRecord
   private
 
     def set_censored_by_default
-      censor_list = ['R-18G', '3D']
+      censor_list = ['R18G', '3D']
 
       if censor_list.include?(name)
-        censored_by_default = true
+        self.censored_by_default = true
       end
     end
 end
