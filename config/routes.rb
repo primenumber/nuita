@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :nweets, only: [:create, :update, :destroy, :show], param: :url_digest
+  resource :category, only: [:create, :destroy]
   resource :favorite, only: [:create, :destroy]
   resource :link, only: [:create]
   resource :relationship, only: [:create, :destroy]
