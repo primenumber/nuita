@@ -24,8 +24,9 @@ class Link < ApplicationRecord
     unless c = Category.find_by(name: name)
       c = Category.create(name: name)
     end
-
-    categories << c
+    unless categories.exists?(id: c.id)
+      self.categories << c
+    end
   end
 
   def remove_category(name)

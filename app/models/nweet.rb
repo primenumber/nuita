@@ -55,11 +55,11 @@ class Nweet < ApplicationRecord
 
   def create_category
     if links.any?
-      self.statement.gsub!(/\s#\S*/) do |tag|
+      # 本当は空白に置換したかったけどコールバックの前後関係で無理そう
+      self.statement.scan(/\s#\S*/) do |tag|
         links.each do |link|
-          link.set_category(tag[2..])
+          link.set_category(tag[2..-1])
         end
-        ""
       end
     end
   end
