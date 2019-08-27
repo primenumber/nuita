@@ -21,6 +21,7 @@ class Link < ApplicationRecord
   end
 
   def set_category(name)
+    name.upcase!
     unless c = Category.find_by(name: name)
       c = Category.create(name: name)
     end
@@ -30,6 +31,7 @@ class Link < ApplicationRecord
   end
 
   def remove_category(name)
+    name.upcase!
     categories.delete(Category.find_by(name: name))
   end
 
