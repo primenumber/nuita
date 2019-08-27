@@ -124,8 +124,20 @@ class LinkTest < ActiveSupport::TestCase
     category = link.categories.create!(name: 'R-18G')
     assert category.valid?
     assert link.valid?
+  end
 
-    link.categories << category
-    assert_not link.valid?
+  test 'link can set and remove category' do
+    link = Link.create(url: 'https://www.pixiv.net/member_illust.php?mode=medium&illust_id=76477824')
+
+    link.set_category('R-18G')
+    assert link.categories.exists?(name: 'R-18G')
+
+    other_link = Link.create(url: 'https://twitter.com/hidesys/status/1162036947939807232')
+    assert_no_difference 'Category.count' do
+      other_link.set_category('R-18G')
+    end
+
+    link.remove_category('R-18G')
+    assert_not link.categories.exists?(name: 'R-18G')
   end
 end

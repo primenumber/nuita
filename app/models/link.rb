@@ -20,6 +20,18 @@ class Link < ApplicationRecord
     save
   end
 
+  def set_category(name)
+    unless c = Category.find_by(name: name)
+      c = Category.create(name: name)
+    end
+
+    categories << c
+  end
+
+  def remove_category(name)
+    categories.delete(Category.find_by(name: name))
+  end
+
   class << self
     def normalize_url(url)
       case url
