@@ -365,6 +365,32 @@ body{
   border-radius: 0.3rem;
 }
 
+.badge-tag{
+  background-color: #fcfcfc;
+  border: 1px solid $brand-color;
+  color: $brand-color;
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.badge-tag.active{
+  background-color: $brand-color;
+  color: #fff;
+  a{
+    color: inherit;
+    text-decoration: none;
+
+    .delete_icon{
+      color: $brand-color-light;
+      &:hover{
+        color: white;
+      }
+    }
+  }
+}
+
 /* feed */
 .nweet-feed{
   width: 100%;
