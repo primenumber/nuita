@@ -55,10 +55,11 @@ class Nweet < ApplicationRecord
 
   def create_category
     if links.any?
-      statement.scan(/\s#(\S*)/) do |tag|
+      self.statement.gsub!(/\s#\S*/) do |tag|
         links.each do |link|
-          link.set_category(tag[0])
+          link.set_category(tag[2..])
         end
+        ""
       end
     end
   end

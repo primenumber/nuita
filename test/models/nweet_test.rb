@@ -88,5 +88,6 @@ class NweetTest < ActiveSupport::TestCase
 
     assert link.categories.exists?(name: 'R18G', censored_by_default: true)
     assert link.categories.exists?(name: '2D', censored_by_default: false)
+    assert_equal "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=75609372", nweet.statement
   end
 end
