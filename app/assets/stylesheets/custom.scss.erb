@@ -119,6 +119,14 @@ $contribution-color-more: rgb(25, 97, 39);
   .timestamp{
     display: none;
   }
+
+  .landing{
+    margin: 60px 0 0 0 !important;
+
+    h1{
+      margin-bottom: 1rem !important;
+    }
+  }
 }
 
 @media screen and (max-width: 768px){
@@ -154,7 +162,7 @@ body{
   padding-top: 2rem;
 }
 
-.jumbotron.jumbotron-fluid.jumbotron-image{
+#landingContainer{
   background-image: url(<%= asset_path("landing_background") %>);
   background-size: cover;
   background-color: rgba(0,0,40,0.4)
@@ -165,9 +173,10 @@ body{
 }
 
 .landing{
-  margin: 120px 5px 5px 25px;
+  margin: 120px 0 0 60px;
+
   h1{
-    margin-bottom: 100px;
+    margin-bottom: 3rem;
   }
   .lead{
     font-size: normal;
@@ -563,6 +572,10 @@ body{
 
 .section-title{
   font-size: small;
+  button{
+    font-size: x-small;
+    border: none;
+  }
 }
 
 .registration_button{

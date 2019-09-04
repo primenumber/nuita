@@ -13,5 +13,5 @@ div id="collapseHorizontal#{link.id}" class="#{'collapse' if censored?(link)}"
     .card-body
       h5.card-title = link.title
       p.card-text = link.description
-
-  = render 'cards/categories', link: link
+  - unless local_assigns[:genre_hidden?]
+    = render 'cards/categories', link: link
