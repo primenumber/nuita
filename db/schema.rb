@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_060905) do
+ActiveRecord::Schema.define(version: 2019_09_04_015715) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", limit: 30, null: false
@@ -20,14 +20,14 @@ ActiveRecord::Schema.define(version: 2019_08_27_060905) do
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
-  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "nweet_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["nweet_id"], name: "index_favorites_on_nweet_id"
-    t.index ["user_id", "nweet_id"], name: "index_favorites_on_user_id_and_nweet_id", unique: true
-    t.index ["user_id"], name: "index_favorites_on_user_id"
+    t.index ["nweet_id"], name: "index_likes_on_nweet_id"
+    t.index ["user_id", "nweet_id"], name: "index_likes_on_user_id_and_nweet_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "link_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -82,6 +82,15 @@ ActiveRecord::Schema.define(version: 2019_08_27_060905) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "user_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_user_categories_on_category_id"
+    t.index ["user_id"], name: "index_user_categories_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -120,11 +129,13 @@ ActiveRecord::Schema.define(version: 2019_08_27_060905) do
     t.index ["url_digest"], name: "index_users_on_url_digest", unique: true
   end
 
-  add_foreign_key "favorites", "nweets"
-  add_foreign_key "favorites", "users"
+  add_foreign_key "likes", "nweets"
+  add_foreign_key "likes", "users"
   add_foreign_key "link_categories", "categories"
   add_foreign_key "link_categories", "links"
   add_foreign_key "nweet_links", "links"
   add_foreign_key "nweet_links", "nweets"
   add_foreign_key "nweets", "users"
+  add_foreign_key "user_categories", "categories"
+  add_foreign_key "user_categories", "users"
 end

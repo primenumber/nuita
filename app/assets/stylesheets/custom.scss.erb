@@ -14,8 +14,8 @@ $brand-color-black: #132602;
 
 $twitter-color: #00acee;
 
-$fav-color: #c73b31;
-$fav-color-light: #aa544e;
+$like-color: #c73b31;
+$like-color-light: #aa544e;
 
 $contribution-color-zero: rgb(235, 237, 240);
 $contribution-color-one: rgb(123, 201, 111);
@@ -442,13 +442,13 @@ body{
       color: #aaaaaa;
       overflow: hidden;
 
-      .fav-btn{
+      .like-btn{
         margin: 0;
 
         a.btn{
           color: #aaa;
           &:hover{
-            color: $fav-color;
+            color: $like-color;
           }
           &:focus{
             outline: none;
@@ -457,19 +457,19 @@ body{
           padding-left: 0;
         }
 
-        .btn.faved{
-          color: $fav-color;
+        .btn.liked{
+          color: $like-color;
           &:hover{
-            color: $fav-color-light;
+            color: $like-color-light;
           }
         }
 
-        #fav-flash{
+        #like-flash{
           font-size: x-small;
           padding-left: 0.25rem;
         }
-        .faved-flash{
-          color: $fav-color;
+        .liked-flash{
+          color: $like-color;
         }
       }
 
@@ -522,7 +522,7 @@ body{
     }
 
     .follow-icon.unfollowable:hover{
-      color: $fav-color-light;
+      color: $like-color-light;
     }
   }
 }

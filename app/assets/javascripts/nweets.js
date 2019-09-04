@@ -1,12 +1,12 @@
 // いいねのajax処理。全体的に酷すぎるのでちゃんとサーバーと通信して実値を出すようにする
 
 document.addEventListener('turbolinks:load', function(){
-  document.querySelectorAll('.fav-btn').forEach(function(div){
+  document.querySelectorAll('.like-btn').forEach(function(div){
     div.addEventListener('ajax:success', function(){
       var a = div.firstElementChild;
       var i = a.childNodes[0];
       var num = a.childNodes[1];
-      a.classList.toggle('faved');
+      a.classList.toggle('liked');
 
       var n;
       if(num.innerText){

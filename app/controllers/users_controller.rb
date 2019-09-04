@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def likes
     @user = User.find_by(url_digest: params[:url_digest])
-    @feed_items = @user.fav_nweets.paginate(page: params[:page], per_page: 100)
+    @feed_items = @user.liked_nweets.paginate(page: params[:page], per_page: 100)
   end
 
   def followers

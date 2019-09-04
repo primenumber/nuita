@@ -9,8 +9,8 @@ class User < ApplicationRecord
          #:omniauthable, omniauth_providers: [:twitter]
 
   has_many :nweets, dependent: :destroy
-  has_many :favorites, dependent: :destroy
-  has_many :fav_nweets, through: :favorites, source: :nweet
+  has_many :likes, dependent: :destroy
+  has_many :liked_nweets, through: :likes, source: :nweet
   mount_uploader :icon, IconUploader
 
   validates :screen_name, presence: true, uniqueness: true, length: {maximum: 20}
@@ -84,8 +84,8 @@ class User < ApplicationRecord
     self.followers.include?(other_user)
   end
 
-  def faved?(nweet)
-    self.favorites.exists?(nweet_id: nweet.id)
+  def liked?(nweet)
+    self.likes.exists?(nweet_id: nweet.id)
   end
 
   class << self

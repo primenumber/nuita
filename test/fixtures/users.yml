@@ -21,7 +21,7 @@ shinji:
   url_digest: "bJUPf2DQrGHlxqVB"
   biography: "こんにちは〜"
 
-# no nweets, no favs... because he is a girl.
+# no nweets, no likes... because he is a girl.
 girl:
   handle_name: "girl"
   screen_name: "i_am@girl.com"

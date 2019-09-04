@@ -18,8 +18,8 @@ module NweetsHelper
   end
 
   def likes_number(nweet)
-    if nweet.favorites.count > 0
-      nweet.favorites.count
+    if nweet.likes.count > 0
+      nweet.likes.count
     else
       nil
     end
