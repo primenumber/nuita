@@ -1,22 +1,20 @@
 - provide(:title, '射精報告SNS Nuitaへようこそ!')
 
-/TODO: Designing Landing Page
-.jumbotron.jumbotron-fluid.jumbotron-image
-  .container-fluid
-    .row.full-height
-      .col.col-md-6.offset-md-1.h-100
-        .landing
-          h1 賢者のためのSNS。
-          .lead ニュース。ゴシップ。論争、炎上。　
-          .lead そんな現実は、忘れてしまえばいい。
-          .lead
-            span.font-weight-bold 本当の自分
-            | をシェアしよう。
-          .lead
-            span.logo-font Nuita
-            | は射精しないと書き込めないSNSです。
-          .lead.mt-3
-            = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary btn-lg bg-brand'
-      .col-md-3.offset-md-1.my-0
-        = render 'pages/random', landing?: true
+.container-fluid#landingContainer
+  .row.h-100.pb-4
+    .col.col-md-6.offset-md-1
+      .landing
+        h1 賢者のためのSNS。
+        .lead ニュース。ゴシップ。論争、炎上。　
+        .lead そんな現実は、忘れてしまえばいい。
+        .lead
+          span.font-weight-bold 本当の自分
+          | をシェアしよう。
+        .lead
+          span.logo-font Nuita
+          | は射精しないと書き込めないSNSです。
+        .lead.mt-3
+          = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary btn-lg bg-brand'
+    .col-md-3.offset-md-1.my-0
+      = render 'pages/random', landing?: true
 / TODO: 登録フォームをhome内右端に作る
