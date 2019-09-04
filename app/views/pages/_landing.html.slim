@@ -1,5 +1,4 @@
 - provide(:title, '射精報告SNS Nuitaへようこそ!')
-- provide(:landing?, true)
 
 /TODO: Designing Landing Page
 .jumbotron.jumbotron-fluid.jumbotron-image
@@ -19,5 +18,5 @@
           .lead.mt-3
             = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary btn-lg bg-brand'
       .col-md-3.offset-md-1.my-0
-        = render 'pages/random'
+        = render 'pages/random', landing?: true
 / TODO: 登録フォームをhome内右端に作る
