@@ -1,7 +1,7 @@
 .nweet-feed.row_top
-  - if @user.fav_nweets.any?
+  - if @user.liked_nweets.any?
     .nweet-count
-      = @user.fav_nweets.count
+      = @user.liked_nweets.count
       | 件のいいね
     ol.nweets-list
       = render @feed_items

@@ -45,10 +45,10 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  test 'associated favorites must be destroyed' do
+  test 'associated likes must be destroyed' do
     @new_user.save
-    @new_user.favorites.create!(nweet: @nweet)
-    assert_difference 'Favorite.count', -1 do
+    @new_user.likes.create!(nweet: @nweet)
+    assert_difference 'Like.count', -1 do
       @new_user.destroy
     end
   end

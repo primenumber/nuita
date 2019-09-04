@@ -21,7 +21,7 @@ li.nweet id="nweet#{nweet.url_digest}"
       .nweet-bottom
         .float-left
           - if user_signed_in?
-            = render 'nweets/favorite_form', nweet: nweet
+            = render 'nweets/like_form', nweet: nweet
         .text-right
           - if delete_possible?(nweet.did_at, nweet.user)
             = link_to nweet, method: :delete, class: "nweet-delete btn", data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" } do

@@ -5,8 +5,8 @@ class Nweet < ApplicationRecord
   after_save :create_link, :create_category
 
   belongs_to :user
-  has_many :favorites, dependent: :destroy
-  has_many :fav_users, through: :favorites, source: :user
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
 
   has_many :nweet_links, dependent: :destroy
   has_many :links, through: :nweet_links
