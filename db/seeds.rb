@@ -15,7 +15,6 @@ Faker::Config.locale = :en
   email = Faker::Internet.email
   password = Faker::Internet.password
   user = User.create!(handle_name: handle_name, screen_name: screen_name, email: email, password: password)
-  biography = Faker::Lorem.sentence 
 end
 
 User.all.map do |user|
@@ -30,3 +29,8 @@ followees = users[2..50]
 followers = users[3..40]
 followees.each { |followee| user.follow(followee) }
 followers.each { |follower| follower.follow(user) }
+
+confident_users = users[9..30]
+confident_users.each do |user|
+  user.update_attribute(:biography, Faker::Lorem.sentence.truncate(29))
+end

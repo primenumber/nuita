@@ -12,5 +12,8 @@ li.nweet
     .content
       .maincontent
         .user-status-in-list
-          span.font-weight-bold = user.nweets.count
-          span.pl-1.small ヌイート
+          .pb-2
+            span.font-weight-bold = user.nweets.count
+            span.pl-1.small ヌイート
+          - if user.biography
+            .quote = user.biography
