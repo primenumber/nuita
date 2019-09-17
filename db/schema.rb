@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_04_015715) do
+ActiveRecord::Schema.define(version: 2019_09_17_110715) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", limit: 30, null: false
@@ -51,6 +51,18 @@ ActiveRecord::Schema.define(version: 2019_09_04_015715) do
     t.index ["url"], name: "index_links_on_url", unique: true
   end
 
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "origin_id"
+    t.integer "destination_id"
+    t.integer "action", null: false
+    t.integer "like_id"
+    t.integer "relationship_id"
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["destination_id"], name: "index_notifications_on_destination_id"
+  end
+
   create_table "nweet_links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "nweet_id"
     t.bigint "link_id"
@@ -80,15 +92,6 @@ ActiveRecord::Schema.define(version: 2019_09_04_015715) do
     t.index ["followee_id"], name: "index_relationships_on_followee_id"
     t.index ["follower_id", "followee_id"], name: "index_relationships_on_follower_id_and_followee_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
-  end
-
-  create_table "user_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_user_categories_on_category_id"
-    t.index ["user_id"], name: "index_user_categories_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -136,6 +139,4 @@ ActiveRecord::Schema.define(version: 2019_09_04_015715) do
   add_foreign_key "nweet_links", "links"
   add_foreign_key "nweet_links", "nweets"
   add_foreign_key "nweets", "users"
-  add_foreign_key "user_categories", "categories"
-  add_foreign_key "user_categories", "users"
 end
