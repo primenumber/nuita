@@ -23,6 +23,9 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followee_id', dependent: :destroy
   has_many :followers, through: :passive_relationships
 
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'destination_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'origin_id', dependent: :destroy
+
   # list nweets shown in timeline.
   def timeline
     Nweet.all # currently it is global! (since FF is not implemented)
