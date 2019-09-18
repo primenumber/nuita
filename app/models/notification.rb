@@ -3,4 +3,6 @@ class Notification < ApplicationRecord
   enum action: [:like, :follow]
 
   belongs_to :like, optional: true
+  belongs_to :origin, class_name: 'User', optional: true
+  belongs_to :destination, class_name: 'User'
 end
