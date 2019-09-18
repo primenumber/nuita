@@ -1,2 +1,13 @@
 - provide(:title, "最近の通知")
 
+.container-fluid
+  .row
+    .d-md-block.col-md-3
+      = render 'users/user_info', {user: current_user}
+    .col.p-0.nweet-feed.row_top
+      - unless @notifications
+        .nweet-count = "まだ通知がありません……"
+      ol.nweets-list
+        = render @notifications
+    .d-none.d-md-block.col-md-3
+      = render 'pages/random'

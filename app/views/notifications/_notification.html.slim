@@ -1,0 +1,26 @@
+li.nweet.notification
+  .media
+    .action-icon
+      - case notification.action
+      - when 'like'
+        = icon 'fas', 'heart', class: 'like-color'
+    .media-body
+      .user_info
+        = link_to icon_for(notification.origin, size: 40, htmlclass:'user-icon'), notification.origin
+        span.timestamp = notification.created_at
+        - if @timeline && other_user?(notification.origin)
+          = render 'nweets/follow_icon', user: notification.origin
+      .content.clearfix
+        .maincontent
+          - if notification.origin
+            span.handle-name = link_to notification.origin.handle_name, notification.origin
+          - case notification.action
+          - when 'like'
+            | さんがいいねしました。
+            .pt-1
+              = link_to notification.like.nweet, class: 'quoted-nweet' do
+                = time_ago_in_japanese(notification.like.nweet.did_at)
+                | に射精しました。
+                - if notification.like.nweet.statement
+                  .quote.mt-1
+                    = notification.like.nweet.statement
