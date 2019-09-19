@@ -2,7 +2,9 @@ require 'test_helper'
 
 class RelationshipTest < ActiveSupport::TestCase
   def setup
-    @relationship = Relationship.new(follower_id: users(:chikuwa).id, followee_id: users(:emiya).id)
+    @user = users(:chikuwa)
+    @other_user = users(:emiya)
+    @relationship = Relationship.create(follower_id: users(:chikuwa).id, followee_id: users(:emiya).id)
   end
 
   test "should be valid" do
@@ -17,5 +19,19 @@ class RelationshipTest < ActiveSupport::TestCase
   test "should require a followed_id" do
     @relationship.followee_id = nil
     assert_not @relationship.valid?
+  end
+
+
+  test 'relationship creates and destroys notification' do
+    notification = @relationship.notification
+    debugger
+
+    assert notification.follow?
+    assert_equal @user.id, notification.origin_id
+    assert_equal @other_user.id, notification.destination_id
+
+    assert_difference('Notification.count', -1) do
+      notification.destroy
+    end
   end
 end
