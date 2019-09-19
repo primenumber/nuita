@@ -4,6 +4,8 @@ li.nweet.notification
       - case notification.action
       - when 'like'
         = icon 'fas', 'heart', class: 'like-color'
+      - when 'follow'
+        = icon 'fas', 'user-plus'
     .media-body
       .user_info
         = link_to icon_for(notification.origin, size: 40, htmlclass:'user-icon'), notification.origin
@@ -24,3 +26,5 @@ li.nweet.notification
                 - if notification.like.nweet.statement
                   .quote.mt-1
                     = notification.like.nweet.statement
+          - when 'follow'
+            | さんがあなたをフォローしました。
