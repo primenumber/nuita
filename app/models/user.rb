@@ -91,6 +91,10 @@ class User < ApplicationRecord
     self.likes.exists?(nweet_id: nweet.id)
   end
 
+  def check_notifications
+    self.passive_notifications.update_all(checked:true)
+  end
+  
   class << self
     def screen_name_formatter(str)
       str.gsub(/\W/, '_')[0...20]
