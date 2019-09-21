@@ -6,6 +6,8 @@ class Like < ApplicationRecord
   validates_uniqueness_of :nweet_id, scope: :user_id
 
   after_create do
-    create_notification(origin_id: user.id, destination_id: nweet.user.id, action: :like)
+    unless nweet.user == user
+      create_notification(origin_id: user.id, destination_id: nweet.user.id, action: :like)
+    end
   end
 end

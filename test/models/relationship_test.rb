@@ -24,7 +24,6 @@ class RelationshipTest < ActiveSupport::TestCase
 
   test 'relationship creates and destroys notification' do
     notification = @relationship.notification
-    debugger
 
     assert notification.follow?
     assert_equal @user.id, notification.origin_id

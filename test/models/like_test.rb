@@ -33,4 +33,11 @@ class LikeTest < ActiveSupport::TestCase
       like.destroy
     end
   end
+
+  test 'do not notify when user notify nweets by himself' do
+    nweet = nweets(:today)
+
+    like = @user.likes.create!(nweet: nweet)
+    assert_nil like.notification
+  end
 end
