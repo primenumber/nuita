@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_110715) do
+ActiveRecord::Schema.define(version: 2019_09_26_071653) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", limit: 30, null: false
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_110715) do
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "statement"
     t.index ["destination_id"], name: "index_notifications_on_destination_id"
   end
 

@@ -5,4 +5,6 @@ class Notification < ApplicationRecord
   belongs_to :like, optional: true
   belongs_to :origin, class_name: 'User', optional: true
   belongs_to :destination, class_name: 'User'
+
+  validates :statement, length: { maximum: 255 }
 end
