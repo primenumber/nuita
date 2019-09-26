@@ -6,7 +6,7 @@ ul.nav.mode-nav.ml-0
     = link_to notifications_path do
       = icon 'fas', 'bell'
       - if (c = unread_notification_count) > 0
-        span.badge.badge-primary#badgeUnreadNotifications = c
+        span.ml-1.badge.badge-pill#badgeUnreadNotifications = c
   li.nav_item#likes-nav
 ul.nav.navbar-nav.mx-auto.navbar-center
   = link_to '#', class: "navbar-brand" do
