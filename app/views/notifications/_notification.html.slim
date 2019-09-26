@@ -6,9 +6,12 @@ li.nweet.notification
         = icon 'fas', 'heart', class: 'like-color'
       - when 'follow'
         = icon 'fas', 'user-plus'
+      - when 'announce'
+        = icon 'fas', 'info-circle'
     .media-body
       .user_info
-        = link_to icon_for(notification.origin, size: 40, htmlclass:'user-icon'), notification.origin
+        - if notification.origin
+          = link_to icon_for(notification.origin, size: 40, htmlclass:'user-icon'), notification.origin
         span.timestamp = notification.created_at
         - if @timeline && other_user?(notification.origin)
           = render 'nweets/follow_icon', user: notification.origin
@@ -28,3 +31,5 @@ li.nweet.notification
                     = notification.like.nweet.statement
           - when 'follow'
             | さんがあなたをフォローしました。
+          - when 'announce'
+            = notification.statement.html_safe
