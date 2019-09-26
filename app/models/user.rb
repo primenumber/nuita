@@ -94,7 +94,11 @@ class User < ApplicationRecord
   def check_notifications
     self.passive_notifications.update_all(checked:true)
   end
-  
+
+  def announce(statement)
+    self.passive_notifications.create(action: :announce, statement: statement)
+  end
+
   class << self
     def screen_name_formatter(str)
       str.gsub(/\W/, '_')[0...20]
