@@ -61,4 +61,11 @@ class UserTest < ActiveSupport::TestCase
     @user.unfollow(@new_user)
     assert_not @new_user.followee?(@user)
   end
+
+  test 'can announce' do
+    str = '<h6>寄付のお願い</h6><p>詳細は<a href="https://google.com">こちら</a></p>'
+    notification = @user.announce(str)
+    assert notification.announce?
+    assert_equal str, notification.statement
+  end
 end

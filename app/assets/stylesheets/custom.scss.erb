@@ -661,6 +661,43 @@ body{
 
 }
 
+.like-color{
+  color: $like-color;
+}
+
+.notification{
+  .action-icon{
+    float: left;
+    margin-top: 0.25rem;
+    margin-right: 0.5rem;
+    font-size: large;
+  }
+
+  .handle-name{
+    font-weight: bold;
+    a{
+      color: inherit;
+      &:hover{
+        text-decoration: none;
+      }
+    };
+  }
+
+  .user-icon{
+    border-radius: 50%;
+  }
+
+  a.quoted-nweet{
+    color: #aaa;
+    text-decoration: none;
+    
+    .quote{
+      color: #aaa;
+      border-color: #aaa;
+    }
+  }
+}
+
 textarea{
   resize: none;
 }
