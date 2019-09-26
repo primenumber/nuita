@@ -33,4 +33,10 @@ namespace :announce_task do
 
     p "Announce success!"
   end
+
+  desc "Delete all the announces"
+  task :delete_all => :environment do
+    Notification.where(action: :announce).delete_all
+    p "Delete success!"
+  end
 end
