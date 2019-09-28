@@ -52,7 +52,7 @@ class Link < ApplicationRecord
       end
     end
 
-    def random
+    def recommend
       Link.offset(rand(Link.count)).first
     end
   end
