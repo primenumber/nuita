@@ -3,9 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.2'
 
-gem 'devise'
+gem "devise", ">= 4.7.1"
 gem 'carrierwave'
-gem 'mini_magick'
+gem "mini_magick", ">= 4.9.4"
 gem 'fog-aws'
 
 gem 'omniauth'
@@ -14,7 +14,7 @@ gem 'twitter'
 
 gem 'faker'
 
-gem 'nokogiri'
+gem "nokogiri", ">= 1.10.4"
 gem 'valid_url'
 
 gem 'mysql2'
