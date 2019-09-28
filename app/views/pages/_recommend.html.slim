@@ -1,7 +1,9 @@
 section.sticky-top.side-section
   h5.section-title
     | ランダムえっち
-    button class="btn btn-sm btn-outline-secondary rounded-circle py-0 px-1" data-toggle="tooltip" data-placement="right" title="全ユーザーのヌイートからランダムで1つオカズが選ばれます。射精した本人と紐づくことはありません。"
+    button#buttonRenewRecommend.btn.btn-sm.btn-outline-secondary.btn-brandcolor-hover.py-0.px-1
+      = icon 'fas', 'sync-alt'
+    button.btn.btn-sm.btn-outline-secondary.btn-brandcolor-hover.py-0.px-1 data-toggle="tooltip" data-placement="top" title="全ユーザーのヌイートからランダムで1つオカズが選ばれます。射精した本人と紐づくことはありません。"
       = icon 'fas', 'question'
   - if Link.any?
     = render 'cards/horizontal', link: Link.recommend, genre_hidden?: local_assigns[:landing?]
