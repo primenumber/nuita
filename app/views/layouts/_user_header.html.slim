@@ -5,8 +5,8 @@ ul.nav.mode-nav.ml-0
   li.nav_item#notifications-nav
     = link_to notifications_path do
       = icon 'fas', 'bell'
-      - if (c = unread_notification_count) > 0
-        span.ml-1.badge.badge-pill#badgeUnreadNotifications = c
+      / ここには"notification.ts"が動いています！
+      span.ml-1.badge.badge-pill.d-none#badgeUnreadNotifications
   li.nav_item#likes-nav
 ul.nav.navbar-nav.mx-auto.navbar-center
   = link_to '#', class: "navbar-brand", id: "navbarBrandIcon" do
