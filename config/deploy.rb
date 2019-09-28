@@ -1,5 +1,5 @@
 # capistranoのバージョン固定
-lock "3.11.0"
+lock "3.11.1"
 
 # デプロイするアプリケーション名
 set :application, 'nuita'
