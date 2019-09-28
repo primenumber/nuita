@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/auth/twitter/callback', :to => 'twitters#create'
   delete '/auth/twitter', :to => 'twitters#destroy'
   get '/notifications', :to => 'notifications#index'
+  get '/notification/refresh', :to => 'notifications#refresh'
   get '/links/recommend', :to=> 'links#recommend'
 
   resources :users, except: [:index], param: :url_digest do
