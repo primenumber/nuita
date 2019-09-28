@@ -17,6 +17,11 @@ html
     = favicon_link_tag('favicon.ico')
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application'
+    = javascript_pack_tag 'header'
+    = javascript_pack_tag 'nweets'
+    = javascript_pack_tag 'follow_icon'
+    = javascript_pack_tag 'user_info'
     = analytics_init if Rails.env.production?
   body
     = render 'layouts/header'
