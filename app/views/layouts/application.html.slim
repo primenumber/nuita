@@ -19,6 +19,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application'
     = javascript_pack_tag 'header'
+    = javascript_pack_tag 'nweets'
+    = javascript_pack_tag 'follow_icon'
     = analytics_init if Rails.env.production?
   body
     = render 'layouts/header'
