@@ -5,30 +5,33 @@ document.addEventListener('turbolinks:load', function(){
     div.addEventListener('ajax:success', function(){
       var anchor = <HTMLElement>div.firstElementChild;
       var icon = <HTMLElement>anchor.childNodes[0];
-      var likeNumElement = <HTMLElement>anchor.childNodes[1];
+      var like_flash = document.getElementById("likeFlash");
+      // var likeNumElement = <HTMLElement>anchor.childNodes[1];
       anchor.classList.toggle('liked');
 
-      var likeCount:number;
-      if(likeNumElement.innerText){
-        likeCount = parseInt(likeNumElement.innerText);
-      }else{
-        likeCount = 0;
-      }
+      // var likeCount:number;
+      // if(likeNumElement.innerText){
+      //   likeCount = parseInt(likeNumElement.innerText);
+      // }else{
+      //   likeCount = 0;
+      // }
 
       if(icon.classList.contains('fas')){
         icon.classList.replace('fas', 'far');
         anchor.setAttribute('data-method', 'post');
-        likeCount--;
-        if(likeCount){
-          likeNumElement.innerText = likeCount.toString();
-        }else{
-          likeNumElement.innerText = "";
-        }
+        like_flash.innerText = ""
+        // likeCount--;
+        // if(likeCount){
+        //   likeNumElement.innerText = likeCount.toString();
+        // }else{
+        //   likeNumElement.innerText = "";
+        // }
       }else{
         icon.classList.replace('far', 'fas');
         anchor.setAttribute('data-method', 'delete');
-        likeCount++;
-        likeNumElement.innerText = likeCount.toString();
+        like_flash.innerText = "「いいね」しました！";
+        // likeCount++;
+        // likeNumElement.innerText = likeCount.toString();
       }
     })
   });
