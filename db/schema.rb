@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_071653) do
+ActiveRecord::Schema.define(version: 2019_11_01_164435) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", limit: 30, null: false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2019_09_26_071653) do
     t.datetime "updated_at", null: false
     t.text "statement", limit: 255
     t.string "url_digest"
+    t.datetime "latest_liked_time"
     t.index ["url_digest"], name: "index_nweets_on_url_digest", unique: true
     t.index ["user_id", "did_at"], name: "index_nweets_on_user_id_and_did_at"
     t.index ["user_id"], name: "index_nweets_on_user_id"
