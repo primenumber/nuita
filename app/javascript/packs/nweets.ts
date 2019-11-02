@@ -5,9 +5,8 @@ document.addEventListener('turbolinks:load', function(){
     div.addEventListener('ajax:success', function(){
       var anchor = <HTMLElement>div.firstElementChild;
       var icon = <HTMLElement>anchor.childNodes[0];
-      var likeFlash = document.getElementById("likeFlash");
-      var latestLikedTime = <HTMLElement>document.getElementById("latestLikedTime");
-      var outerLatestLikedTime = <HTMLElement>latestLikedTime.parentNode;
+      var likeFlash = <HTMLElement>anchor.childNodes[1];
+      var outerLatestLikedTime = <HTMLElement>anchor.childNodes[2];
       // var likeNumElement = <HTMLElement>anchor.childNodes[1];
       anchor.classList.toggle('liked');
 
