@@ -34,6 +34,13 @@ class LikeTest < ActiveSupport::TestCase
     end
   end
 
+  test 'create like set latest time on nweets' do
+    assert_nil @nweet.latest_liked_time
+    @user.likes.create!(nweet: @nweet)
+
+    assert @nweet.latest_liked_time > 1.minute.ago
+  end
+
   test 'do not notify when user notify nweets by himself' do
     nweet = nweets(:today)
 
