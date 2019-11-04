@@ -8,7 +8,8 @@
     {
       "src": "<%= image_path "serviceworker-rails/icon-#{dim}.png" %>",
       "sizes": "<%= dim %>",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable"
     }<%= i == (icon_sizes.length - 1) ? '' : ',' %>
   <% end %>
   ],
