@@ -8,6 +8,8 @@ gem 'carrierwave'
 gem "mini_magick", ">= 4.9.4"
 gem 'fog-aws'
 
+gem 'serviceworker-rails'
+
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'twitter'
