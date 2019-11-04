@@ -1,19 +1,19 @@
-<% icon_sizes = Rails.configuration.serviceworker.icon_sizes %>
+<% icon_sizes = [32, 48, 64, 128, 256, 512] %>
 {
-  "name": "My Progressive Rails App",
-  "short_name": "Progressive",
+  "name": "Nuita",
+  "short_name": "Nuita",
   "start_url": "/",
   "icons": [
   <% icon_sizes.map { |s| "#{s}x#{s}" }.each.with_index do |dim, i| %>
     {
-      "src": "<%= image_path "serviceworker-rails/heart-#{dim}.png" %>",
+      "src": "<%= image_path "serviceworker-rails/favicon_#{dim}.png" %>",
       "sizes": "<%= dim %>",
       "type": "image/png"
     }<%= i == (icon_sizes.length - 1) ? '' : ',' %>
   <% end %>
   ],
-  "theme_color": "#000000",
-  "background_color": "#FFFFFF",
-  "display": "fullscreen",
+  "theme_color": "#5FC10C",
+  "background_color": "#F4F3EF",
+  "display": "standalone",
   "orientation": "portrait"
 }
