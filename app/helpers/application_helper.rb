@@ -13,19 +13,6 @@ module ApplicationHelper
     text
   end
 
-  # urlだけ返す
-  def icon_url(user: current_user)
-    if !user
-      return asset_path('icon_default')
-    end
-
-    if user.icon.url.present?
-      user.icon.url
-    else
-      url = asset_path('icon_default')
-    end
-  end
-
   # contribution graph用
   # collectionを渡すとcolumnの日ごとに整理されたhashになって返ってくる
   def calendarize_data(collection, column: :created_at)
