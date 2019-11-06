@@ -4,18 +4,22 @@ module UsersHelper
     str.gsub(/ /, '_')
   end
 
-  # iconのイメージ返す　設定なしならデフォルト
-  def icon_for(user, size: 80, htmlclass: 'usericon')
-    if !user
-      return image_tag(asset_path('icon_default'), size: size.to_s, class:'usericon', id: 'usericon-new')
-    end
-
-    if user.icon.url.present?
-      url = user.icon.url
+  # urlだけ返す 設定なしならデフォルト
+  def icon_url(user = current_user, size = 60)
+    if !user || user.icon.url.blank?
+      asset_path('icon_default')
     else
-      url = asset_path('icon_default')
+      if size <= 60
+        user.icon.thumb.url
+      else
+        user.icon.url
+      end
     end
-    image_tag(url, alt: user.handle_name, size: size.to_s, class: htmlclass, id: "usericon-#{user.id}")
+  end
+
+  # さらにicon_urlをimageタグを返してくれる
+  def icon_for(user, size: 80, htmlclass: 'usericon')
+    image_tag(icon_url(user, size), alt: user.handle_name, size: size.to_s, class: htmlclass, id: "usericon-#{user.id}")
   end
 
   def current_user?(user)
