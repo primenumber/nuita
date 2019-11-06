@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_01_164435) do
+ActiveRecord::Schema.define(version: 2019_11_06_222131) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", limit: 30, null: false
@@ -86,6 +86,15 @@ ActiveRecord::Schema.define(version: 2019_11_01_164435) do
     t.index ["user_id"], name: "index_nweets_on_user_id"
   end
 
+  create_table "preferences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_preferences_on_category_id"
+    t.index ["user_id"], name: "index_preferences_on_user_id"
+  end
+
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followee_id"
@@ -141,4 +150,6 @@ ActiveRecord::Schema.define(version: 2019_11_01_164435) do
   add_foreign_key "nweet_links", "links"
   add_foreign_key "nweet_links", "nweets"
   add_foreign_key "nweets", "users"
+  add_foreign_key "preferences", "categories"
+  add_foreign_key "preferences", "users"
 end

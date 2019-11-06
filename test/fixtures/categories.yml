@@ -1,0 +1,3 @@
+r18g:
+  name: 'R18G'
+  censored_by_default: true # fixtures don't use callbacks
