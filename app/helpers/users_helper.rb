@@ -5,17 +5,21 @@ module UsersHelper
   end
 
   # urlだけ返す 設定なしならデフォルト
-  def icon_url(user = current_user)
+  def icon_url(user = current_user, size = 60)
     if !user || user.icon.url.blank?
       asset_path('icon_default')
     else
-      user.icon.url
+      if size <= 60
+        user.icon.thumb.url
+      else
+        user.icon.url
+      end
     end
   end
 
   # さらにicon_urlをimageタグを返してくれる
   def icon_for(user, size: 80, htmlclass: 'usericon')
-    image_tag(icon_url(user), alt: user.handle_name, size: size.to_s, class: htmlclass, id: "usericon-#{user.id}")
+    image_tag(icon_url(user, size), alt: user.handle_name, size: size.to_s, class: htmlclass, id: "usericon-#{user.id}")
   end
 
   def current_user?(user)
