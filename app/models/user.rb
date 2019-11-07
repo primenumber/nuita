@@ -26,6 +26,9 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'origin_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'destination_id', dependent: :destroy
 
+  has_many :censorings, class_name: 'Preference', dependent: :destroy
+  has_many :censored_categories, through: :censorings, source: :category
+
   # list nweets shown in timeline.
   def timeline
     Nweet.all # currently it is global! (since FF is not implemented)
@@ -85,6 +88,31 @@ class User < ApplicationRecord
 
   def follower?(other_user)
     self.followers.include?(other_user)
+  end
+
+  # censor, uncensor, censoring? can take both instances of String and Category
+  def censor(category)
+    if category.instance_of?(String)
+      category = Category.find_by(name: category)
+    end
+
+    self.censored_categories << category
+  end
+
+  def uncensor(category)
+    if category.instance_of?(String)
+      category = Category.find_by(name: category)
+    end
+
+    self.censorings.find_by(category_id: category.id).destroy
+  end
+
+  def censoring?(category)
+    if category.instance_of?(Category)
+      category = category.name
+    end
+
+    self.censored_categories.exists?(name: category)
   end
 
   def liked?(nweet)
