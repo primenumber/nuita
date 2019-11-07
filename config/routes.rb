@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     member do
       get :likes
       get :followers, :followees
+      put :censorings
     end
   end
 
