@@ -1,3 +1,11 @@
 r18g:
   name: 'R18G'
   censored_by_default: true # fixtures don't use callbacks
+
+three_d:
+  name: '3D'
+  censored_by_default: true
+
+kemo:
+  name: 'KEMO'
+  censored_by_default: false
