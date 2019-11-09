@@ -14,7 +14,6 @@ Rails.application.routes.draw do
     member do
       get :likes
       get :followers, :followees
-      put :censorings
     end
   end
 
@@ -22,5 +21,6 @@ Rails.application.routes.draw do
   resource :category, only: [:create, :destroy]
   resource :like, only: [:create, :destroy]
   resource :link, only: [:create]
+  resource :censoring, only: [:update]
   resource :relationship, only: [:create, :destroy]
 end
