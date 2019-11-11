@@ -80,4 +80,10 @@ class UserTest < ActiveSupport::TestCase
     assert notification.announce?
     assert_equal str, notification.statement
   end
+
+  test 'create censoring when a user is created' do
+    user = User.create(screen_name: "kaburanai", email: "kaburan@gmail.com", password: "hogehoge")
+    assert user.censoring?('R18G')
+    assert_not user.censoring?('KEMO')
+  end
 end

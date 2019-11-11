@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   before_create :set_url_digest
+  after_create :set_default_censoring
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -134,7 +135,14 @@ class User < ApplicationRecord
   end
 
   private
+
     def set_url_digest
       self.url_digest = SecureRandom.alphanumeric
+    end
+
+    def set_default_censoring
+      Category.where(censored_by_default: false).each do |category|
+        self.censor(category)
+      end
     end
 end
