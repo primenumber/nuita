@@ -19,7 +19,14 @@ module UsersHelper
 
   # さらにicon_urlをimageタグを返してくれる
   def icon_for(user, size: 80, htmlclass: 'usericon')
-    image_tag(icon_url(user, size), alt: user.handle_name, size: size.to_s, class: htmlclass, id: "usericon-#{user.id}")
+    if user.present?
+      alt = user.handle_name
+      id = "usericon-#{user.id}"
+    else
+      alt = ''
+      id = "usericon-default"
+    end
+    image_tag(icon_url(user, size), alt: alt, size: size.to_s, class: htmlclass, id: id)
   end
 
   def current_user?(user)
