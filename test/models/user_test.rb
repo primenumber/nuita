@@ -83,6 +83,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'create censoring when a user is created' do
     user = User.create(screen_name: "kaburanai", email: "kaburan@gmail.com", password: "hogehoge")
+    debugger
     assert user.censoring?('R18G')
     assert_not user.censoring?('KEMO')
   end

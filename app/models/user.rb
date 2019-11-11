@@ -141,7 +141,7 @@ class User < ApplicationRecord
     end
 
     def set_default_censoring
-      Category.where(censored_by_default: false).each do |category|
+      Category.where(censored_by_default: true).each do |category|
         self.censor(category)
       end
     end
