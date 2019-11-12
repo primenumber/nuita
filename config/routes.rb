@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   resource :category, only: [:create, :destroy]
   resource :like, only: [:create, :destroy]
   resource :link, only: [:create]
+  resource :censoring, only: [:update]
   resource :relationship, only: [:create, :destroy]
 end

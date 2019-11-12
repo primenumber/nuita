@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   before_create :set_url_digest
+  after_create :set_default_censoring
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -25,6 +26,9 @@ class User < ApplicationRecord
 
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'origin_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'destination_id', dependent: :destroy
+
+  has_many :censorings, class_name: 'Preference', dependent: :destroy
+  has_many :censored_categories, through: :censorings, source: :category
 
   # list nweets shown in timeline.
   def timeline
@@ -87,6 +91,31 @@ class User < ApplicationRecord
     self.followers.include?(other_user)
   end
 
+  # censor, uncensor, censoring? can take both instances of String and Category
+  def censor(category)
+    if category.instance_of?(String)
+      category = Category.find_by(name: category)
+    end
+
+    self.censored_categories << category
+  end
+
+  def uncensor(category)
+    if category.instance_of?(String)
+      category = Category.find_by(name: category)
+    end
+
+    self.censorings.find_by(category_id: category.id).destroy
+  end
+
+  def censoring?(category)
+    if category.instance_of?(Category)
+      category = category.name
+    end
+
+    self.censored_categories.exists?(name: category)
+  end
+
   def liked?(nweet)
     self.likes.exists?(nweet_id: nweet.id)
   end
@@ -106,7 +135,14 @@ class User < ApplicationRecord
   end
 
   private
+
     def set_url_digest
       self.url_digest = SecureRandom.alphanumeric
+    end
+
+    def set_default_censoring
+      Category.where(censored_by_default: true).each do |category|
+        self.censor(category)
+      end
     end
 end

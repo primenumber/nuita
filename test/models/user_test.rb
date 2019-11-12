@@ -62,10 +62,29 @@ class UserTest < ActiveSupport::TestCase
     assert_not @new_user.followee?(@user)
   end
 
+  test 'should censor and uncensor category' do
+    category = categories(:r18g)
+    @user.censor(category)
+    assert @user.censoring?(category.name)
+
+    @user.uncensor(category)
+    assert_not @user.censoring?(category.name)
+
+    @user.censor(category.name)
+    assert @user.censoring?(category)
+  end
+
   test 'can announce' do
     str = '<h6>寄付のお願い</h6><p>詳細は<a href="https://google.com">こちら</a></p>'
     notification = @user.announce(str)
     assert notification.announce?
     assert_equal str, notification.statement
+  end
+
+  test 'create censoring when a user is created' do
+    user = User.create(screen_name: "kaburanai", email: "kaburan@gmail.com", password: "hogehoge")
+    debugger
+    assert user.censoring?('R18G')
+    assert_not user.censoring?('KEMO')
   end
 end

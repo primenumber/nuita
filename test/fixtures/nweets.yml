@@ -30,3 +30,15 @@ chirstmas:
   user: chikuwa
   url_digest: <%= SecureRandom.alphanumeric %>
   statement: '😢'
+
+r18g:
+  did_at: <%= 3.days.ago.utc %>
+  user: chikuwa
+  url_digest: <%= SecureRandom.alphanumeric %>
+  statement: 'https://www.pixiv.net/artworks/59554738'
+
+kemo:
+  did_at: <%= 15.days.ago.utc %>
+  user: emiya
+  url_digest: <%= SecureRandom.alphanumeric %>
+  statement: 'https://twitter.com/aoi_nishimata/status/831825876899635200'

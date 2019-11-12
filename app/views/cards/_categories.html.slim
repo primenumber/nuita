@@ -1,6 +1,5 @@
 .mt-0.mb-2
-  / 真のタグ機能完成するまでの仮　R18Gと3Dだけいじれる
-  - ['R18G', '3D'].each do |category|
+  - Category.pluck(:name).each do |category|
     - if link.categories.exists?(name: category)
       span.badge.badge-tag.active.mx-1
         span.small = icon 'fas', 'hashtag'
