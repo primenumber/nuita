@@ -3,7 +3,7 @@ class NweetsController < ApplicationController
   before_action :correct_user, only: [:destroy, :update]
 
   def create
-    @nweet = current_user.nweets.build(new_nweet_params)
+    @nweet = current_user.nweets.build(did_at: Time.zone.now)
     if @nweet.save # edit に移すべきかも
       redirect_to root_url(success: true, url_digest: @nweet.url_digest)
       tweet if current_user.autotweet_enabled
@@ -39,10 +39,6 @@ class NweetsController < ApplicationController
 
   private
     # strong parameters
-    def new_nweet_params
-      params.require(:nweet).permit(:did_at)
-    end
-
     def edit_nweet_params
       params.require(:nweet).permit(:statement)
     end
