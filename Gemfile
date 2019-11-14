@@ -10,8 +10,9 @@ gem 'fog-aws'
 
 gem 'serviceworker-rails'
 
-gem 'omniauth'
+gem 'omniauth', '~>1.9'
 gem 'omniauth-twitter'
+gem 'omniauth-rails_csrf_protection', '~> 0.1'
 gem 'twitter'
 
 gem 'faker'
