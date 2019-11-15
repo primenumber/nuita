@@ -22,10 +22,7 @@ class Link < ApplicationRecord
 
   def set_category(name)
     name.upcase!
-    unless c = Category.find_by(name: name)
-      c = Category.create(name: name)
-    end
-    unless categories.exists?(id: c.id)
+    if c = Category.find_by(name: name)
       self.categories << c
     end
   end
