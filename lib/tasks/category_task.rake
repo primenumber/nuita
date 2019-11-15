@@ -16,4 +16,9 @@ namespace :category_task do
       puts ""
     end
   end
+
+  desc "remove unnecessary(not censored by default) categories"
+  task clean: :environment do
+    Category.where(censored_by_default: false).destroy_all
+  end
 end
