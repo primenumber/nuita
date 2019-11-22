@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get '/notification/refresh', :to => 'notifications#refresh'
   get '/links/recommend', :to=> 'links#recommend'
 
+  get '/christmas', :to => 'christmas#show', as: 'christmas'
+  get '/christmas/about', :to => 'christmas#about'
+
   resources :users, except: [:index], param: :url_digest do
     member do
       get :likes
