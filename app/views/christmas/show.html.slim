@@ -1,2 +1,6 @@
-h1 Christmas#show
-p Find me in app/views/christmas/show.html.slim
+- provide(:title, 'Nuita Advent Calendar')
+- provide(:custom_header, 'christmas_header')
+
+.container.wider-margintop
+  .jumbotron
+    = image_tag 'christmas/logo_ac.png', alt: 'Nuita Advent Calendar', class: 'img-fluid'
