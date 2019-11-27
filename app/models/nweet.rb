@@ -2,10 +2,17 @@ require 'uri'
 
 class Nweet < ApplicationRecord
   before_create :set_url_digest
-  after_save :create_link, :create_category, :create_christmas_stamp
 
-  # christmas
+  # statementはeditで編集されるのでafter_createではだめ
+  after_save :create_link, :create_category
+
+  # begin christmas
+  after_create do
+    self.create_stamp(date: self.did_at, action: :nweet, user: self.user)
+  end
+
   has_one :stamp, dependent: :destroy
+  # end christmas
 
   belongs_to :user
   has_many :likes, dependent: :destroy
@@ -65,10 +72,6 @@ class Nweet < ApplicationRecord
         end
       end
     end
-  end
-
-  def create_christmas_stamp
-    self.create_stamp(date: self.did_at, action: :nweet, user: self.user)
   end
 
   private
