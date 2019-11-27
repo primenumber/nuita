@@ -1,4 +1,4 @@
-section.sticky-top.side-section
+section.side-section
   .media
     = icon_for(user, size: 60, htmlclass: 'rounded-circle mr-3 mb-2')
     .media-body.user-info-content
@@ -34,3 +34,4 @@ section.sticky-top.side-section
       = link_to user.twitter_url do
         = icon('fab', 'twitter', '@' + user.twitter_screen_name)
   = render 'users/calendar', user: user, row: 5
+  = render 'christmas/calendar', user: user
