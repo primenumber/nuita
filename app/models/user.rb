@@ -30,6 +30,15 @@ class User < ApplicationRecord
   has_many :censorings, class_name: 'Preference', dependent: :destroy
   has_many :censored_categories, through: :censorings, source: :category
 
+  # begin christmas
+  has_many :stamps, dependent: :destroy
+
+  def stamps_at_date(date)
+    stamps.where(did_at: date.beginning_of_day...date.end_of_day).reorder(did_at: :asc)
+  end
+
+  # end christmas
+
   # list nweets shown in timeline.
   def timeline
     Nweet.all # currently it is global! (since FF is not implemented)
