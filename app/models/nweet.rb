@@ -8,7 +8,7 @@ class Nweet < ApplicationRecord
 
   # begin christmas
   after_create do
-    self.create_stamp(date: self.did_at, action: :nweet, user: self.user)
+    self.create_stamp(targeted_at: self.did_at, action: :nweet, user: self.user)
   end
 
   has_one :stamp, dependent: :destroy

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_231606) do
+ActiveRecord::Schema.define(version: 2019_11_27_070358) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", limit: 30, null: false
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_231606) do
   end
 
   create_table "stamps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.datetime "date", null: false
+    t.datetime "targeted_at", null: false
     t.bigint "user_id", null: false
     t.integer "action", null: false
     t.bigint "nweet_id"

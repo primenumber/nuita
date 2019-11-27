@@ -6,5 +6,5 @@ class Stamp < ApplicationRecord
   belongs_to :like, optional: true
 
   validates :action, presence: true
-  validates :date, presence: true
+  validates :targeted_at, presence: true
 end

@@ -95,6 +95,6 @@ class NweetTest < ActiveSupport::TestCase
 
     assert new_nweet.stamp.present?
     assert_equal @user, new_nweet.stamp.user
-    assert_equal new_nweet.did_at.in_time_zone('Tokyo'), new_nweet.stamp.date
+    assert_equal new_nweet.did_at.in_time_zone('Tokyo'), new_nweet.stamp.targeted_at
   end
 end
