@@ -1,0 +1,13 @@
+- (calendar_range = Date.new(2019, 12, 1)..Date.new(2019, 12, 25))
+- (hash = christmas_stamps_for(user, calendar_range))
+
+mb-2.label-calendar
+  span.large = link_to "Nuita Advent Calendar", christmas_path
+
+table.w-100.table-contribution.mb-3
+  - calendar_range.each do |date|
+    - if date.sunday?
+      tr
+    td class="christmas val-#{hash[date].count}" id="calChristmas#{date}"
+      /- if hash[date].any?
+        = link_to '', user_path(user, date: date)
