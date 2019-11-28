@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Questrial');
+@import url('https://fonts.googleapis.com/css?family=Questrial|Playfair+Display&display=swap');
 
 $light-shades: #F4F3EF;
 $light-accent: #85A394;
@@ -12,7 +12,9 @@ $brand-color-light: #8fd354;
 $brand-color-white: #EFF8E6;
 $brand-color-black: #132602;
 
-$christmas-color: rgb(198, 64, 65);
+$christmas-color: #c64041;
+$christmas-color-light: #cd5859;
+$christmas-secondary-color: #165b33;
 
 $twitter-color: #00acee;
 
@@ -784,10 +786,33 @@ a.card{
     &:hover{
       border: 2px solid #fcfcfc;
     }
+
+    .day{
+      font-size: large;
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      text-align: center;
+      vertical-align: middle;
+    }
   }
 
   td.christmas.val-1{
     background-color: $christmas-color;
+    color: #fff;
+  }
+
+  td.christmas.val-0{
+    background-color: #bbb;
+    color: $dark-shades;
+  }
+
+  td.christmas.not-yet{
+    background-color: #ddd;
+    color: #aaa;
+  }
+
+  td.christmas.today{
+    border-color: $christmas-secondary-color;
   }
 
   td.active{
@@ -840,6 +865,16 @@ footer{
   background-color: rgba(255, 255, 255, 1);
 }
 
+.christmas-minifaq{
+  a{
+    color: $christmas-color;
+    &:hover{
+      text-decoration: underline;
+      color: $christmas-color-light;
+    }
+  }
+}
+
 /* utility */
 .bg-brand{
   background-color: $brand-color;
@@ -854,4 +889,8 @@ footer{
     background-color: $brand-color-light;
     border-color: $brand-color;
   }
+}
+
+.x-small{
+  font-size: x-small;
 }
