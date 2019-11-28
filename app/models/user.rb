@@ -30,6 +30,8 @@ class User < ApplicationRecord
   has_many :censorings, class_name: 'Preference', dependent: :destroy
   has_many :censored_categories, through: :censorings, source: :category
 
+  has_and_belongs_to_many :badges
+  
   # begin christmas
   has_many :stamps, dependent: :destroy
 

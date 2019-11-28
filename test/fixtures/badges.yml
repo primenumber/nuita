@@ -1,4 +1,4 @@
 christmas:
   name: ホワイトクリスマス
   description: Nuita Advent Calendar 2019を完走する
-  icon: <%= image_tag image_path('christmas/face_ac.png') %>
+  icon: christmas/logo_ac

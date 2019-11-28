@@ -87,4 +87,13 @@ class UserTest < ActiveSupport::TestCase
     assert user.censoring?('R18G')
     assert_not user.censoring?('KEMO')
   end
+
+  test 'can add and remove badges' do
+    badge = badges(:christmas)
+    @user.badges << badge
+    assert @user.badges.exists?
+
+    @user.badges.destroy(badge)
+    assert_not @user.badges.exists?
+  end
 end
