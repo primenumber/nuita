@@ -35,3 +35,4 @@ section.side-section
       = link_to user.twitter_url do
         = icon('fab', 'twitter', '@' + user.twitter_screen_name)
   = render 'users/calendar', user: user, row: 5
+  = render 'users/badges', user: user
