@@ -39,6 +39,10 @@ class User < ApplicationRecord
     stamps.where(did_at: date.beginning_of_day...date.end_of_day).reorder(did_at: :asc)
   end
 
+  def add_stamp_by_like(like)
+    self.stamps.create(action: :like, targeted_at: like.nweet.did_at, nweet: like.nweet, like: like)
+  end
+
   # do not delete this function until 2020.3
   def has_christmas_badge?
     self.badges.exists?(name: 'ホワイトクリスマス')
