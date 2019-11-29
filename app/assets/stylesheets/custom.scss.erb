@@ -782,6 +782,8 @@ a.card{
 
   td.christmas{
     height: 2rem;
+    background-color: $christmas-color;
+    color: #fff;
 
     &:hover{
       border: 2px solid #fcfcfc;
@@ -794,11 +796,6 @@ a.card{
       text-align: center;
       vertical-align: middle;
     }
-  }
-
-  td.christmas.val-1{
-    background-color: $christmas-color;
-    color: #fff;
   }
 
   td.christmas.val-0{
@@ -872,6 +869,29 @@ footer{
       text-decoration: underline;
       color: $christmas-color-light;
     }
+  }
+}
+
+.christmas-badge-icon::before{
+  display: inline-block;
+  content: '';
+  background-image: url(image_path('christmas/face_ac'));
+  background-size: contain;
+  vertical-align: text-bottom;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.cb-true{
+  .screen_name{
+    color: $christmas-color;
+    a{
+      color: $christmas-color;
+    }
+  }
+
+  .quote{
+    border-left: 1px solid $christmas-color-light !important;
   }
 }
 
