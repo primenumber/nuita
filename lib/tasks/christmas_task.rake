@@ -4,7 +4,7 @@ namespace :christmas_task do
     badge = Badge.create(
       name: 'ホワイトクリスマス',
       description: 'Nuita Advent Calendar 2019を完走する',
-      icon: 'christmas/logo_ac'
+      icon: 'badges/christmas_2019'
     )
     p badge
   end
