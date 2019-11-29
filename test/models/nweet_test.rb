@@ -93,8 +93,9 @@ class NweetTest < ActiveSupport::TestCase
   test 'stamp must be generated' do
     new_nweet = @user.nweets.create(did_at: Time.zone.now)
 
-    assert new_nweet.stamp.present?
-    assert_equal @user, new_nweet.stamp.user
-    assert_equal new_nweet.did_at.in_time_zone('Tokyo'), new_nweet.stamp.targeted_at
+    stamp = new_nweet.stamps.first
+    assert stamp.valid?
+    assert_equal @user, stamp.user
+    assert_equal new_nweet.did_at.in_time_zone('Tokyo'), stamp.targeted_at
   end
 end
