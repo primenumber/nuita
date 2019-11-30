@@ -204,7 +204,7 @@ body{
   }
 }
 
-.wider-margintop{
+  .wider-margintop{
   margin-top: 30px;
 }
 
@@ -563,6 +563,16 @@ body{
   }
 
 }
+
+@media screen and (max-width: 766px) {
+  .container{
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+  }
+}
+
 @media screen and (min-width: 766px) {
   .not-so-jumbo{
     width: 766px;
@@ -825,6 +835,10 @@ h3.label-calendar{
   font-size: normal;
 }
 
+.christmas-col{
+  background-color: white;
+}
+
 /* footer */
 footer{
   .text-muted{
@@ -875,11 +889,12 @@ footer{
 }
 
 .christmas-bg{
-  background-image: url(<%= asset_path("christmas/red_christmas_bg") %>)
+  background-image: url(<%= asset_path("christmas/christmas_bg") %>)
 }
 
 .christmas-jumbotron{
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
 }
 
 .christmas-minifaq{
@@ -913,6 +928,19 @@ footer{
   .quote{
     border-left: 1px solid $christmas-color-light !important;
   }
+}
+
+table.table-contribution.detailed-true{
+  td{
+    vertical-align: top;
+    text-align: center;
+    height: 5rem;
+    font-size: large;
+  }
+}
+
+#christmasFaqList{
+  list-style: none;
 }
 
 /* utility */
