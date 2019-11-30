@@ -8,4 +8,15 @@ namespace :christmas_task do
     )
     p badge
   end
+
+  desc 'recover the stamps for Advent Calendar'
+  task recover_stamps: :environment do
+    Stamp.destroy_all
+    Nweet.where("did_at > ?", Time.zone.local(2019, 11, 30)).find_each do | nweet |
+      p nweet.stamps.create(targeted_at: nweet.did_at, action: :nweet, user: nweet.user)
+    end
+    Like.where("created_at > ?", Time.zone.local(2019, 11, 30)).find_each do | like |
+      p like.user.add_stamp_by_like(like)
+    end
+  end
 end
