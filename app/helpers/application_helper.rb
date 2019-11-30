@@ -18,7 +18,7 @@ module ApplicationHelper
   def calendarize_data(collection, column: :created_at)
     Hash.new([]).tap do |hash|
       collection.each do |c|
-        date = c.send(column).to_date
+        date = c.send(column).in_time_zone('Tokyo').to_date
         hash[date] = [] if hash[date].empty?
         hash[date] << c
       end
